@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.PersonsMapper" >
+  
+  <insert id="insertPersons"  >
+    insert into persons (pname, pcode, psex, page,pblood,paddr,pnationality,pnative,pfolk) 
+    values (#{pname}, #{pcode}, #{psex},#{page},#{pblood},#{paddr},#{pnationality},#{pnative},#{pfolk})
+  </insert>
+	<select id="selectPersons" resultType="Persons">
+		select * from persons 
+		<where>
+			<if test="persons.pname!=null and persons.pname != ''">
+				and pname like '%' #{persons.pname} '%'
+			</if>
+			<if test="persons.pcode!=null and persons.pcode != ''">
+				and pcode = #{persons.pcode}
+			</if>
+			<if test="persons.psex !=null and persons.psex != ''">
+				and psex = #{persons.psex}
+			</if>
+			<if test="persons.page !=0 ">
+				and page = #{persons.page}
+			</if>
+			<if test="persons.pblood !=null and persons.pblood != ''">
+				and pblood = #{persons.pblood}
+			</if>
+			<if test="persons.paddr !=null and persons.paddr != ''">
+				and paddr like '%' #{persons.paddr} '%'
+			</if>
+			<if test="persons.pnationality!=null and persons.pnationality != ''">
+				and pnationality = #{persons.pnationality }
+			</if>
+			<if test="persons.pnative!=null and persons.pnative != ''">
+				and pnative = #{persons.pnative }
+			</if>
+			<if test="persons.pfolk !=null and persons.pfolk != ''">
+				and pfolk = #{persons.pfolk }
+			</if>
+		</where> 
+	</select>
+	<select id="selectPersonsByPid" resultType="Persons">
+		select * from persons where pid = #{pid}
+	</select>
+	<update id="updatePersonsByPid" >
+		update persons set pname = #{pname}, pcode = #{pcode}, psex = #{psex} , page = #{page}, pblood = #{pblood},paddr = #{paddr} ,pnationality = #{pnationality},pnative = #{pnative},pfolk = #{pfolk} where pid = #{pid}
+	</update>
+</mapper>
