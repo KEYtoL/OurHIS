@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Allprescription {
-	
-    private Integer apid;
+public class Pharmacykc {
+    private Integer yfkcid;
 
-    private Integer bmid;
+    private Integer mid;
 
-    private Double tprice;
+    private Integer yfkcnum;
 
-    
+   
 }
