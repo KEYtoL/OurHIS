@@ -9,7 +9,7 @@ public class Keshi {
 
     private Integer kprice;
 
-    private String 科室;
+    private String kroom;
 
     public Integer getKid() {
         return kid;
@@ -43,11 +43,13 @@ public class Keshi {
         this.kprice = kprice;
     }
 
-    public String get科室() {
-        return 科室;
-    }
+	public String getKroom() {
+		return kroom;
+	}
 
-    public void set科室(String 科室) {
-        this.科室 = 科室 == null ? null : 科室.trim();
-    }
+	public void setKroom(String kroom) {
+		this.kroom = kroom;
+	}
+
+    
 }
