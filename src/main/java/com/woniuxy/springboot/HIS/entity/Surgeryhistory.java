@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Surgeryhistory {
     private Integer hid;
 
@@ -9,35 +16,5 @@ public class Surgeryhistory {
 
     private Integer dtype;
 
-    public Integer getHid() {
-        return hid;
-    }
-
-    public void setHid(Integer hid) {
-        this.hid = hid;
-    }
-
-    public Integer getNid() {
-        return nid;
-    }
-
-    public void setNid(Integer nid) {
-        this.nid = nid;
-    }
-
-    public Integer getDid() {
-        return did;
-    }
-
-    public void setDid(Integer did) {
-        this.did = did;
-    }
-
-    public Integer getDtype() {
-        return dtype;
-    }
-
-    public void setDtype(Integer dtype) {
-        this.dtype = dtype;
-    }
+   
 }

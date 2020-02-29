@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Paytype {
     private Integer peid;
 
@@ -7,27 +14,5 @@ public class Paytype {
 
     private String ptname;
 
-    public Integer getPeid() {
-        return peid;
-    }
-
-    public void setPeid(Integer peid) {
-        this.peid = peid;
-    }
-
-    public Integer getPtid() {
-        return ptid;
-    }
-
-    public void setPtid(Integer ptid) {
-        this.ptid = ptid;
-    }
-
-    public String getPtname() {
-        return ptname;
-    }
-
-    public void setPtname(String ptname) {
-        this.ptname = ptname == null ? null : ptname.trim();
-    }
+   
 }
