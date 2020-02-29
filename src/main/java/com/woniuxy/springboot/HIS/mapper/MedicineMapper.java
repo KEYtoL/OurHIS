@@ -3,7 +3,7 @@ package com.woniuxy.springboot.HIS.mapper;
 import java.util.List;
 
 import com.woniuxy.springboot.HIS.entity.Medicine;
-import com.woniuxy.springboot.HIS.entity.Student;
+
 public interface MedicineMapper {
 	//新增药品
 	void insertStudent(Medicine medicine);

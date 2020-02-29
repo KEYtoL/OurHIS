@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Pharmacykc {
     private Integer yfkcid;
 
-    private Integer mid;
+    private Medicine medicine;
 
     private Integer yfkcnum;
 
