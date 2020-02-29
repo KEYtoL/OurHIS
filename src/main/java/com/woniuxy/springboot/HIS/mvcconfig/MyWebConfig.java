@@ -32,6 +32,7 @@ public class MyWebConfig {
 			}
 		};	
 	}
+	
 	@ConfigurationProperties(prefix="spring.datasource")
 	@Bean
 	public DataSource dataSource() {
