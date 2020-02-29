@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HISApplication {
 
 	public static void main(String[] args) {
-		System.out.println();
 		SpringApplication.run(HISApplication.class, args);
 	}
 
