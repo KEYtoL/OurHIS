@@ -31,12 +31,12 @@ public class MedicineController {
 	public Medicinejson selectAllMedicine(Integer page,Integer limit) {
 		System.out.println("page------"+page);
 		System.out.println("limit------"+limit);
-		List<Medicine> allMedicine = medicineService.selectAllMedicineByPage(2, 3);
+		List<Medicine> allMedicine = medicineService.selectAllMedicineByPage(page,limit);
 		for (Medicine medicine : allMedicine) {
 			System.out.println(medicine);
 		}
 		Integer count = medicineMapper.selectCount();
-		Medicinejson medicinejson=new Medicinejson("0","",800,allMedicine);
+		Medicinejson medicinejson=new Medicinejson("0","",count,allMedicine);
 		return medicinejson;
 	}
 	
