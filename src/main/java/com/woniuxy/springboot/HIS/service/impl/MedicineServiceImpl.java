@@ -26,8 +26,8 @@ public class MedicineServiceImpl implements MedicineService{
 	}
 
 	@Override
-	public List<Medicine> selectMedicineByMname(Medicine medicine) {
-		List<Medicine> medicineByMname = medicineMapper.selectMedicineByMname(medicine);
+	public List<Medicine> selectMedicineByMname(String mname) {
+		List<Medicine> medicineByMname = medicineMapper.selectMedicineByMname(mname);
 		return medicineByMname;
 	}
 
