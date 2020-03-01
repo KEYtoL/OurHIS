@@ -62,16 +62,39 @@
 	],
 	"systemeSttings": [
 		{
-			"title": "药房",
-			"icon": "&#xe631;",
-			"href": "page/systemSetting/basicParameter.html",
-			"spread": false
-		},{
+			"title": "药库管理",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "出库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "入库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/pharmacykc/selectPharmacykc",
+					"spread": false
+					
+				}
+			]
+		},
+		{
 			"title": "药库",
 			"icon": "icon-log",
 			"href": "page/user/medicine2.html",
 			"spread": true
-		},{
+		},
+		{
 			"title":"设备管理",
 			"icon": "&#xe64c;",
 			"href": "page/systemSetting/linkList.html",

@@ -35,9 +35,7 @@ import com.woniuxy.springboot.HIS.service.MedicineService;
 	}
 	@Test
 	 public void contextLoads03() {
-		Medicine medicine =new Medicine();
-		medicine.setMname("达克宁");
-		List<Medicine> allMedicine = medicineMapper.selectMedicineByMname(medicine );
+		List<Medicine> allMedicine = medicineMapper.selectMedicineByMname("达克宁");
 		System.out.println(allMedicine);
 		
 	}

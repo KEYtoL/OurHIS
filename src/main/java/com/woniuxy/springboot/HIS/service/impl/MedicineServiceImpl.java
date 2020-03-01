@@ -27,8 +27,8 @@ public class MedicineServiceImpl implements MedicineService{
 	 * 名字查询已经改了
 	 */
 	@Override
-	public List<Medicine> selectMedicineByMname(Medicine medicine) {
-		List<Medicine> medicineByMname = medicineMapper.selectMedicineByMname(medicine);
+	public List<Medicine> selectMedicineByMname(String mname) {
+		List<Medicine> medicineByMname = medicineMapper.selectMedicineByMname(mname);
 		return medicineByMname;
 	}
 	/**

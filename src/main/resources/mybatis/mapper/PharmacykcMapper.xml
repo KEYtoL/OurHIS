@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.PharmacykcMapper" >
+  
+<resultMap type="Pharmacykc" id="PharmacykcResultMap">
+  <id property="yfkcid" column="yfkcid"/>
+	<result property="yfkcnum" column="yfkcnum" />  
+	<association property="medicine" column="mid" 
+	select="com.woniuxy.springboot.HIS.mapper.MedicineMapper.selectMedicineByMid"/>
+  </resultMap>
+  
+  <insert id="insertPharmacykc"  >
+    insert into pharmacykc (mid, yfkcnum) 
+    values (#{medicine.mid}, #{yfkcnum})
+  </insert>
+  
+	<select id="selectPharmacykcByMid" resultMap="PharmacykcResultMap">
+		select * from pharmacykc where mid = #{mid} 
+	</select>
+	 
+	<select id="selectAllPharmacykc" resultMap="PharmacykcResultMap">
+		select * from pharmacykc
+	</select>
+	
+	<update id="updatePharmacykcByMid" >
+		update pharmacykc set yfkcnum = #{yfkcnum} where mid = #{mid}
+	</update>
+	
+	<delete id="deletePharmacykcByMid">
+		delete from	pharmacykc where mid = #{mid}
+	</delete>
+</mapper>

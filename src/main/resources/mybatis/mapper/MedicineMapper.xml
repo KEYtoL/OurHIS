@@ -25,10 +25,15 @@
 	<select id="selectAllMedicine" resultType="Medicine">
 		select * from medicine
 	</select>
+	<!-- 通过id查询药品 -->
+	<select id="selectMedicineByMid" resultType="Medicine">
+		select * from medicine where mid = #{mid}
+	</select>
+	
 	<!-- 名字查询药品 -->
 	<select id="selectMedicineByMname" resultType="Medicine">
 		select * from
-		medicine where mname=#{mname}
+		medicine where mname like '%' #{mname} '%'
 	</select>
 	<!-- 修改药品 -->
 	<update id="updateMedicine">

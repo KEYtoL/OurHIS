@@ -17,7 +17,7 @@ public interface MedicineService {
 	List<Medicine> selectAllMedicine();
 
 	// 按名字查询药品 模糊查询
-	List<Medicine> selectMedicineByMname(Medicine medicine);
+	List<Medicine> selectMedicineByMname(String mname);
 
 	// 修改药品
 	void updateMedicine(Medicine medicine);
