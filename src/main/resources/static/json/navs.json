@@ -69,10 +69,10 @@
 		},{
 			"title": "药库",
 			"icon": "icon-log",
-			"href": "page/systemSetting/logs.html",
-			"spread": false
+			"href": "/medicine/selectAllMedicine",
+			"spread": true
 		},{
-			"title": "设备管理",
+			"title":"设备管理",
 			"icon": "&#xe64c;",
 			"href": "page/systemSetting/linkList.html",
 			"spread": false
