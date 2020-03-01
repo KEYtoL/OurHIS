@@ -4,11 +4,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper
 	namespace="com.woniuxy.springboot.HIS.mapper.MedicineMapper">
+	<!-- 查询总条数 -->
+	<select id="selectCount" resultType="integer">
+		select count(*) from
+		medicine
+	</select>
+
+
 	<!-- 新增药品 -->
 	<insert id="insertMedicine">
 		insert into medicine values (#{mid}, #{mname},
 		#{mprice},#{msize},#{munit},#{manufacturer})
 	</insert>
+	<!-- 分页查询所有药品 -->
+	<select id="selectAllMedicineByPage" resultType="Medicine">
+		select * from
+		medicine limit #{pageIndex},#{pageSize}
+	</select>
 	<!-- 查询所有药品 -->
 	<select id="selectAllMedicine" resultType="Medicine">
 		select * from medicine
@@ -30,14 +42,14 @@
 		</trim>
 		WHERE mid=#{mid}
 	</update>
-	
+
 	<!-- 删除药品 -->
 	<delete id="deleteMedicine">
 		delete from medicine where mid=#{mid}
 	</delete>
-	
-	
-		<!-- 多条件模糊分页查询 名字 价格  munit msize manufacturer 分页-->
+
+
+	<!-- 多条件模糊分页查询 名字 价格 munit msize manufacturer 分页 -->
 	<select id="selectMedicineByCondition" resultType="Medicine">
 		select * from medicine
 		<where>
@@ -53,7 +65,8 @@
 			<if test="medicine.msize!=null and medicine.msize!=''">
 				msize=#{medicine.msize}
 			</if>
-			<if test="medicine.manufacturer!=null and medicine.manufacturer!=''">
+			<if
+				test="medicine.manufacturer!=null and medicine.manufacturer!=''">
 				manufacturer like '%' #{medicine.manufacturer} '%'
 			</if>
 		</where>

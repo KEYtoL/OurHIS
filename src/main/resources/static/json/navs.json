@@ -69,7 +69,7 @@
 		},{
 			"title": "药库",
 			"icon": "icon-log",
-			"href": "/medicine/selectAllMedicine",
+			"href": "page/user/medicine2.html",
 			"spread": true
 		},{
 			"title":"设备管理",
