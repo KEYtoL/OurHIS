@@ -10,12 +10,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
+import com.woniuxy.springboot.HIS.service.MedicineService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
  public class MyfirstdemoApplicationTests {
 	
 	@Autowired
 	MedicineMapper medicineMapper;
+	@Autowired
+	MedicineService medicineService;
 
 	@Test
 	 public void contextLoads01() {
@@ -61,5 +64,16 @@ import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
 		List<Medicine> selectMedicineByCondition = medicineMapper.selectMedicineByCondition(medicine, 1, 2);
 		System.out.println(selectMedicineByCondition);
 	}
+	
+	@Test
+	 public void contextLoads07() {
+		List<Medicine> selectAllMedicine = 
+				medicineService.selectAllMedicineByPage(2, 3);
+		for (Medicine medicine : selectAllMedicine) {
+			System.out.println(medicine);
+		}
+	//	System.out.println(selectAllMedicine);
+	}
+	
 	
 }
