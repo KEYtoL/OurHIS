@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript" th:src="@{/js/jquery-2.1.4.js}"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$("ul").css({
+			"padding":"0px",
+			"margin":"0px",
+			"list-style":"none",
+			"width":"100%"
+		});
+	
+		$("li").css({
+			"padding":"0px",
+			"margin":"0px",
+			"width":"100%"
+		});
+		//改变选择时的颜色
+		$("li").hover(
+			function(){
+				$(this).css({"background-color":"#ddd"});
+			},
+			function(){
+				$(this).css({"background-color":"#fff"});
+			}
+		);
+	});	
+</script>
+<body>
+	<ul>
+			<li class="choose" style="background-color:#fff" th:each="mname:${mnames}">
+			[[${mname.medicine.mname }]]
+			</li>
+	</ul>
+</body>
+
+</body>
+</html>
