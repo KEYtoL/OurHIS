@@ -77,11 +77,11 @@ public class PharmacykcServiceImpl implements PharmacykcService{
 	 * 分页默认10
 	 */
 	@Override
-	public PageInfo<Pharmacykc> selectAllPharmacykc(Integer pageNum) {
+	public PageInfo<Pharmacykc> selectAllPharmacykc(Integer pageNum ,Integer pageSize) {
 		try {
-			PageHelper.startPage(pageNum, 10);
+			PageHelper.startPage(pageNum, pageSize);
 			List<Pharmacykc> listkc = pharmacykcMapper.selectAllPharmacykc();
-			PageInfo<Pharmacykc> pageInfo = new PageInfo<>(listkc,10);
+			PageInfo<Pharmacykc> pageInfo = new PageInfo<>(listkc);
 			return pageInfo;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

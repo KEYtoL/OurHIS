@@ -10,7 +10,7 @@ public interface PharmacykcService {
 			//查询库存通过名字（先查药品再查库存）
 			PageInfo<Pharmacykc> selectPharmacykcByMname(String mname,Integer pageNum);
 			//按查询所有库存
-			PageInfo<Pharmacykc> selectAllPharmacykc(Integer pageNum);
+			PageInfo<Pharmacykc> selectAllPharmacykc(Integer pageNum ,Integer pageSize);
 			//删除库存通过mid
 			void deletePharmacykcByMid(Integer mid);
 			

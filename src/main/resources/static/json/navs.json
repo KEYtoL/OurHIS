@@ -82,9 +82,8 @@
 				{
 					"title": "查询库存",
 					"icon": "&#xe609;",
-					"href": "/pharmacykc/selectPharmacykc",
+					"href": "/page/pharmacy/Pharmacykcs.html",
 					"spread": false
-					
 				}
 			]
 		},

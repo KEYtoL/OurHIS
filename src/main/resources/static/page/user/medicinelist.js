@@ -42,7 +42,6 @@ layui.use(['form','layer','table','laytpl'],function(){
             layer.msg("请输入搜索的内容");
         }
     });
-
     //添加用户
     function addUser(edit){
         var index = layui.layer.open({

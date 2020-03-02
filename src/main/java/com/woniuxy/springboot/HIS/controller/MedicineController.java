@@ -33,7 +33,7 @@ public class MedicineController {
 	public Medicinejson selectAllMedicine(Integer page,Integer limit) {
 		System.out.println("page------"+page);
 		System.out.println("limit------"+limit);
-		List<Medicine> allMedicine = medicineService.selectAllMedicineByPage(2, 3);
+		List<Medicine> allMedicine = medicineService.selectAllMedicineByPage(page, limit);
 		for (Medicine medicine : allMedicine) {
 			System.out.println(medicine);
 		}
