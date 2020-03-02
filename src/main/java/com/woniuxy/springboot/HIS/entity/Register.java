@@ -8,14 +8,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Register {
+	//挂号的id
     private Integer rid;
-
-    private Integer pid;
-
-    private String rtime;
-
+    //挂号的患者
+    private Persons persons;
+    //挂号时间
+    private Data rtime;
+    //挂号专业
     private Integer rtype;
-
+    //挂号档案编号
     private Integer ofhid;
 
    

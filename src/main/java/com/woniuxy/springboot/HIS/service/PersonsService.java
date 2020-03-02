@@ -1,4 +1,4 @@
-package com.woniuxy.springboot.HIS.mapper;
+package com.woniuxy.springboot.HIS.service;
 
 import java.util.List;
 
@@ -6,10 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.woniuxy.springboot.HIS.entity.Persons;
 
-/**
- * 患者的mapper接口
- */
-public interface PersonsMapper {
+public interface PersonsService {
 	/**
 	 * 新添加患者
 	 * @param persons 需要新增的患者
@@ -32,6 +29,4 @@ public interface PersonsMapper {
 	 * 	 * @param persons
 	 */
 	void updatePersonsByPid(Persons persons);
-	
 }
-	

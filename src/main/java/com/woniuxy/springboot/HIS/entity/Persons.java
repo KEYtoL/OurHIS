@@ -31,6 +31,5 @@ public class Persons {
     private String pnative;//患者籍贯
 
     private String pfolk;//患者民族
-
     
 }
