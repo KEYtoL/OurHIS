@@ -8,8 +8,8 @@ layui.use(['form','layer','table','laytpl'],function(){
 
     //用户列表
     var tableIns = table.render({
-        elem: '#pharmacykc',//表id
-        url : '/pharmacykc/selectAllPharmacykc',//请求地址
+        elem: '#pharmacy',//表id
+        url : '/pharmacy/selectPharmacy',//请求地址
         cellMinWidth : 95,
         page : true,//确认启动分页
         height : 400,

@@ -50,18 +50,24 @@ public class PharmacykcServiceImpl implements PharmacykcService{
 	 * 分页查询，每页默认10
 	 */
 	@Override
-	public PageInfo<Pharmacykc> selectPharmacykcByMname(String mname,Integer pageNum) {
+	public PageInfo<Pharmacykc> selectPharmacykcByMname(Integer key,String mname,Integer pageNum,Integer pageSize) {
 		try {
-			PageHelper.startPage(pageNum, 10);
+			PageHelper.startPage(pageNum, pageSize);
 			//查询所有符合条件的medicine
-			List<Medicine> listM = medicineMapper.selectMedicineByMname(mname);
-			List<Pharmacykc> listP =new ArrayList<Pharmacykc>() ;
-			//遍历medicine查询库存
-			for(int i = 0 ; i <listM.size() ;i++) {
-				Pharmacykc pharmacykc = 
-						pharmacykcMapper.selectPharmacykcByMid
-						(listM.get(i).getMid());
-				listP.add(pharmacykc);
+			List<Pharmacykc> listP =new ArrayList<Pharmacykc>();
+			//查询对应名字药品的库存
+			if(mname==null||"".equals(mname)) {
+				if(key==null||key.equals(1)) {
+					listP = pharmacykcMapper.selectAllPharmacykc();
+				}else {
+					listP = pharmacykcMapper.selectPharmacykcByYfkcnum();
+				}
+			}else {
+					if(key==null||key.equals(1)) {
+						listP = pharmacykcMapper.selectPharmacykcByMname(mname);
+					}else {
+						listP = pharmacykcMapper.selectPharmacykcByYfkcnumAndMname(mname);
+					}
 			}
 			PageInfo<Pharmacykc> pageInfo = new PageInfo<>(listP);
 			return pageInfo;

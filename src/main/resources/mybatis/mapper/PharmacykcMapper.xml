@@ -19,9 +19,25 @@
 	<select id="selectPharmacykcByMid" resultMap="PharmacykcResultMap">
 		select * from pharmacykc where mid = #{mid} 
 	</select>
+	
+	<select id="selectPharmacykcByYfkcnumAndMname" resultMap="PharmacykcResultMap">
+		select * from pharmacykc where yfkcnum &lt; 2000 and mid in (
+		select mid from medicine where  mname like '%' #{mname} '%' 
+		)
+	</select>
+	
+	<select id="selectPharmacykcByMname" resultMap="PharmacykcResultMap">
+		select * from pharmacykc where mid in (
+		select mid from medicine where  mname like '%' #{mname} '%' 
+		)
+	</select>
 	 
 	<select id="selectAllPharmacykc" resultMap="PharmacykcResultMap">
 		select * from pharmacykc
+	</select>
+	
+	<select id="selectPharmacykcByYfkcnum" resultMap="PharmacykcResultMap">
+		select * from pharmacykc where yfkcnum &lt; 2000
 	</select>
 	
 	<update id="updatePharmacykcByMid" >
