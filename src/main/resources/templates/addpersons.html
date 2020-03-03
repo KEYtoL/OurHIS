@@ -5,12 +5,30 @@
 <title>查询患者</title>
 <link rel="stylesheet" href="/layui/css/layui.css" media="all">
 </head>
-<script type="text/javascript" th:src="@{layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/jquery-2.1.4.js}"></script>
 <script type="text/javascript">
-	
+	$(function () {
+		$.post("/keshi/getnoinKeshi",null,function(data){
+			$(data).each(function(){
+				var html = "<option value = '"+this.kid+"'>"+this.kname+"</option>"
+				$(html).appendTo("#keshi");
+			});
+		});
+		<!--科室选择完成后自动查询医生 -->
+		$("#keshi").change(function(){
+			$("#doctor").children(":gt(0)").remove;
+			$.post("/doctor/getalldoctorbykid",{kid:$("#keshi").val()},function(data){
+				$(data).each(function(){
+					var html = "<option value = '"+this.tid+"'>"+this.tname+"</option>"
+					$(html).appendTo("#doctor");
+				});
+			});
+		});
+	})
 </script>
 <body>
-	<form th:action="@{/persons/getpersonshistory}" >
+	<form th:action="@{/register/newpersonsRegister}" >
 	
 	 <div class="layui-form-item" style="width: 100%; float: left;">
     <div class="layui-input-block">
@@ -71,7 +89,25 @@
       <input type="text" name="paddr" lay-verify="required" lay-reqtext="现居住地必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-  
+  	 <div class="layui-form-item" style="width: 25%; float: left;">
+    <label class="layui-form-label">挂号科室</label>
+    <div class="layui-input-block">
+      <select name="kid" lay-filter="keshi" id="keshi">
+        <option value="0">请选择需要挂号的科室</option>
+      </select>
+    </div>
+  </div>
+   <div class="layui-form-item" style="width: 25%; float: left;">
+    <label class="layui-form-label">挂号医生</label>
+    <div class="layui-input-block">
+      <select name="did" lay-filter="doctor" id="doctor">
+        <option value="0">请选择医生</option>
+      </select>
+    </div>
+  </div>
+  <div style="float: right;">
+  	<button type="submit" class="layui-btn layui-btn-fluid">添加患者并挂号</button>
+  </div>
 
 	</form>
 

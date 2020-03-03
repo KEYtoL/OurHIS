@@ -58,7 +58,7 @@
 	
 
 	<!-- 根据kid查询医生 -->
-	<select id="selectDoctorByKid" resultMap="doctorMapper">
+	<select id="selectDoctorByKid" resultType="Doctor">
 		select * from doctor where kid = #{Kid}
 	</select>
 

@@ -30,7 +30,9 @@ public class PersonsServiceImpl implements PersonsService{
 		try {
 			return personsMapper.selectPersons(persons);
 		} catch (Exception e) {
-			throw new PersonsException("系统错误");
+			e.printStackTrace();
+			return null;
+//			throw new PersonsException("系统错误");
 		}
 	}
 
