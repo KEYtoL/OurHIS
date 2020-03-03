@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Keshi {
     private Integer kid;
 
-    private Integer korder;
+    private Integer tid;
 
     private String kname;
 
