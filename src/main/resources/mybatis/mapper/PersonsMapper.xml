@@ -20,7 +20,7 @@
 			<if test="persons.psex !=null and persons.psex != ''">
 				and psex = #{persons.psex}
 			</if>
-			<if test="persons.page !=0 ">
+			<if test="persons.page != 0 and persons.page != null ">
 				and page = #{persons.page}
 			</if>
 			<if test="persons.pblood !=null and persons.pblood != ''">

@@ -16,11 +16,9 @@ public class Historicalpatients {
 
     private Integer pid;
 
-    private Integer room;
 
     private String specialtime;
 
-    private String specialname;
 
     private Integer isin;
 
