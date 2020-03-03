@@ -3,7 +3,8 @@
 		{
 			"title": "门诊挂号",
 			"icon": "icon-text",
-			"href": "page/news/newsList.html",
+			"href": "/selectpersons.html",
+
 			"spread": false
 		},
 		{
@@ -62,20 +63,94 @@
 	],
 	"systemeSttings": [
 		{
-			"title": "药房",
-			"icon": "&#xe631;",
-			"href": "page/systemSetting/basicParameter.html",
-			"spread": false
-		},{
+			"title": "药库管理",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "入库管理",
+					"icon": "&#xe61c;",
+					"href": "/page/pharmacy/Pharmacy.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "入库历史记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
+		},
+		{
 			"title": "药库",
 			"icon": "icon-log",
-			"href": "page/systemSetting/logs.html",
-			"spread": false
-		},{
-			"title": "设备管理",
+			"href": "page/user/medicine2.html",
+			"spread": true
+		},
+		{
+			"title": "药房管理",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "发药管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "退药管理",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "查询历史记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title":"设备管理",
 			"icon": "&#xe64c;",
 			"href": "page/systemSetting/linkList.html",
-			"spread": false
+			"spread": false,
+			"children": [
+				{
+					"title": "出库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "入库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "出入库记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
 		}
 	]
 	
