@@ -77,6 +77,6 @@
 	</update>
 
 	<delete id="deleteDoctorByTid">
-		delete doctor where tid = #{tid}
+		delete from doctor where tid = #{tid}
 	</delete>
 </mapper>

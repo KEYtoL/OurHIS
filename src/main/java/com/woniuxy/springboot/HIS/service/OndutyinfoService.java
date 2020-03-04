@@ -1,6 +1,5 @@
-package com.woniuxy.springboot.HIS.mapper;
+package com.woniuxy.springboot.HIS.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -8,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.woniuxy.springboot.HIS.entity.Doctor;
 import com.woniuxy.springboot.HIS.entity.Ondutyinfo;
 
-public interface OndutyinfoMapper {
+public interface OndutyinfoService {
 	/**
 	 * 添加值班信息
 	 */
@@ -39,5 +38,4 @@ public interface OndutyinfoMapper {
 	 * 根据odid删除值班信息
 	 */
 	void deleteOndutyinfoByOdid(Integer odid);
-
 }
