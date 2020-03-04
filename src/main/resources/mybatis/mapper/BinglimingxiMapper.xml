@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.BinglimingxiMapper" >
+  <resultMap id="BaseResultMap" type="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    <id column="bmid" property="bmid" jdbcType="INTEGER" />
+    <result column="bid" property="bid" jdbcType="INTEGER" />
+    <result column="did" property="did" jdbcType="INTEGER" />
+    <result column="bdate" property="bdate" jdbcType="DATE" />
+    <result column="badvice" property="badvice" jdbcType="VARCHAR" />
+    <result column="kid" property="kid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.woniuxy.springboot.HIS.entity.Binglimingxi" extends="BaseResultMap" >
+    <result column="expatiation" property="expatiation" jdbcType="VARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bmid, bid, did, bdate, badvice, kid
+  </sql>
+  <sql id="Blob_Column_List" >
+    expatiation
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.woniuxy.springboot.HIS.entity.BinglimingxiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from binglimingxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.woniuxy.springboot.HIS.entity.BinglimingxiExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from binglimingxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from binglimingxi
+    where bmid = #{bmid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from binglimingxi
+    where bmid = #{bmid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.woniuxy.springboot.HIS.entity.BinglimingxiExample" >
+    delete from binglimingxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    insert into binglimingxi (bmid, bid, did, 
+      bdate, badvice, kid, expatiation
+      )
+    values (#{bmid,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER}, #{did,jdbcType=INTEGER}, 
+      #{bdate,jdbcType=DATE}, #{badvice,jdbcType=VARCHAR}, #{kid,jdbcType=INTEGER}, #{expatiation,jdbcType=VARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    insert into binglimingxi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bmid != null" >
+        bmid,
+      </if>
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="bdate != null" >
+        bdate,
+      </if>
+      <if test="badvice != null" >
+        badvice,
+      </if>
+      <if test="kid != null" >
+        kid,
+      </if>
+      <if test="expatiation != null" >
+        expatiation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bmid != null" >
+        #{bmid,jdbcType=INTEGER},
+      </if>
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        #{bdate,jdbcType=DATE},
+      </if>
+      <if test="badvice != null" >
+        #{badvice,jdbcType=VARCHAR},
+      </if>
+      <if test="kid != null" >
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="expatiation != null" >
+        #{expatiation,jdbcType=VARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.woniuxy.springboot.HIS.entity.BinglimingxiExample" resultType="java.lang.Integer" >
+    select count(*) from binglimingxi
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update binglimingxi
+    <set >
+      <if test="record.bmid != null" >
+        bmid = #{record.bmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bid != null" >
+        bid = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.did != null" >
+        did = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.bdate != null" >
+        bdate = #{record.bdate,jdbcType=DATE},
+      </if>
+      <if test="record.badvice != null" >
+        badvice = #{record.badvice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.kid != null" >
+        kid = #{record.kid,jdbcType=INTEGER},
+      </if>
+      <if test="record.expatiation != null" >
+        expatiation = #{record.expatiation,jdbcType=VARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update binglimingxi
+    set bmid = #{record.bmid,jdbcType=INTEGER},
+      bid = #{record.bid,jdbcType=INTEGER},
+      did = #{record.did,jdbcType=INTEGER},
+      bdate = #{record.bdate,jdbcType=DATE},
+      badvice = #{record.badvice,jdbcType=VARCHAR},
+      kid = #{record.kid,jdbcType=INTEGER},
+      expatiation = #{record.expatiation,jdbcType=VARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update binglimingxi
+    set bmid = #{record.bmid,jdbcType=INTEGER},
+      bid = #{record.bid,jdbcType=INTEGER},
+      did = #{record.did,jdbcType=INTEGER},
+      bdate = #{record.bdate,jdbcType=DATE},
+      badvice = #{record.badvice,jdbcType=VARCHAR},
+      kid = #{record.kid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    update binglimingxi
+    <set >
+      <if test="bid != null" >
+        bid = #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        bdate = #{bdate,jdbcType=DATE},
+      </if>
+      <if test="badvice != null" >
+        badvice = #{badvice,jdbcType=VARCHAR},
+      </if>
+      <if test="kid != null" >
+        kid = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="expatiation != null" >
+        expatiation = #{expatiation,jdbcType=VARBINARY},
+      </if>
+    </set>
+    where bmid = #{bmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    update binglimingxi
+    set bid = #{bid,jdbcType=INTEGER},
+      did = #{did,jdbcType=INTEGER},
+      bdate = #{bdate,jdbcType=DATE},
+      badvice = #{badvice,jdbcType=VARCHAR},
+      kid = #{kid,jdbcType=INTEGER},
+      expatiation = #{expatiation,jdbcType=VARBINARY}
+    where bmid = #{bmid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woniuxy.springboot.HIS.entity.Binglimingxi" >
+    update binglimingxi
+    set bid = #{bid,jdbcType=INTEGER},
+      did = #{did,jdbcType=INTEGER},
+      bdate = #{bdate,jdbcType=DATE},
+      badvice = #{badvice,jdbcType=VARCHAR},
+      kid = #{kid,jdbcType=INTEGER}
+    where bmid = #{bmid,jdbcType=INTEGER}
+  </update>
+</mapper>

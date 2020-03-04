@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Keshi {
     private Integer kid;
 
@@ -50,6 +57,4 @@ public class Keshi {
 	public void setKroom(String kroom) {
 		this.kroom = kroom;
 	}
-
-    
 }

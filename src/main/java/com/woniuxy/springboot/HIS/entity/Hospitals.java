@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Hospitals {
     private Integer hid;
 
@@ -7,27 +14,5 @@ public class Hospitals {
 
     private Integer horder;
 
-    public Integer getHid() {
-        return hid;
-    }
 
-    public void setHid(Integer hid) {
-        this.hid = hid;
-    }
-
-    public String getHname() {
-        return hname;
-    }
-
-    public void setHname(String hname) {
-        this.hname = hname == null ? null : hname.trim();
-    }
-
-    public Integer getHorder() {
-        return horder;
-    }
-
-    public void setHorder(Integer horder) {
-        this.horder = horder;
-    }
 }

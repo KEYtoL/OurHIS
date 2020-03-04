@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.NursesMapper" >
+  <resultMap id="BaseResultMap" type="com.woniuxy.springboot.HIS.entity.Nurses" >
+    <id column="nid" property="nid" jdbcType="INTEGER" />
+    <result column="nlv" property="nlv" jdbcType="INTEGER" />
+    <result column="of" property="of" jdbcType="INTEGER" />
+    <result column="tid" property="tid" jdbcType="INTEGER" />
+    <result column="ofroom" property="ofroom" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    nid, nlv, of, tid, ofroom
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.woniuxy.springboot.HIS.entity.NursesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from nurses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from nurses
+    where nid = #{nid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from nurses
+    where nid = #{nid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.woniuxy.springboot.HIS.entity.NursesExample" >
+    delete from nurses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.woniuxy.springboot.HIS.entity.Nurses" >
+    insert into nurses (nid, nlv, of, 
+      tid, ofroom)
+    values (#{nid,jdbcType=INTEGER}, #{nlv,jdbcType=INTEGER}, #{of,jdbcType=INTEGER}, 
+      #{tid,jdbcType=INTEGER}, #{ofroom,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.woniuxy.springboot.HIS.entity.Nurses" >
+    insert into nurses
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        nid,
+      </if>
+      <if test="nlv != null" >
+        nlv,
+      </if>
+      <if test="of != null" >
+        of,
+      </if>
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="ofroom != null" >
+        ofroom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nid != null" >
+        #{nid,jdbcType=INTEGER},
+      </if>
+      <if test="nlv != null" >
+        #{nlv,jdbcType=INTEGER},
+      </if>
+      <if test="of != null" >
+        #{of,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="ofroom != null" >
+        #{ofroom,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.woniuxy.springboot.HIS.entity.NursesExample" resultType="java.lang.Integer" >
+    select count(*) from nurses
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update nurses
+    <set >
+      <if test="record.nid != null" >
+        nid = #{record.nid,jdbcType=INTEGER},
+      </if>
+      <if test="record.nlv != null" >
+        nlv = #{record.nlv,jdbcType=INTEGER},
+      </if>
+      <if test="record.of != null" >
+        of = #{record.of,jdbcType=INTEGER},
+      </if>
+      <if test="record.tid != null" >
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.ofroom != null" >
+        ofroom = #{record.ofroom,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update nurses
+    set nid = #{record.nid,jdbcType=INTEGER},
+      nlv = #{record.nlv,jdbcType=INTEGER},
+      of = #{record.of,jdbcType=INTEGER},
+      tid = #{record.tid,jdbcType=INTEGER},
+      ofroom = #{record.ofroom,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woniuxy.springboot.HIS.entity.Nurses" >
+    update nurses
+    <set >
+      <if test="nlv != null" >
+        nlv = #{nlv,jdbcType=INTEGER},
+      </if>
+      <if test="of != null" >
+        of = #{of,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null" >
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="ofroom != null" >
+        ofroom = #{ofroom,jdbcType=INTEGER},
+      </if>
+    </set>
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woniuxy.springboot.HIS.entity.Nurses" >
+    update nurses
+    set nlv = #{nlv,jdbcType=INTEGER},
+      of = #{of,jdbcType=INTEGER},
+      tid = #{tid,jdbcType=INTEGER},
+      ofroom = #{ofroom,jdbcType=INTEGER}
+    where nid = #{nid,jdbcType=INTEGER}
+  </update>
+</mapper>

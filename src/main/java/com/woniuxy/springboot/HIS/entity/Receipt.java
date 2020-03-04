@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Receipt {
     private Integer rid;
 
@@ -13,51 +20,5 @@ public class Receipt {
 
     private Integer ofhistory;
 
-    public Integer getRid() {
-        return rid;
-    }
-
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
-
-    public Integer getCfid() {
-        return cfid;
-    }
-
-    public void setCfid(Integer cfid) {
-        this.cfid = cfid;
-    }
-
-    public Integer getGhid() {
-        return ghid;
-    }
-
-    public void setGhid(Integer ghid) {
-        this.ghid = ghid;
-    }
-
-    public Integer getSsid() {
-        return ssid;
-    }
-
-    public void setSsid(Integer ssid) {
-        this.ssid = ssid;
-    }
-
-    public Integer getTotals() {
-        return totals;
-    }
-
-    public void setTotals(Integer totals) {
-        this.totals = totals;
-    }
-
-    public Integer getOfhistory() {
-        return ofhistory;
-    }
-
-    public void setOfhistory(Integer ofhistory) {
-        this.ofhistory = ofhistory;
-    }
+  
 }

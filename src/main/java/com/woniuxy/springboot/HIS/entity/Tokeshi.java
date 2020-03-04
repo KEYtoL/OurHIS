@@ -2,6 +2,13 @@ package com.woniuxy.springboot.HIS.entity;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tokeshi {
     private Integer rid;
 
@@ -9,27 +16,5 @@ public class Tokeshi {
 
     private Date rdate;
 
-    public Integer getRid() {
-        return rid;
-    }
-
-    public void setRid(Integer rid) {
-        this.rid = rid;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public Date getRdate() {
-        return rdate;
-    }
-
-    public void setRdate(Date rdate) {
-        this.rdate = rdate;
-    }
+   
 }

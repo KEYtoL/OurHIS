@@ -9,12 +9,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.woniuxy.springboot.HIS.entity.Student;
-import com.woniuxy.springboot.HIS.mapper.StudentMapper;
+import com.woniuxy.springboot.HIS.mapper.InhistoryMapper;
+import com.woniuxy.springboot.HIS.service.InhistoryService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class HISApplicationTests {
 	@Autowired
-	StudentMapper studentMapper;
+	InhistoryMapper inhistoryMapper;
+	@Autowired
+	InhistoryService inhistoryService;
 	@Autowired
 	DataSource dataSource;
 	@Test
@@ -23,15 +26,7 @@ public class HISApplicationTests {
 	}
 	@Test
 	public void contextLoads02() {
-		studentMapper.insertStudent(new Student(55,"msw",27,99.9));
 	}
-	@Test
-	public void contextLoads03() {
-		studentMapper.insertStudent(new Student(58,"msw",27,99.9));
-		if(true) {
-			throw new RuntimeException();
-		}
-		studentMapper.insertStudent(new Student(58,"msw",27,99.9));
-	}
+	
 
 }

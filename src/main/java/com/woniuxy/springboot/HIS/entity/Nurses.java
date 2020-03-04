@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Nurses {
     private Integer nid;
 
@@ -11,43 +18,5 @@ public class Nurses {
 
     private Integer ofroom;
 
-    public Integer getNid() {
-        return nid;
-    }
-
-    public void setNid(Integer nid) {
-        this.nid = nid;
-    }
-
-    public Integer getNlv() {
-        return nlv;
-    }
-
-    public void setNlv(Integer nlv) {
-        this.nlv = nlv;
-    }
-
-    public Integer getOf() {
-        return of;
-    }
-
-    public void setOf(Integer of) {
-        this.of = of;
-    }
-
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    public Integer getOfroom() {
-        return ofroom;
-    }
-
-    public void setOfroom(Integer ofroom) {
-        this.ofroom = ofroom;
-    }
+  
 }

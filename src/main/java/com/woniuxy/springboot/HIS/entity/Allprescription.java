@@ -1,5 +1,12 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Allprescription {
 	
     private Integer apid;
@@ -8,27 +15,5 @@ public class Allprescription {
 
     private Double tprice;
 
-    public Integer getApid() {
-        return apid;
-    }
-
-    public void setApid(Integer apid) {
-        this.apid = apid;
-    }
-
-    public Integer getBmid() {
-        return bmid;
-    }
-
-    public void setBmid(Integer bmid) {
-        this.bmid = bmid;
-    }
-
-    public Double getTprice() {
-        return tprice;
-    }
-
-    public void setTprice(Double tprice) {
-        this.tprice = tprice;
-    }
+    
 }
