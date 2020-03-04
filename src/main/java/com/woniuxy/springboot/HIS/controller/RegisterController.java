@@ -2,7 +2,6 @@ package com.woniuxy.springboot.HIS.controller;
 
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +23,6 @@ import com.woniuxy.springboot.HIS.service.PaydetailService;
 import com.woniuxy.springboot.HIS.service.PersonsService;
 import com.woniuxy.springboot.HIS.service.RegisterService;
 import com.woniuxy.springboot.HIS.service.TotalpayService;
-import com.woniuxy.springboot.HIS.service.impl.TotalpayServiceImpl;
-
-import net.sf.jsqlparser.util.AddAliasesVisitor;
 
 
 @Controller

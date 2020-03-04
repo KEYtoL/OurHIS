@@ -2,19 +2,23 @@ package com.woniuxy.springboot.HIS.controller;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.PageJson;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
@@ -33,7 +37,8 @@ public class PharmacyController {
 //页面启动时查询虚拟记录
 	@GetMapping("/selectFalsePharmacy")
 	@ResponseBody
-	public PageJson<Pharmacymx> selectAllPharmacykc(Integer page, Integer limit, HttpServletRequest req) {
+	public PageJson<Pharmacymx> selectAllPharmacykc
+	(Integer page, Integer limit, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		Pharmacy pharmacyOrder = (Pharmacy) session.getAttribute("PharmacyOrder");
 		if (pharmacyOrder == null) {
@@ -53,17 +58,19 @@ public class PharmacyController {
 		PageJson<Pharmacymx> pageJson = new PageJson<>("0", "", listP1.size(), listP2);
 		return pageJson;
 	}
-
+	//添加记录
 	@PostMapping("/addpharmacy")
 	@ResponseBody
 	public int addpharmacy(String mname, String yfmxnum, HttpSession session) {
 		int parseInt = 0;
 		try {
+			//格式错误直接返回
 			parseInt = Integer.parseInt(yfmxnum);
 		} catch (NumberFormatException e) {
 			yfmxnum=null;
 		}
 			if (yfmxnum!=null) {
+				//已存在同名则加数量
 				Pharmacy pharmacyOrder = (Pharmacy) session.getAttribute("PharmacyOrder");
 				boolean state = false;
 				for (int i = 0; i < pharmacyOrder.getPharmacymxs().size(); i++) {
@@ -82,6 +89,7 @@ public class PharmacyController {
 					}
 				}
 				if (!state) {
+					//不存在则查询后新增
 					List<Medicine> listM = medicineService.selectMedicineByMname(mname);
 					Pharmacymx pharmacymx = new Pharmacymx();
 					pharmacymx.setMedicine(listM.get(1));
@@ -91,6 +99,7 @@ public class PharmacyController {
 					pharmacymx.setYfmxcount(b1.multiply(b2).doubleValue());
 					pharmacyOrder.getPharmacymxs().add(pharmacymx);
 				} 
+				//状态码
 				return 1;
 			}else {
 				return 2;
@@ -99,11 +108,12 @@ public class PharmacyController {
 
 	}
 	/*
-	 * 删除虚拟表单数据
+	 * 	删除虚拟表单数据
 	 */
 	@PostMapping("/delectPharmacyOrder")
 	@ResponseBody
-	public void delectPharmacyOrder(HttpServletRequest req, @RequestParam(value = "mnames[]") String[] mnames) {
+	public void delectPharmacyOrder
+	(HttpServletRequest req, @RequestParam(value = "mnames[]") String[] mnames) {
 		HttpSession session = req.getSession();
 		Pharmacy pharmacyOrder = (Pharmacy) session.getAttribute("PharmacyOrder");
 		for (int i = 0; i < mnames.length; i++) {
@@ -131,5 +141,53 @@ public class PharmacyController {
 		session.setAttribute("PharmacyOrder", null);
 		return 2;
 		}
+	/*
+	 * 	初始化查询历史入库记录（all）
+	 */
+	@GetMapping("/selectHisPharmacy")
+	@ResponseBody
+	public PageJson<Pharmacy> selectHisPharmacy(
+			Integer page, Integer limit) {
+		PageInfo<Pharmacy> listP = 
+				pharmacyService.selectAllPharmacy(false, page, limit);
+		PageJson<Pharmacy> pageJson = 
+				new PageJson<Pharmacy>("0", "", (int)listP.getTotal(), listP.getList());
+		return pageJson;
+	}
+	/*
+	 * 	初始化查询历史入库记录(按时间)
+	 */
+	@PostMapping("/selectHisPharmacy")
+	@ResponseBody
+	public PageJson<Pharmacy> selectPharmacyByYfdate(
+			Integer page, Integer limit,String selectWay,Date yfdate) {
+		PageInfo<Pharmacy> listP = 
+				pharmacyService.selectPharmacyByYfdate(selectWay, yfdate, false, page, limit);
+		PageJson<Pharmacy> pageJson = 
+				new PageJson<Pharmacy>("0", "", (int)listP.getTotal(), listP.getList());
+		return pageJson;
+	}
+	
+	/*
+	 * 	初始化查询历史入库记录(按时间)
+	 */
+	@GetMapping("/selectPharmacymxByYfid")
+	public String selectPharmacymxByYfid(
+			Integer page, Integer limit,String yfid) {
+		System.out.println(yfid);
+		return "test";
+	}
+	/*
+	 * 	初始化查询历史入库详情记录通过yfid(药房id)
+	 */
+	@GetMapping("/selectPharmacyByYfid")
+	@ResponseBody
+	public List<Pharmacymx> selectPharmacyByYfid
+	(String yfid) {
+		List<Pharmacymx> listP = pharmacyService.selectPharmacymx(yfid);
+		return listP;
+	}
+	
+	
 	
 }

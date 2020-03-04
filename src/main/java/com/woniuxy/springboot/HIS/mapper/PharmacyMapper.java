@@ -17,7 +17,7 @@ public interface PharmacyMapper {
 		//查询总表通过时间（一年）
 		List<Pharmacy> selectOneYearPharmacyByYfdate(Date yfdate,Boolean yfstate);
 		//按查询所有库存
-		List<Pharmacy> selectAllPharmacy();
+		List<Pharmacy> selectAllPharmacy(Boolean yfstate);
 		//删除出入库通过yfid
 		void deletePharmacyByYfid(String yfid);
 

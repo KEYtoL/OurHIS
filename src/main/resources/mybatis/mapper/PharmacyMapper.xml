@@ -7,7 +7,7 @@
   
   <insert id="insertPharmacy"  >
     insert into pharmacy
-    values (#{yfid},#{yfcount},#{yfdate},#{yfuser},#{yfstate})
+    values (#{yfnum},#{yfid},#{yfcount},#{yfdate},#{yfuser},#{yfstate})
   </insert>
   
 	<select id="selectOneDayPharmacyByYfdate" resultType="Pharmacy">

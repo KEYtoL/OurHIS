@@ -46,7 +46,6 @@ layui.use(['form','layer'],function(){
 						$("input[name=mname]").focus();
 						$("#lns").hide();
 					});
-
 				}
 			});
 		}else{

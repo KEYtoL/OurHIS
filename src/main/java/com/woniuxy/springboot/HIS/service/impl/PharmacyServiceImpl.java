@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
 import com.woniuxy.springboot.HIS.entity.Pharmacymx;
 import com.woniuxy.springboot.HIS.exception.PharmacyException;
+import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacyMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacykcMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacymxMapper;
@@ -29,6 +31,8 @@ import com.woniuxy.springboot.HIS.util.CommonUtil;
 public class PharmacyServiceImpl implements PharmacyService{
 	@Autowired
 	PharmacyMapper pharmacyMapper;
+	@Autowired
+	MedicineMapper medicineMapper;
 	@Autowired
 	PharmacymxMapper pharmacymxMapper;
 	@Autowired
@@ -97,7 +101,7 @@ public class PharmacyServiceImpl implements PharmacyService{
 				list = pharmacyMapper.selectOneYearPharmacyByYfdate(yfdate,yfstate);
 			}else if("month".equals(selectWay)) {
 				list = pharmacyMapper.selectOneMonthPharmacyByYfdate(yfdate,yfstate);
-			}else {
+			}else{
 				list = pharmacyMapper.selectOneDayPharmacyByYfdate(yfdate,yfstate);
 			}
 			PageInfo<Pharmacy> pageInfo = new PageInfo<Pharmacy>(list);
@@ -117,7 +121,7 @@ public class PharmacyServiceImpl implements PharmacyService{
 		// TODO Auto-generated method stub
 		try {
 			PageHelper.startPage(pageNum, pageSize);
-			List<Pharmacy> list = pharmacyMapper.selectAllPharmacy();
+			List<Pharmacy> list = pharmacyMapper.selectAllPharmacy(yfstate);
 			PageInfo<Pharmacy> pageInfo = new PageInfo<Pharmacy>(list);
 			return pageInfo;
 		} catch (Exception e) {
@@ -143,6 +147,22 @@ public class PharmacyServiceImpl implements PharmacyService{
 			throw new PharmacyException("删除失败");
 		}
 		
+	}
+	@Override
+	public List<Pharmacymx> selectPharmacymx(String yfid) {
+		// TODO Auto-generated method stub
+		try {
+			List<Pharmacymx> list = pharmacymxMapper.selectPharmacymxByYfid(yfid);
+			for (Pharmacymx pharmacymx : list) {
+				Medicine m = medicineMapper.selectMedicineByMid(pharmacymx.getMid());
+				pharmacymx.setMedicine(m);
+			}
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new PharmacyException("系统错误");
+		}
 	}
 	
 }

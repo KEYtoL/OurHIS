@@ -47,12 +47,9 @@ public class PharmacyMapperTest {
 					new SimpleDateFormat("yyyy-MM-dd").parse("2019-0"+(6+i)+"-0"+(i+18)), 1, false));
 			for (int j = 0; j < 12; j++) {
 				pharmacymxMapper.insertPharmacymx
-				(new Pharmacymx(CommonUtil.uuid(),id,890+j,10,100.0));
+				(new Pharmacymx(CommonUtil.uuid(),id,890+j,11,111.0));
 			}
 		}
-		
-		
-		
 	}
 	/*
 	 * 	测试按时间查询

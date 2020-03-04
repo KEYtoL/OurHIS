@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 public class Keshi {
     private Integer kid;//科室编号
 
-
     private String kname;//科室名字
 
     private Double kprice;//科室挂号费用

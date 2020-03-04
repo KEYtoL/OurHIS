@@ -17,6 +17,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pharmacy {
+	private Integer yfnum = null;
+	
     private String yfid;
     
     private List<Pharmacymx> pharmacymxs;

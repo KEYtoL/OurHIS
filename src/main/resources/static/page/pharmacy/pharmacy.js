@@ -52,7 +52,7 @@ layui.use(['form','layer','table','laytpl'],function(){
     //添加用户
     function addUser(edit){
         var index = layui.layer.open({
-            title : "编辑内容",
+            title : "入库详情",
             type : 2,
             content : "pharmacyAdd.html",
             success : function(layero, index){
@@ -107,8 +107,6 @@ layui.use(['form','layer','table','laytpl'],function(){
         }
     })
     //提交入库
-    
-    
     
     //列表操作
     table.on('tool(pharmacy)', function(obj){
