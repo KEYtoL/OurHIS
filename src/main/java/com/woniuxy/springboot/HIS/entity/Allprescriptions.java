@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 	处方总表
+ * @author LG
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Allprescriptions {
-    private Integer cfid;
-
-    private Integer cfmxid;
+    private String cfid;
 
     private Double cfcount;
 

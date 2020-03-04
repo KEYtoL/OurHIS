@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.PageJson;
 import com.woniuxy.springboot.HIS.entity.Pharmacykc;
-import com.woniuxy.springboot.HIS.mapper.PharmacykcMapper;
 import com.woniuxy.springboot.HIS.service.PharmacykcService;
 
 @Controller
@@ -47,7 +46,7 @@ public PageJson<Pharmacykc> selectPharmacykcByMname
 public String selectMname(Model model,String mname) {
 	PageInfo<Pharmacykc> list = 
 			//（0，mname，1，10） 调用原有的方法，0为查询所有，mname为名称，1为第一页，10为条数
-			pharmacykcService.selectPharmacykcByMname(0, mname, 1, 10);
+			pharmacykcService.selectPharmacykcByMname(1, mname, 1, 10);
 	//返回数据供selectMname页面使用
 	model.addAttribute("mnames", list.getList());
 	return "selectMname";
