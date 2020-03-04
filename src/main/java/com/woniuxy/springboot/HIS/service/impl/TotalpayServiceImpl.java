@@ -16,5 +16,10 @@ public class TotalpayServiceImpl implements TotalpayService{
 		totalpayMapper.insertTotalpay(totalpay);
 		
 	}
+	@Override
+	public Totalpay selectTotalPaynoPayBypid(Integer pid) {
+		// TODO Auto-generated method stub
+		return totalpayMapper.selectTotalpayByPidNoPay(pid);
+	}
 
 }

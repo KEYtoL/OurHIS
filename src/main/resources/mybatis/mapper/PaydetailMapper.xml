@@ -6,5 +6,7 @@
 	<insert id="insertPaydetail">
 		insert into paydetail(tpid,price,ptid,expenses) values(#{totalpay.tpid},#{price},#{paytype.ptid},#{expenses})
 	</insert>
- 
+ 	<select id="selectPaydetailsByTid" resultType="paydetail">
+ 		select * from paydetail where tid = #{tid}
+ 	</select>
 </mapper>

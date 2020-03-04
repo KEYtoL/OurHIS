@@ -22,11 +22,12 @@ PersonsService personsService;
 @RequestMapping("/persons/getpersonshistory")
 public String getPersonsHistory(Model model,Persons persons) {
 	System.out.println(persons);
-	List<Persons> foundPersons = personsService.selectPersons(persons);
-	if(foundPersons==null||foundPersons.size()==0) {
+	List<Persons> foundPersonss = personsService.selectPersons(persons);
+	if(foundPersonss==null||foundPersonss.size()==0) {
 		model.addAttribute("personsinfo", persons);
 		return "addpersons";
 	}else {
+		Persons foundPersons = foundPersonss.get(0);
 		model.addAttribute("foundPersons", foundPersons);
 		return "personsrigister";
 	}

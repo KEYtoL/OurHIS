@@ -51,17 +51,54 @@ public class RegisterController {
 	@Transactional
 	@RequestMapping("/register/newpersonsRegister")
 	public String newPersonsRegister(Model model,Persons persons,Integer did,Integer kid) {
+		//添加患者信息
 		personsService.insertPersons(persons);
+		//查找出刚添加患者的主键
 		persons= personsService.selectPersons(persons).get(0);
+		//根据id查找出科室
 		Keshi keshi = keshiService.selectKeshiBykid(kid);
+		//根据id查找出医生
 		Doctor doctor = doctorService.selectDoctorByTid(did);
+		//创建历史就诊记录
 		Historicalpatients historicalpatients = new Historicalpatients(1, doctor, keshi, persons, new Date(), 0);
 		historicalpatientsService.addNewHistoricalpatients(historicalpatients );
-		Totalpay totalpay = new Totalpay(1, persons, keshi.getKprice(), 0, null);
+		//创建新的总账单
+		Totalpay totalpay = new Totalpay(null, persons, keshi.getKprice(), 0, null);
 		totalService.insertTotalPay(totalpay );
+		//保证用户只有一个未支付的账单，此时新建的账单就是未支付的账单
+		totalpay=totalService.selectTotalPaynoPayBypid(persons.getPid());
+		System.out.println(totalpay);
+		//添加账单明细
 		String expenses = "挂号，科室："+keshi.getKname()+"医生:"+doctor.getTname();
 		Paytype paytype = new Paytype(1, "挂号收费");
-		Paydetail paydetail = new Paydetail(1, totalpay, keshi.getKprice(), paytype , expenses);
+		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
+		paydetailService.insertPaydetail(paydetail );
+		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
+		model.addAttribute("msg", msg);
+		return "selectpersons";
+	}
+	@Transactional
+	@RequestMapping("/register/oldpersonsRegister")
+	public String oldPersonsRegister(Model model,Persons persons,Integer did,Integer kid) {
+		//更新患者信息
+		personsService.updatePersonsByPid(persons);
+		//根据id查找出科室
+		Keshi keshi = keshiService.selectKeshiBykid(kid);
+		//根据id查找出医生
+		Doctor doctor = doctorService.selectDoctorByTid(did);
+		//创建历史就诊记录
+		Historicalpatients historicalpatients = new Historicalpatients(1, doctor, keshi, persons, new Date(), 0);
+		historicalpatientsService.addNewHistoricalpatients(historicalpatients );
+		//创建新的总账单
+		Totalpay totalpay = new Totalpay(null, persons, keshi.getKprice(), 0, null);
+		totalService.insertTotalPay(totalpay );
+		//保证用户只有一个未支付的账单，此时新建的账单就是未支付的账单
+		totalpay=totalService.selectTotalPaynoPayBypid(persons.getPid());
+		System.out.println(totalpay);
+		//添加账单明细
+		String expenses = "挂号，科室："+keshi.getKname()+"医生:"+doctor.getTname();
+		Paytype paytype = new Paytype(1, "挂号收费");
+		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
 		paydetailService.insertPaydetail(paydetail );
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);

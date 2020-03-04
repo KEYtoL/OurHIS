@@ -6,4 +6,15 @@
    <insert id="insertTotalpay">
    		insert into totalpay(pid,toitalprice,ispay) values (#{persons.pid},#{toitalprice},0)
    </insert>
+   <select id="selectTotalpayByPidNoPay" resultMap="totalpayMap">
+   	select * from totalpay where ispay = 0 and pid = #{pid}
+   </select>
+   <resultMap type="Totalpay" id="totalpayMap">
+   		<id column="tpid" property="tpid"/>
+   		<result column="toitalprice" property="toitalprice"/>
+   		<result column="ispay" property="ispay"/>
+   		<association property="persons" javaType="Persons" select="com.woniuxy.springboot.HIS.mapper.PersonsMapper.selectPersonsByPid" column="pid"  />
+   		<collection property="paydetails" ofType="Paydetail" select="com.woniuxy.springboot.HIS.mapper.PaydetailMapeer.selectPaydetailsByTid" column="tid" /> 
+   	</resultMap>
+   
 </mapper>
