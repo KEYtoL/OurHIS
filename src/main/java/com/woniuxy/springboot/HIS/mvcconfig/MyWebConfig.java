@@ -29,9 +29,11 @@ public class MyWebConfig {
 			public void addViewControllers(ViewControllerRegistry registry) {
 				//注册自定义映射路径
 				registry.addViewController("/").setViewName("index");
+				registry.addViewController("/selectpersons.html").setViewName("selectpersons");
 			}
 		};	
 	}
+	
 	@ConfigurationProperties(prefix="spring.datasource")
 	@Bean
 	public DataSource dataSource() {

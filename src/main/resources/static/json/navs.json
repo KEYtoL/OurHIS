@@ -3,7 +3,8 @@
 		{
 			"title": "门诊挂号",
 			"icon": "icon-text",
-			"href": "page/news/newsList.html",
+			"href": "/selectpersons.html",
+
 			"spread": false
 		},
 		{
