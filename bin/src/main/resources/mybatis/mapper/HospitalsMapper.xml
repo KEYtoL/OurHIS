@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.HospitalsMapper">
+	<!-- 添加院部 -->
+	<insert id="insertHospitals">
+		insert into hospitals values (#{hid}, #{hname}, #{tid})
+	</insert>
+
+	<!-- 根据hid查询院部 -->
+	<select id="selectHospitalsByHid" resultType="Hospitals">
+		select * from hospitals where hid = #{hid}
+	</select>
+	
+	
+</mapper>

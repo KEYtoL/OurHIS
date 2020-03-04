@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.DoctorMapper">
+	<!-- 添加医生 -->
+	<insert id="insertDoctor">
+		insert into doctor values (#{tid}, #{tname}, #{personnum}, #{tsex},
+		#{taddr}, #{tage}, #{tnumber}, #{title.titleid}, #{hospitals.hid}, #{keshi.kid})
+	</insert>
+
+	<!-- 根据tid查询医生 -->
+	<select id="selectDoctorByTid" resultMap="doctorMapper">
+		select * from doctor where tid = #{tid}
+	</select>
+	
+	<!-- 根据tname查询医生 -->
+	<select id="selectDoctorByTname" resultMap="doctorMapper">
+		select * from doctor where tname = #{tname}
+	</select>
+
+	<resultMap type="Doctor" id="doctorMapper">
+		<id column="tname" property="tname" />
+		<result column="personnum" property="personnum" />
+		<result column="tsex" property="tsex" />
+		<result column="taddr" property="taddr" />
+		<result column="tage" property="tage" />
+		<result column="tnumber" property="tnumber" />
+		<collection property="hospitals" ofType="Hospitals"
+			select="selectHospitalsByHid" column="hid" />
+		<collection property="keshi" ofType="Keshi"
+			select="selectKeshiByKid" column="kid" />
+		<collection property="title" ofType="Title"
+			select="selectTitleByTitleid" column="titleid" />
+	</resultMap>
+
+	<select id="selectHospitalsByHid" resultType="Hospitals">
+		select * from
+		hospitals where hid = #{hid}
+	</select>
+
+	<select id="selectTitleByTitleid" resultType="Title">
+		select * from title
+		where titleid = #{titleid}
+	</select>
+
+	<select id="selectKeshiByKid" resultType="Keshi">
+		select * from keshi
+		where kid = #{kid}
+	</select>
+
+	<!-- 根据hid查询医生 -->
+	<select id="selectDoctorByHid" resultMap="doctorMapper">
+		select * from doctor where hid = #{hid}
+	</select>
+
+	
+
+	<!-- 根据kid查询医生 -->
+	<select id="selectDoctorByKid" resultType="Doctor">
+		select * from doctor where kid = #{Kid}
+	</select>
+
+	<!-- 查询所有医生 -->
+	<select id="selectAllDoctors" resultMap="doctorMapper">
+		select * from doctor
+	</select>
+
+	<!-- 根据tid更新医生信息 -->
+	<update id="updateDoctorByTid">
+		update doctor set tname = #{doctor.tname}, personnum=#{doctor.personnum},
+		tsex = #{doctor.tsex}, taddr = #{doctor.taddr}, tage = #{doctor.tage},
+		tnumber = #{doctor.tnumber},
+		titleid = #{doctor.title.titleid}, hid = #{doctor.hospitals.hid},
+		kid = #{doctor.keshi.kid} where tid = #{tid}
+	</update>
+
+	<delete id="deleteDoctorByTid">
+		delete doctor where tid = #{tid}
+	</delete>
+</mapper>

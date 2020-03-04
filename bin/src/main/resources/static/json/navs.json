@@ -127,80 +127,28 @@
 			"spread": false,
 			"children": [
 				{
-					"title": "供应商库",
+					"title": "出库管理",
 					"icon": "&#xe61c;",
-					"href": "page/supplier/supplierlist.html",
+					"href": "page/404.html",
 					"spread": false
 				},
 				{
-					"title": "资产管理",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备管理字典",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备入库",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备调拨",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备维修",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备保养",
-					"icon": "&#xe609;",
-					"href": "page/equipment/equipmentlist.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备报废",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "维保记录",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备管理",
-					"icon": "&#xe609;",
-					"href": "page/equipment/equipmentlist.html",
-					"spread": false
-					
-				},
-					{
-					"title": "基础设置",
+					"title": "入库管理",
 					"icon": "&#xe61c;",
-					"href": "page/some/a.html",
-					"spread": false,
-					"target": "_blank"
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "出入库记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
 				}
 			]
 		}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>查询患者</title>
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<script type="text/javascript" th:src="@{layui/layui.js}"></script>
+<script type="text/javascript">
+	
+</script>
+
+<body>
+	<form th:action="@{/persons/getpersonshistory}" >
+	<table class="layui-table">
+		<colgroup>
+			<col width="150">
+			<col width="200">
+			<col>
+		</colgroup>
+		<thead>
+			<tr>
+				<th>患者姓名</th>
+				<th>患者性别</th>
+				<th>患者身份证号</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr >
+			<td><input type="text" name="pname" /></td>
+				<td><input type="text" name="psex" /></td>
+				<td><input type="text" name="pcode" /></td>
+				<td><input type="submit" name="查询" /></td>
+			</tr>
+
+		</tbody>
+	</table>
+
+	</form>
+
+</body>
+</html>

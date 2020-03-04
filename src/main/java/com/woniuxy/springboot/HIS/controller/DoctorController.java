@@ -11,7 +11,7 @@ import com.woniuxy.springboot.HIS.entity.Doctor;
 import com.woniuxy.springboot.HIS.exception.DoctorServiceExcption;
 import com.woniuxy.springboot.HIS.service.DoctorService;
 
-@Controller
+@Controller 
 public class DoctorController {
 	@Autowired
 	DoctorService doctorService;
