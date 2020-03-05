@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,21 +12,19 @@ import lombok.NoArgsConstructor;
 public class Ondutyinfo {
     private Integer odid;
 
-    private Integer pid;
+    private Doctor tid;
 
-    private String odtype;
+    private Date odstart;
 
-    private String odstart;
-
-    private String odend;
+    private Date odend;
 
     private Integer odroom;
 
-    private Integer oddep;
+    private Keshi keshi;
 
     private Boolean ischangeshifts;
 
-    private Integer changeinfo;
+    private Doctor changeinfo;
 
    
 }

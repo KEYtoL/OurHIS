@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Inhistory;
+import com.woniuxy.springboot.HIS.mapper.InhistoryMapper;
 import com.woniuxy.springboot.HIS.service.InhistoryService;
 import com.woniuxy.springboot.HIS.utils.Layui;
 
@@ -76,8 +78,29 @@ public class InhistoryController {
         
         return "success";
     }
-	
-	
-	
+	@RequestMapping("/test1")
+	@ResponseBody
+	public Map<String, Object> getInhistoryByCondition(Inhistory inhistory,int page,int limit){
+        System.out.println(inhistory);
+        
+		System.out.println(page+"----"+limit);
+        System.out.println("111111"+inhistoryService);
+        PageInfo<Inhistory> pageInfo= inhistoryService.getInHistoryByCondition(inhistory, page, limit);
+        long count =pageInfo.getTotal();
+        Map<String, Object> map = new HashMap<String, Object>();
+        Object inHistoryList=pageInfo.getList();
+        map.put("msg","");
+        map.put("code",0);
+        map.put("count",count);
+        
+		map.put("data",inHistoryList);
+        return map;
+    }
+	@DeleteMapping("/inhistory/{hid}")
+	@ResponseBody
+	public String deleteEmp(@PathVariable("hid") Integer hid) {
+		inhistoryService.removeInhistory(hid);
+		return "删除成功";
+	}
 	
 }

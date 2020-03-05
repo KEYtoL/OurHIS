@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,23 +10,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Historicalpatients {
-    private Integer hid;
+    private Integer hid;//就诊档案编号                                                                                                                                                                                             
 
-    private Integer did;
+    private Doctor doctor;//就诊医生
 
-    private Integer kid;
+    private Keshi Keshi;//就诊科室
 
-    private Integer pid;
+    private Persons persons;//患者
 
-    private Integer room;
 
-    private String specialtime;
+    private Date specialtime;//时间
 
-    private String specialname;
 
-    private Integer isin;
+    private Integer isin;//是否住院
 
-    private Integer isto;
 
    
 }

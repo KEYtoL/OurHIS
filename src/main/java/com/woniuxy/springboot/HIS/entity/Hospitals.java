@@ -12,7 +12,7 @@ public class Hospitals {
 
     private String hname;
 
-    private Integer horder;
+    private Integer tid;
 
 
 }

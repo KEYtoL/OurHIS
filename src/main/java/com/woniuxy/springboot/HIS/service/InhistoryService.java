@@ -2,6 +2,7 @@ package com.woniuxy.springboot.HIS.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Inhistory;
 
 public interface InhistoryService {
@@ -13,4 +14,8 @@ public interface InhistoryService {
 	void updateInhistory(Inhistory inhistory);
 	//添加一条数据
 	void addInhistory(Inhistory inhistory);
+	//多条件查询
+	PageInfo<Inhistory> getInHistoryByCondition(Inhistory inhistory,int pageNo, int pageSize);
+	//删除一条数据
+	void removeInhistory(int hid);
 }

@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,53 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Keshi {
-    private Integer kid;
+    private Integer kid;//科室编号
 
-    private Integer korder;
 
-    private String kname;
+    private String kname;//科室名字
 
-    private Integer kprice;
+    private Double kprice;//科室挂号费用
 
-    private String kroom;
-
-    public Integer getKid() {
-        return kid;
-    }
-
-    public void setKid(Integer kid) {
-        this.kid = kid;
-    }
-
-    public Integer getKorder() {
-        return korder;
-    }
-
-    public void setKorder(Integer korder) {
-        this.korder = korder;
-    }
-
-    public String getKname() {
-        return kname;
-    }
-
-    public void setKname(String kname) {
-        this.kname = kname == null ? null : kname.trim();
-    }
-
-    public Integer getKprice() {
-        return kprice;
-    }
-
-    public void setKprice(Integer kprice) {
-        this.kprice = kprice;
-    }
-
-	public String getKroom() {
-		return kroom;
-	}
-
-	public void setKroom(String kroom) {
-		this.kroom = kroom;
-	}
+    private Integer isin;//住院还是非住院科室 1门诊 2 住院
+    private List<Doctor> doctors;//科室的所有医生
+  
 }
