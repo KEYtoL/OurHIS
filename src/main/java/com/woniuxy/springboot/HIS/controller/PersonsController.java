@@ -2,11 +2,17 @@ package com.woniuxy.springboot.HIS.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.woniuxy.springboot.HIS.entity.Doctor;
+import com.woniuxy.springboot.HIS.entity.Doctorlogin;
 import com.woniuxy.springboot.HIS.entity.Persons;
 import com.woniuxy.springboot.HIS.service.PersonsService;
 
@@ -31,5 +37,12 @@ public String getPersonsHistory(Model model,Persons persons) {
 		model.addAttribute("foundPersons", foundPersons);
 		return "personsrigister";
 	}
+}
+@ResponseBody
+@RequestMapping("/persons/selectAllPersonsBytid")
+public List<Persons> selectAllPersonsBytid(Model model,HttpServletRequest request) {
+	Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
+	return  personsService.selectAllPersonsBytid(doctor.getTid());
+	
 }
 }

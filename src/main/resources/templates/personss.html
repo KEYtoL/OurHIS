@@ -28,65 +28,66 @@
 	})
 </script>
 <body>
-	<form th:action="@{/register/newpersonsRegister}" >
+	<form th:action="@{/register/oldpersonsRegister}" >
 	
 	 <div class="layui-form-item" style="width: 100%; float: left;">
     <div class="layui-input-block">
-      <span>姓名：[[${persons.pname}]]，身份证号：[[${persons.pcode}]]的患者不存在，请添加</span>
+      <span>姓名：[[${persons.pname}]]，身份证号：[[${persons.pcode}]]的患者存在，请更新相关信息</span>
     </div>
+    <input type="hidden" th:value="${foundPersons.pid}" name="pid" />
     </div>
-	<div class="layui-form-item" style="width: 100%; float: left;" >
+	<div class="layui-form-item" style="width: 20%; float: left;" >
     <label class="layui-form-label">姓名</label>
     <div class="layui-input-block">
-      <input type="text" name="pname" th:value="${persons.pname}" lay-verify="required" lay-reqtext="姓名是必填项" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pname" th:value="${foundPersons.pname}" lay-verify="required" lay-reqtext="姓名是必填项" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-    <div class="layui-form-item" style="width: 100%; float: left;">
+    <div class="layui-form-item" style="width: 20%; float: left;">
     <label class="layui-form-label">年龄</label>
     <div class="layui-input-block">
-      <input type="text" name="page" lay-verify="required" lay-reqtext="姓名是必填项" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="page"  th:value="${foundPersons.page}" lay-verify="required" lay-reqtext="年龄是必填项" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-     <div class="layui-form-item" style="width: 100%; float: left;">
+     <div class="layui-form-item" style="width: 10%; float: left;">
     <label class="layui-form-label">性别</label>
     <div class="layui-input-block">
-      <input type="text" name="psex" lay-verify="required" lay-reqtext="性别是必须填的" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="psex"  th:value="${foundPersons.psex}" lay-verify="required" lay-reqtext="性别是必须填的" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-    <div class="layui-form-item" style="width: 100%; float: left;">
+    <div class="layui-form-item" style="width: 10%; float: left;">
     <label class="layui-form-label">民族</label>
     <div class="layui-input-block">
-      <input type="text" name="pfolk" lay-verify="required" lay-reqtext="民族是必须填的" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pfolk"  th:value="${foundPersons.pfolk}" lay-verify="required" lay-reqtext="民族是必须填的" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-    <div class="layui-form-item" style="width: 100%; float: left;">
+    <div class="layui-form-item" style="width: 10%; float: left;">
     <label class="layui-form-label">血型</label>
     <div class="layui-input-block">
-      <input type="text" name="pblood" lay-verify="required" lay-reqtext="血型必须填" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pblood"  th:value="${foundPersons.pblood}" lay-verify="required" lay-reqtext="血型必须填" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-    <div class="layui-form-item" style="width: 100%; float: left;">
+    <div class="layui-form-item" style="width: 25%; float: left;">
     <label class="layui-form-label">身份证号</label>
     <div class="layui-input-block">
-      <input type="text" name="pcode" th:value="${persons.pcode}" lay-verify="required" lay-reqtext="身份证号必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pcode" th:value="${foundPersons.pcode}" lay-verify="required" lay-reqtext="身份证号必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-     <div class="layui-form-item" style="width: 100%; float: left;">
+     <div class="layui-form-item" style="width: 25%; float: left;">
     <label class="layui-form-label">国籍</label>
     <div class="layui-input-block">
-      <input type="text" name="pnationality" lay-verify="required" lay-reqtext="身份证号必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pnationality"  th:value="${foundPersons.pnationality}" lay-verify="required" lay-reqtext="身份证号必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
-     <div class="layui-form-item" style="width: 100%; float: left;">
+     <div class="layui-form-item" style="width: 25%; float: left;">
     <label class="layui-form-label">籍贯</label>
     <div class="layui-input-block">
-      <input type="text" name="pnative" lay-verify="required" lay-reqtext="籍贯必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="pnative"   th:value="${foundPersons.pnative}" lay-verify="required" lay-reqtext="籍贯必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
      <div class="layui-form-item" style="width: 100%; float: left;">
     <label class="layui-form-label">现居住地</label>
     <div class="layui-input-block">
-      <input type="text" name="paddr" lay-verify="required" lay-reqtext="现居住地必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
+      <input type="text" name="paddr" th:value="${foundPersons.paddr}" lay-verify="required" lay-reqtext="现居住地必须填写" placeholder="请输入" autocomplete="off" class="layui-input" >
     </div>
     </div>
   	 <div class="layui-form-item" style="width: 25%; float: left;">
@@ -106,7 +107,7 @@
     </div>
   </div>
   <div style="float: right;">
-  	<button type="submit" class="layui-btn layui-btn-fluid">添加患者并挂号</button>
+  	<button type="submit" class="layui-btn layui-btn-fluid">更新患者信息并挂号</button>
   </div>
 
 	</form>

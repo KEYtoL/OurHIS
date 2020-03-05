@@ -1,5 +1,6 @@
 package com.woniuxy.springboot.HIS.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -30,7 +31,7 @@ public interface PersonsMapper {
 	/**
 	 * 根据医生id查找挂号的患者
 	 */
-	List<Persons> selectPersonsBytid(Integer tid);
+	List<Persons> selectPersonsBytid(@Param("tid")Integer tid,@Param("date") String date);
 	/**
 	 * 更新患者信息
 	 * 	 * @param persons

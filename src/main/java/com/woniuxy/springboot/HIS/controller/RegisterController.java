@@ -70,7 +70,7 @@ public class RegisterController {
 		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
 		paydetailService.insertPaydetail(paydetail );
 		System.out.println(historicalpatients.getHid());
-		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1);
+		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1,doctor,0);
 		registerService.personsRegister(register );
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);
@@ -99,7 +99,7 @@ public class RegisterController {
 		Paytype paytype = new Paytype(1, "挂号收费");
 		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
 		paydetailService.insertPaydetail(paydetail );
-		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1);
+		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1,doctor,0);
 		registerService.personsRegister(register );
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);

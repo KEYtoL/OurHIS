@@ -20,6 +20,9 @@ public class Register {
     private Integer rtype;
     //挂号档案编号
     private Integer ofhid;
-
+    //挂号医生
+    private Doctor doctor;
+    //是否已经诊断
+    private Integer isok;
    
 }

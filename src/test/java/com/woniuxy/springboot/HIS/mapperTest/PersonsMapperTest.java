@@ -1,6 +1,8 @@
 package com.woniuxy.springboot.HIS.mapperTest;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -14,6 +16,7 @@ import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Pharmacykc;
 import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
+import com.woniuxy.springboot.HIS.mapper.PersonsMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacykcMapper;
 import com.woniuxy.springboot.HIS.service.PharmacykcService;
 /**
@@ -24,5 +27,11 @@ import com.woniuxy.springboot.HIS.service.PharmacykcService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PersonsMapperTest {
-	
+	@Autowired
+	PersonsMapper personsmapper;
+	@Test
+	public void contextLoads() {
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString();
+		System.out.println(personsmapper.selectPersonsBytid(1,date));
+	}
 }

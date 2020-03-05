@@ -47,7 +47,7 @@
 		select * from persons where pid = #{pid}
 	</select>
 	<select id="selectPersonsBytid" resultType="Persons">
-		select * from persons inner join register on persons.pid=register.pid where tid=#{tid}
+		select * from persons inner join register on persons.pid=register.pid where tid=#{tid} and rtime = #{date}  order by rid
 	</select>
 	<update id="updatePersonsByPid" >
 		update persons set pname = #{pname}, pcode = #{pcode}, psex = #{psex} , page = #{page}, pblood = #{pblood},paddr = #{paddr} ,pnationality = #{pnationality},pnative = #{pnative},pfolk = #{pfolk} where pid = #{pid}

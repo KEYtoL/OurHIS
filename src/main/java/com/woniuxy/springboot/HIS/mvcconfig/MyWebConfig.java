@@ -44,6 +44,7 @@ public class MyWebConfig {
 				registry.addViewController("/tologin.html").setViewName("login");
 				registry.addViewController("/inhistory.html").setViewName("/inhistorylist.html");
 				registry.addViewController("/selectpersons.html").setViewName("selectpersons");
+				registry.addViewController("/personss.html").setViewName("personss");
 			}
 			//配置拦截属性
 			@Override
