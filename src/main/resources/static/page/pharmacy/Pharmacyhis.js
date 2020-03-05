@@ -31,7 +31,7 @@ layui.use(['form','layer','table','laydate'],function(){
         	{field: 'yfcount', title: '总价', width:160, align:"center"},
         	{field: 'yfdate', title: '入库时间', width:190, align:"center",
         templet: "<div>{{ layui.util.toDateString(d.yfdate,'yyyy-MM-dd HH:mm:ss')}}</div>"},
-        	{field: 'yfuser', title: '经手人', width:160, align:"center"},
+        	{field: 'doctor', title: '经手人', templet: '<div>{{d.doctor.tname}}</div>',width:160, align:"center"},
             {title: '操作', minWidth:50, templet:'#pharmacyhisListBar',fixed:"right",align:"center"}
         ]]
     });

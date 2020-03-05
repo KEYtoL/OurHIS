@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.woniuxy.springboot.HIS.entity.Doctorlogin;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.PageJson;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
@@ -134,9 +133,12 @@ public class PharmacyController {
 	public int insertPharmacy(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		Pharmacy pharmacy = (Pharmacy) session.getAttribute("PharmacyOrder");
+		
 		if(pharmacy==null||pharmacy.getPharmacymxs().isEmpty()) {
 			return 1;
 		}
+		Doctorlogin logininfo = (Doctorlogin) session.getAttribute("Doctorlogin");
+		pharmacy.setYfuser(logininfo.getTid());
 		pharmacyService.insertPharmacy(pharmacy);
 		session.setAttribute("PharmacyOrder", null);
 		return 2;

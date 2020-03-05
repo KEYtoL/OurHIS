@@ -16,7 +16,6 @@ import com.woniuxy.springboot.HIS.service.impl.DoctorloginServiceImpl;
  * @author LG
  *
  */
-@Component
 public class LoginHandlerInterceptor implements HandlerInterceptor {
 	@Autowired
 	DoctorloginService doctorloginService;
