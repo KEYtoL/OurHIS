@@ -5,6 +5,9 @@
 <mapper namespace="com.woniuxy.springboot.HIS.mapper.PersonsMapper" >
   
   <insert id="insertPersons"  >
+  <selectKey keyColumn="pid" keyProperty="pid" order="AFTER" resultType="java.lang.Integer" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
     insert into persons (pname, pcode, psex, page,pblood,paddr,pnationality,pnative,pfolk) 
     values (#{pname}, #{pcode}, #{psex},#{page},#{pblood},#{paddr},#{pnationality},#{pnative},#{pfolk})
   </insert>
@@ -42,6 +45,9 @@
 	</select>
 	<select id="selectPersonsByPid" resultType="Persons">
 		select * from persons where pid = #{pid}
+	</select>
+	<select id="selectPersonsBytid" resultType="Persons">
+		select * from persons inner join register on persons.pid=register.pid where tid=#{tid}
 	</select>
 	<update id="updatePersonsByPid" >
 		update persons set pname = #{pname}, pcode = #{pcode}, psex = #{psex} , page = #{page}, pblood = #{pblood},paddr = #{paddr} ,pnationality = #{pnationality},pnative = #{pnative},pfolk = #{pfolk} where pid = #{pid}

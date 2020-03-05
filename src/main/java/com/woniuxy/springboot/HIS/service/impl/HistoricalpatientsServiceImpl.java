@@ -17,6 +17,7 @@ public class HistoricalpatientsServiceImpl implements HistoricalpatientsService{
 		try {
 			historicalpatientsMapper.insertHistoricalpatients(historicalpatients);
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new HistorcalpatientsExcption("系统错误，档案创建失败");
 		}
 	}

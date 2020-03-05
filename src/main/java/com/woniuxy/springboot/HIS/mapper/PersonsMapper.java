@@ -28,6 +28,10 @@ public interface PersonsMapper {
 	 */
 	Persons selectPersonsByPid(Integer pid);
 	/**
+	 * 根据医生id查找挂号的患者
+	 */
+	List<Persons> selectPersonsBytid(Integer tid);
+	/**
 	 * 更新患者信息
 	 * 	 * @param persons
 	 */

@@ -15,6 +15,7 @@ import com.woniuxy.springboot.HIS.entity.Keshi;
 import com.woniuxy.springboot.HIS.entity.Paydetail;
 import com.woniuxy.springboot.HIS.entity.Paytype;
 import com.woniuxy.springboot.HIS.entity.Persons;
+import com.woniuxy.springboot.HIS.entity.Register;
 import com.woniuxy.springboot.HIS.entity.Totalpay;
 import com.woniuxy.springboot.HIS.service.DoctorService;
 import com.woniuxy.springboot.HIS.service.HistoricalpatientsService;
@@ -41,6 +42,7 @@ public class RegisterController {
 	DoctorService doctorService;
 	@Autowired
 	HistoricalpatientsService historicalpatientsService;
+	private Integer ofhid;
 	/**
 	 * 新患者挂号
 	 */
@@ -49,8 +51,6 @@ public class RegisterController {
 	public String newPersonsRegister(Model model,Persons persons,Integer did,Integer kid) {
 		//添加患者信息
 		personsService.insertPersons(persons);
-		//查找出刚添加患者的主键
-		persons= personsService.selectPersons(persons).get(0);
 		//根据id查找出科室
 		Keshi keshi = keshiService.selectKeshiBykid(kid);
 		//根据id查找出医生
@@ -69,6 +69,9 @@ public class RegisterController {
 		Paytype paytype = new Paytype(1, "挂号收费");
 		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
 		paydetailService.insertPaydetail(paydetail );
+		System.out.println(historicalpatients.getHid());
+		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1);
+		registerService.personsRegister(register );
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);
 		return "selectpersons";
@@ -96,6 +99,8 @@ public class RegisterController {
 		Paytype paytype = new Paytype(1, "挂号收费");
 		Paydetail paydetail = new Paydetail(null, totalpay, keshi.getKprice(), paytype , expenses);
 		paydetailService.insertPaydetail(paydetail );
+		Register register = new Register(null, persons, new Date(), historicalpatients.getHid(), 1);
+		registerService.personsRegister(register );
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);
 		return "selectpersons";

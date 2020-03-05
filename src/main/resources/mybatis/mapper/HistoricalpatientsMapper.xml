@@ -6,6 +6,9 @@
 	namespace="com.woniuxy.springboot.HIS.mapper.HistoricalpatientsMapper">
 	<!-- 添加历史就诊记录 -->
 	<insert id="insertHistoricalpatients">
+		<selectKey keyColumn="hid" keyProperty="hid" order="AFTER" resultType="java.lang.Integer" >
+			SELECT LAST_INSERT_ID()
+		</selectKey>
 		Insert into historicalpatients(did,kid,pid,specialtime,isin) values(#{doctor.tid},#{keshi.kid},#{persons.pid},#{specialtime},0)
 	</insert>
 </mapper>

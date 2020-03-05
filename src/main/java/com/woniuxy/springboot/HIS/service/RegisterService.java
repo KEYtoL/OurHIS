@@ -15,5 +15,5 @@ public interface RegisterService {
 	 * 患者挂号的方法
 	 * @param register
 	 */
-	void personsRegister(Register register,Persons persons,Totalpay totalpay,Paydetail paydetail);
+	void personsRegister(Register register);
 }
