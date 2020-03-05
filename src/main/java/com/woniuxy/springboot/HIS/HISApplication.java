@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan("com.woniuxy.springboot.HIS.mapper")
 @SpringBootApplication
 public class HISApplication {
-	
 	public static void main(String[] args) {
 		SpringApplication.run(HISApplication.class, args);
 	}

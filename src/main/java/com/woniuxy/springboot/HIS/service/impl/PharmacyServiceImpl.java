@@ -11,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.woniuxy.springboot.HIS.entity.Doctor;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
 import com.woniuxy.springboot.HIS.entity.Pharmacymx;
 import com.woniuxy.springboot.HIS.exception.PharmacyException;
+import com.woniuxy.springboot.HIS.mapper.DoctorMapper;
 import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacyMapper;
 import com.woniuxy.springboot.HIS.mapper.PharmacykcMapper;
@@ -31,6 +33,8 @@ import com.woniuxy.springboot.HIS.util.CommonUtil;
 public class PharmacyServiceImpl implements PharmacyService{
 	@Autowired
 	PharmacyMapper pharmacyMapper;
+	@Autowired
+	DoctorMapper doctorMapper;
 	@Autowired
 	MedicineMapper medicineMapper;
 	@Autowired
@@ -104,6 +108,11 @@ public class PharmacyServiceImpl implements PharmacyService{
 			}else{
 				list = pharmacyMapper.selectOneDayPharmacyByYfdate(yfdate,yfstate);
 			}
+			//查出医生信息填入表格
+			for (Pharmacy pharmacy : list) {
+				Doctor doctor = doctorMapper.selectDoctorByTid(pharmacy.getYfuser());
+				pharmacy.setDoctor(doctor);
+			}
 			PageInfo<Pharmacy> pageInfo = new PageInfo<Pharmacy>(list);
 			return pageInfo;
 		} catch (Exception e) {
@@ -122,6 +131,11 @@ public class PharmacyServiceImpl implements PharmacyService{
 		try {
 			PageHelper.startPage(pageNum, pageSize);
 			List<Pharmacy> list = pharmacyMapper.selectAllPharmacy(yfstate);
+			
+			for (Pharmacy pharmacy : list) {
+				Doctor doctor = doctorMapper.selectDoctorByTid(pharmacy.getYfuser());
+				pharmacy.setDoctor(doctor);
+			}
 			PageInfo<Pharmacy> pageInfo = new PageInfo<Pharmacy>(list);
 			return pageInfo;
 		} catch (Exception e) {

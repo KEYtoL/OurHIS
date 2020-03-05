@@ -34,7 +34,6 @@ public class MyWebConfig {
 	public WebMvcConfigurer webMvcConfigurer() {
 		return new WebMvcConfigurer() {
 			
-			
 			@Override
 			public void addViewControllers(ViewControllerRegistry registry) {
 				//注册自定义映射路径
@@ -53,9 +52,9 @@ public class MyWebConfig {
 						"/js/**","/json/**","/layui/**");
 			}
 			
-			
 		};	
 	}
+	//druid数据源配置
 	@ConfigurationProperties(prefix="spring.datasource")
 	@Bean
 	public DataSource dataSource() {

@@ -87,7 +87,7 @@
 				<a class="img" title="我的头像"><img th:src="@{/images/face.jpg}"
 					class="userAvatar"></a>
 				<p>
-					你好！<span class="userName"></span>, 欢迎登录
+					你好！<span class="userName">[[${session.Doctorlogin.doctor.tname}]]</span>, 欢迎登录
 				</p>
 			</div>
 			<!-- 搜索 -->

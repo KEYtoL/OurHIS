@@ -28,6 +28,8 @@ public class Pharmacy {
     private Date yfdate;
 
     private Integer yfuser;
+    
+    private Doctor doctor;
     //0入库 1出库
     private Boolean yfstate;
 

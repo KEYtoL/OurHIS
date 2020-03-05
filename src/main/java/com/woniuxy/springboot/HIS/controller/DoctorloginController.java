@@ -58,6 +58,18 @@ HttpServletRequest req,HttpServletResponse resp) {
 		}
 		
 	}
-	
+	@RequestMapping("/out")
+	public String out(HttpServletRequest req,HttpServletResponse resp) {
+		req.getSession().invalidate();
+		Cookie c1 = new Cookie("account", null);
+		Cookie c2 = new Cookie("password", null);
+		c1.setMaxAge(0);
+		c2.setMaxAge(0);
+		c1.setPath("/");
+		c2.setPath("/");
+		resp.addCookie(c1);
+		resp.addCookie(c2);
+		return "login";
+	}
 
 }
