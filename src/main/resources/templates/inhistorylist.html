@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" >
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+</head>
+<body>
+<!-- 查询条件 -->
+<fieldset class="layui-elem-field layui-field-title">
+  <legend>查询条件</legend>
+</fieldset>
+ 
+<form class="layui-form" action="">
+  
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">ID</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="hid"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">住院时间</label>
+      <div class="layui-input-inline">
+        <input type="text" name="starttime" id="starttime" readonly="readonly"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">出院时间</label>
+      <div class="layui-input-inline">
+        <input type="text" name="endtime" id="endtime" readonly="readonly" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">床位</label>
+      <div class="layui-input-inline">
+        <input type="text" name="bid"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">患者编号</label>
+      <div class="layui-input-inline">
+        <input type="text" name="pid"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">负责医生</label>
+      <div class="layui-input-inline">
+        <input type="text" name="ofdid"  autocomplete="off" class="layui-input">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button type="button" class="layui-btn layui-btn-warm layui-icon layui-icon-search" lay-submit="" lay-filter="doSearch" id="doSearch">查询</button>
+      <button type="reset" class="layui-btn layui-btn-primary layui-btn-normal layui-icon layui-icon-refresh">重置</button>
+    </div>
+  </div>
+ </form> 
+	<!-- 表头工具栏 -->
+	<div style="display:none" id="inhistoryToolBar">
+		<div class="layui-btn-container">
+		<button class="layui-btn layui-btn-lg" lay-event="add">添加</button>
+    	
+  	</div>
+	</div>
+	<!-- 表格操作 -->
+	<script type="text/html" id="barDemo">
+  		<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+	<table class="layui-hide;" id="test" lay-filter="test"></table>
+	
+	<!-- 添加和修改弹出的form -->
+	<div style="display:none" id="addUpdateInhistory">
+		<form class="layui-form" action="" lay-filter="dataform" id="dataform">
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">ID:</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="hid" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">住院时间:</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="starttime" id="starttime1" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">出院时间</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="endtime" id="endtime1" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">床位:</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="bid" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">患者id</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="pid" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">负责医生</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="ofdid" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">负责护士</label>
+		      <div class="layui-input-inline">
+		        <input type="text" name="ofnid" lay-verify="required" autocomplete="off" class="layui-input">
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button type="button" class="layui-btn layui-icon layui-icon-search" lay-filter="doSubmit" lay-submit="">提交</button>
+		      <button type="reset" class="layui-btn layui-btn-primary layui-icon layui-icon-refresh">重置</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+<script>
+layui.use(['table','layer','jquery','form','laydate'], function(){
+  var $ = layui.jquery;
+  var table = layui.table;
+  var layer = layui.layer;
+  var form = layui.form;
+  var laydate=layui.laydate;
+  //绑定时间选择
+  laydate.render({
+	  elem:'#starttime'
+  });
+  laydate.render({
+	  elem:'#endtime'
+  });
+  laydate.render({
+	  elem:'#starttime1'
+  });
+  laydate.render({
+	  elem:'#endtime1'
+  });
+  //表格渲染
+  var tableIns=table.render({
+    elem: '#test'
+    ,url:'test1'
+    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+    ,toolbar:'#inhistoryToolBar'
+    ,page: true
+    ,where:''
+    ,limit:5
+    ,limits:[5,10,15]
+    //,contentType: 'application/json'
+    ,cols: [
+    	[
+    	{type: 'checkbox', fixed: 'left'}
+      ,{field:'hid', title: 'ID',align:'center', sort: true}
+      ,{field:'starttime',align:'center', title: '住院时间'}
+      ,{field:'endtime', title: '出院时间', align:'center',sort: true}
+      ,{field:'bid',  title: '床位',align:'center',}
+      ,{field:'pid', title: '患者编号', align:'center'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+      ,{field:'ofdid', title: '负责医生',align:'center', sort: true}
+      ,{field:'ofnid', title: '负责护士',align:'center', sort: true}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo',align:'center', width:150}
+    ]
+    	]
+  });
+  
+//监听事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'add':
+        openAddInhistory()
+      
+      break;
+    };
+  });
+  var url;
+  var myIndex;
+  //添加弹窗
+  function openAddInhistory(){
+	 myIndex=layer.open({
+		type:1,
+		title:'添加记录',
+	  	content: $('#addUpdateInhistory'),
+	  	area:['800px'],
+	  	success: function(index){
+	  		$('#dataform')[0].reset();
+	  		url="addInhistory";
+	  	}
+	  });
+	  
+  }
+  //编辑弹窗
+  function updateInhistory(data){
+	 	myIndex= layer.open({
+		type:1,
+		title:'编辑',
+	  	content: $('#addUpdateInhistory'),
+	  	area:['800px'],
+	  	success: function(index){
+	  		form.val("dataform",data);
+	  		url="updateInhistory";
+	  	}
+	  });
+	  
+  }
+//监听工具条 
+  table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+    var data = obj.data; //获得当前行数据
+    var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+    var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+   
+    if(layEvent === 'del'){ //删除
+      layer.confirm('真的删除行么', function(index){
+        obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+        layer.close(index);
+        alert(data.hid);
+        $.post("inhistory/"+data.hid,
+        		{_method:"delete"},
+        		function(msg){
+        	layer.msg(msg);
+        });
+      });
+    } else if(layEvent === 'edit'){ //编辑
+      updateInhistory(data);
+    }
+  });
+//提交按钮监听
+	form.on("submit(doSubmit)",function(obj){
+		var params=obj.field
+		$.ajax({
+			url:url,
+			contentType:"application/json;charset=utf-8",
+			type:"post",
+			data:JSON.stringify(params),
+			success:function(data){
+				
+				//关闭弹出层
+				layer.close(myIndex);
+				//刷新表格数据
+				tableIns.reload();
+			}
+		});
+			
+			
+		
+	});
+	
+	form.on("submit(doSearch)",function(obj){
+		var params=obj.field;
+				tableIns.reload({
+					where:params
+				});
+			
+		
+	});
+
+
+});
+</script>
+</body>
+
+</html>

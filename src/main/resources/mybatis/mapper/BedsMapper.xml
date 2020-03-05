@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.BedsMapper" >
+  <resultMap id="BaseResultMap" type="com.woniuxy.springboot.HIS.entity.Beds" >
+    <id column="bid" property="bid" jdbcType="INTEGER" />
+    <result column="isnull" property="isnull" jdbcType="INTEGER" />
+    <result column="btype" property="btype" jdbcType="INTEGER" />
+    <result column="bprice" property="bprice" jdbcType="INTEGER" />
+    <result column="baddr" property="baddr" jdbcType="VARCHAR" />
+    <result column="pid" property="pid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bid, isnull, btype, bprice, baddr, pid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.woniuxy.springboot.HIS.entity.BedsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from beds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from beds
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from beds
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.woniuxy.springboot.HIS.entity.BedsExample" >
+    delete from beds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.woniuxy.springboot.HIS.entity.Beds" >
+    insert into beds (bid, isnull, btype, 
+      bprice, baddr, pid)
+    values (#{bid,jdbcType=INTEGER}, #{isnull,jdbcType=INTEGER}, #{btype,jdbcType=INTEGER}, 
+      #{bprice,jdbcType=INTEGER}, #{baddr,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.woniuxy.springboot.HIS.entity.Beds" >
+    insert into beds
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="isnull != null" >
+        isnull,
+      </if>
+      <if test="btype != null" >
+        btype,
+      </if>
+      <if test="bprice != null" >
+        bprice,
+      </if>
+      <if test="baddr != null" >
+        baddr,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="isnull != null" >
+        #{isnull,jdbcType=INTEGER},
+      </if>
+      <if test="btype != null" >
+        #{btype,jdbcType=INTEGER},
+      </if>
+      <if test="bprice != null" >
+        #{bprice,jdbcType=INTEGER},
+      </if>
+      <if test="baddr != null" >
+        #{baddr,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.woniuxy.springboot.HIS.entity.BedsExample" resultType="java.lang.Integer" >
+    select count(*) from beds
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update beds
+    <set >
+      <if test="record.bid != null" >
+        bid = #{record.bid,jdbcType=INTEGER},
+      </if>
+      <if test="record.isnull != null" >
+        isnull = #{record.isnull,jdbcType=INTEGER},
+      </if>
+      <if test="record.btype != null" >
+        btype = #{record.btype,jdbcType=INTEGER},
+      </if>
+      <if test="record.bprice != null" >
+        bprice = #{record.bprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.baddr != null" >
+        baddr = #{record.baddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null" >
+        pid = #{record.pid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update beds
+    set bid = #{record.bid,jdbcType=INTEGER},
+      isnull = #{record.isnull,jdbcType=INTEGER},
+      btype = #{record.btype,jdbcType=INTEGER},
+      bprice = #{record.bprice,jdbcType=INTEGER},
+      baddr = #{record.baddr,jdbcType=VARCHAR},
+      pid = #{record.pid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woniuxy.springboot.HIS.entity.Beds" >
+    update beds
+    <set >
+      <if test="isnull != null" >
+        isnull = #{isnull,jdbcType=INTEGER},
+      </if>
+      <if test="btype != null" >
+        btype = #{btype,jdbcType=INTEGER},
+      </if>
+      <if test="bprice != null" >
+        bprice = #{bprice,jdbcType=INTEGER},
+      </if>
+      <if test="baddr != null" >
+        baddr = #{baddr,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woniuxy.springboot.HIS.entity.Beds" >
+    update beds
+    set isnull = #{isnull,jdbcType=INTEGER},
+      btype = #{btype,jdbcType=INTEGER},
+      bprice = #{bprice,jdbcType=INTEGER},
+      baddr = #{baddr,jdbcType=VARCHAR},
+      pid = #{pid,jdbcType=INTEGER}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

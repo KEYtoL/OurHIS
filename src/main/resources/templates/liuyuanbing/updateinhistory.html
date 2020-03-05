@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<h1>修改住院记录</h1>
+	
+	<form th:action="@{/inhistory}" method="post">
+	
+	<input type="hidden" name="_method" value="put"><br/>
+	记录编号<input type="text" name="hid" th:value="${inhistory.hid}"><br/>
+	住院时间<input type="text" name="starttime" th:value="${inhistory.starttime}"><br/>
+	出院时间<input type="text" name="endtime" th:value="${inhistory.endtime}"><br/>
+	床位<input type="text" name="bid" th:value="${inhistory.bid}"><br/>
+	患者编号<input type="text" name="pid" th:value="${inhistory.pid}"><br/>
+	负责医生<input type="text" name="ofdid" th:value="${inhistory.ofdid}"><br/>
+	负责护士<input type="text" name="ofnid" th:value="${inhistory.ofnid}"><br/>
+	<input type="submit" value="ok"><br/>
+	</form>
+</body>
+</html>
