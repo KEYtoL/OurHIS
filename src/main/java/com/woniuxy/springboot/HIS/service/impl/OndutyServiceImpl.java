@@ -1,19 +1,22 @@
 package com.woniuxy.springboot.HIS.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Ondutyinfo;
 import com.woniuxy.springboot.HIS.exception.OndutyinfoServiceExcption;
 import com.woniuxy.springboot.HIS.mapper.OndutyinfoMapper;
 import com.woniuxy.springboot.HIS.service.OndutyinfoService;
 
-public class OndutyServiceImpl implements OndutyinfoService{
-	
+public class OndutyServiceImpl implements OndutyinfoService {
+
 	@Autowired
 	OndutyinfoMapper ondutyinfoMapper;
-	
+
 	@Override
 	public void insertOndutyinfo(Ondutyinfo ondutyinfo) {
 		try {
@@ -30,7 +33,7 @@ public class OndutyServiceImpl implements OndutyinfoService{
 		} catch (Exception e) {
 			throw new OndutyinfoServiceExcption("系统异常，请稍后再试");
 		}
-		
+
 	}
 
 	@Override
@@ -43,18 +46,12 @@ public class OndutyServiceImpl implements OndutyinfoService{
 	}
 
 	@Override
-	public List<Ondutyinfo> selectOndutyinfoByTid(Integer tid) {
+	public PageInfo<Ondutyinfo> selectOndutyinfoByTime(Integer pageNum, Integer pageSize, String start, String end) {
 		try {
-			return ondutyinfoMapper.selectOndutyinfoByTid(tid);
-		} catch (Exception e) {
-			throw new OndutyinfoServiceExcption("系统异常，请稍后再试");
-		}
-	}
-
-	@Override
-	public List<Ondutyinfo> selectOndutyinfoByTime(String start, String end) {
-		try {
-			return ondutyinfoMapper.selectOndutyinfoByTime(start, end);
+			PageHelper.startPage(pageNum, pageSize);
+			List<Ondutyinfo> ondutyinfo =  ondutyinfoMapper.selectOndutyinfoByTime(start, end);
+			PageInfo<Ondutyinfo> pageInfo = new PageInfo<Ondutyinfo>(ondutyinfo);
+			return pageInfo;
 		} catch (Exception e) {
 			throw new OndutyinfoServiceExcption("系统异常，请稍后再试");
 		}
@@ -63,7 +60,19 @@ public class OndutyServiceImpl implements OndutyinfoService{
 	@Override
 	public void deleteOndutyinfoByOdid(Integer odid) {
 		try {
-			 ondutyinfoMapper.deleteOndutyinfoByOdid(odid);
+			ondutyinfoMapper.deleteOndutyinfoByOdid(odid);
+		} catch (Exception e) {
+			throw new OndutyinfoServiceExcption("系统异常，请稍后再试");
+		}
+	}
+
+	@Override
+	public PageInfo<Ondutyinfo> selectAllOndutyinfo(Integer pageNum, Integer pageSize) {
+		try {
+			PageHelper.startPage(pageNum, pageSize);
+			List<Ondutyinfo> ondutyinfo =  ondutyinfoMapper.selectAllOndutyinfo();
+			PageInfo<Ondutyinfo> pageInfo = new PageInfo<Ondutyinfo>(ondutyinfo);
+			return pageInfo;
 		} catch (Exception e) {
 			throw new OndutyinfoServiceExcption("系统异常，请稍后再试");
 		}

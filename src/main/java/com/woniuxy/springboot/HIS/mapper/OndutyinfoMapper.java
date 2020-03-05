@@ -29,6 +29,11 @@ public interface OndutyinfoMapper {
 	 */
 	List<Ondutyinfo> selectOndutyinfoByTid(Integer tid);
 	
+	/**
+	 * 查询所有的值班信息
+	 */
+	List<Ondutyinfo> selectAllOndutyinfo();
+	
 
 	/**
 	 * 根据时间查询值班信息

@@ -1,37 +1,53 @@
-//引入layui模块
-layui.use(['form','layer','table','laytpl'],function(){
+layui.use('laydate', function(){
+  var laydate = layui.laydate;
+  // 开始时间
+  laydate.render({
+    elem: '#begin'
+    ,type: 'datetime'
+  });
+  
+  // 结束时间
+  laydate.render({
+    elem: '#end'
+    ,type: 'datetime'
+  });
+  
+})
+// 引入layui模块
+layui.use(['form','layer','table','laydate','laytpl'],function(){
     var form = layui.form,
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery,
         laytpl = layui.laytpl,
         table = layui.table;
 
-    // 用户列表
+    // 值班列表
     var tableIns = table.render({
-        elem: '#pharmacy',// 表id
-        url : '/pharmacy/selectPharmacy',// 请求地址
+        elem: '#myduty',// 表id
+        url : '/myduty/selectMyduty',// 请求地址
         cellMinWidth : 95,
         page : true,// 确认启动分页
         height : 400,
         limits : [10,15,20,25],// 分页大小选项
         limit : 10,// 默认大小
         // 请求参数名 页码默认page，页面大小为limit
-        id : "pharmacykcTable",
+        id : "mydutyTable",
         cols : [[
-        	{field: 'yfkcid', title: '库存编号', width:100, align:"center"},// 属性为对象需要加templet:
-																		// '<div>{{d.medicine.mname}}</div>'
-            {field: 'medicine', title: '药品名称', width:300,templet: '<div>{{d.medicine.mname}}</div>', align:"center" },
-            {field: 'medicine', title: '药品价格（元）', width:150,templet: '<div>{{d.medicine.mprice}}</div>', align:"center"},
-            {field: 'medicine', title: '药品规格', width:150,templet: '<div>{{d.medicine.msize}}</div>', align:"center"},
-            {field: 'medicine', title: '计数单位', width:100,templet: '<div>{{d.medicine.munit}}</div>', align:"center"},
-            {field: 'medicine', title: '生产厂家', width:200,templet: '<div>{{d.medicine.manufacturer}}</div>', align:"center"},
-            {field: 'yfkcnum', title: '库存数量', width:100, align:"center"},
+        	// '<div>{{d.medicine.mname}}</div>'
+        	{field: 'ondutyinfo', title: '值班ID', width:100, align:"center",templet: '<div>{{d.ondutyinfo.odid}}</div>', align:"center"},// 属性为对象需要加templet:
+            {field: 'ondutyinfo', title: '门诊医生', width:300,templet: '<div>{{d.ondutyinfo.doctor.tname}}</div>', align:"center" },
+            {field: 'ondutyinfo', title: '开始时间', width:150,templet: '<div>{{d.ondutyinfo.odstart}}</div>', align:"center"},
+            {field: 'ondutyinfo', title: '结束时间', width:150,templet: '<div>{{d.ondutyinfo.odend}}</div>', align:"center"},
+            {field: 'ondutyinfo', title: '门诊室', width:100,templet: '<div>{{d.ondutyinfo.odroom}}</div>', align:"center"},
+            {field: 'ondutyinfo', title: '科室', width:200,templet: '<div>{{d.ondutyinfo.keshi.kname}}</div>', align:"center"},
+            {field: 'ondutyinfo', title: '是否替班', width:200,templet: '<div>{{d.ondutyinfo.ischangeshifts}}</div>', align:"center"},
+            {field: 'ondutyinfo', title: '原门诊医生', width:300,templet: '<div>{{d.ondutyinfo.changeinfo.tname}}</div>', align:"center" },
         ]]
     });
     
     // 搜索(layui模板固定用法)点击请求
     $(".search_btn").on("click",function(){
-            table.reload("pharmacykcTable",{
+            table.reload("mydutyTable",{
             	// 请求方式
             	method:'post',
                 page: {
@@ -39,8 +55,8 @@ layui.use(['form','layer','table','laytpl'],function(){
                 },
                 where: {
                 	// 参数列表
-                    mname: $(".searchVal").val(),  // 搜索的关键字
-                    key: $("input[name='selectA']:checked").val()  // 搜索的关键字
+                    start: $("#begin").val(),  // 搜索的关键字
+                    end: $("#end").val(),  // 搜索的关键字
 
                 }
             });
@@ -67,34 +83,7 @@ layui.use(['form','layer','table','laytpl'],function(){
 	　　     return str.replace(/(^\s*)|(\s*$)/g, "");
 	　　 }
 	
-	// 键盘松开的时候Ajax请求
-	$("input[name=mname]").keyup(function(){
-		var mname = $(this).val();
-		if(mname != ""){
-			$.ajax({
-				url:"/pharmacykc/selectMname",
-				type:"post",
-				data:{"mname":mname},
-				dataType:"html",
-				async:true,
-				success:function(result){
-					$("#lns").show();
-					$("#lns").html(result);
-					
-					// 点击模糊列表的值，并且赋值
-					$(".choose").click(function(){
-						$("input[name=mname]").val(trim($(this).text()));
-						$("input[name=mname]").focus();
-						$("#lns").hide();
-					});
-
-				}
-			});
-		}else{
-			$("#lns").html("");
-			$("#lns").hide();
-		}
-	});
+	
 	
     
     // 添加用户

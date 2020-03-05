@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.TitleMapper">
+	<!-- 添加职称 -->
+	<insert id="insertTitle">
+		insert into title values (#{title.titleid}, #{title.titlename})
+	</insert>
+
+	<!-- 根据titleid查询职称 -->
+	<select id="selectTitleById" >
+		select * from title where  titleid = #{title.titleid};
+	</select>
+	
+	<!-- 根据titlename查询职称 -->
+	<select id="selectTitleByName" >
+		select * from title where  titlename = #{title.titlename};
+	</select>
+
+	<!-- 根据titleid更新title -->
+	<update id="updateTitleById">
+		update title set titlename = #{title.titlename} where titleid = #{title.titleid}
+	</update>
+	
+	<!-- 根据titleid删除title -->
+	<delete id="deleteTitleById">
+		delete fro title where titleid = #{title.titleid}
+	</delete>
+</mapper>

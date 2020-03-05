@@ -10,8 +10,29 @@
 		{
 			"title": "门诊医生站",
 			"icon": "&#xe634;",
-			"href": "page/img/images.html",
-			"spread": false
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "排班安排",
+					"icon": "&#xe61c;",
+					"href": "/page/doctor/myduty.html",
+					"spread": false
+				},
+				{
+					"title": "登录",
+					"icon": "&#xe609;",
+					"href": "page/login/login.html",
+					"spread": false,
+					"target": "_blank"
+				},
+					{
+					"title": "a页面",
+					"icon": "&#xe61c;",
+					"href": "page/some/a.html",
+					"spread": false
+				}
+			]
 		},
 		{
 			"title": "门诊收费",

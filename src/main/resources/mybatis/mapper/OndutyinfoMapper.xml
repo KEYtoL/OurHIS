@@ -27,6 +27,12 @@
 		where odid = #{odid}
 	</select>
 	
+	<!-- 查询所有的值班信息 -->
+	<select id="selectAllOndutyinfo" resultMap="ondutyinfoMapper">
+		select * from ondutyinfo
+	</select>
+	
+	
 	<!-- 根据tid查询值班信息 -->
 	<select id="selectOndutyinfoByTid" resultMap="ondutyinfoMapper">
 		select * from ondutyinfo
