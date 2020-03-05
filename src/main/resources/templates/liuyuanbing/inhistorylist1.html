@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" >
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+</head>
+<body>
+	<table class="layui-table">
+         <colgroup>
+    	<col width="150">
+    	<col width="200">
+    	<col>
+  		</colgroup>
+  		<thead>
+        <tr>
+            <td>记录编号</td>
+            <td>住院时间</td>
+            <td>出院时间</td>
+            <td>床位</td>
+            <td>患者编号</td>
+            <td>负责医生</td>
+            <td>负责护士</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="Inhistory : ${pageInfo.list}">
+            <td th:text="${Inhistory.hid}"></td>
+            <td th:text="${Inhistory.starttime}"></td>
+            <td th:text="${Inhistory.endtime}"></td>
+            <td th:text="${Inhistory.bid}"></td>
+            <td th:text="${Inhistory.pid}"></td>
+            <td th:text="${Inhistory.ofdid}"></td>
+            <td th:text="${Inhistory.ofnid}"></td>
+            <td>
+				<a class="del" th:href="@{/inhistory/}+${Inhistory.hid}" href="#">编辑</a>
+				<input type="button" value="删除">
+				
+			</td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

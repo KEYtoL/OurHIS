@@ -50,9 +50,30 @@
 		},
 		{
 			"title": "护士站",
-			"icon": "icon-vip",
-			"href": "page/user/userGrade.html",
-			"spread": false
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "住院记录",
+					"icon": "&#xe61c;",
+					"href": "inhistory.html",
+					"spread": false
+				},
+				{
+					"title": "床位管理",
+					"icon": "&#xe609;",
+					"href": "page/login/login.html",
+					"spread": false,
+					"target": "_blank"
+				},
+					{
+					"title": "医嘱管理",
+					"icon": "&#xe61c;",
+					"href": "page/some/a.html",
+					"spread": false
+				}
+			]
 		},
 		{
 			"title": "住院医生站",
