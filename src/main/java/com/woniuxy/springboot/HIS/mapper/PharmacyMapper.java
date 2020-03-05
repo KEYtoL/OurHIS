@@ -4,7 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
-
+/**
+ * 出入库操纵
+ * @author LG
+ *
+ */
 public interface PharmacyMapper {
 		
 	

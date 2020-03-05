@@ -4,6 +4,11 @@ import java.util.List;
 
 import com.woniuxy.springboot.HIS.entity.Pharmacymx;
 
+/**
+ * 出入库明细操作
+ * @author LG
+ *
+ */
 public interface PharmacymxMapper {
 		
 	
