@@ -1,9 +1,11 @@
 package com.woniuxy.springboot.HIS.service;
 
 import java.util.Date;
+import java.util.List;
 
 import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
+import com.woniuxy.springboot.HIS.entity.Pharmacymx;
 
 public interface PharmacyService {
 
@@ -15,5 +17,7 @@ public interface PharmacyService {
 			PageInfo<Pharmacy> selectAllPharmacy(Boolean yfstate,Integer pageNum ,Integer pageSize);
 			//删除入库记录库存通过yfid
 			void deletePharmacyByYfid(String yfid);
+			//通过yfid查入库详情
+			List<Pharmacymx> selectPharmacymx(String yfid);
 			
 }

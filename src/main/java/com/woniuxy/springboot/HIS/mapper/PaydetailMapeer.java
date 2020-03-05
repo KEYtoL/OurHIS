@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.mapper;
 
+import java.util.List;
+
 import com.woniuxy.springboot.HIS.entity.Paydetail;
 
 /**
@@ -14,5 +16,8 @@ public interface PaydetailMapeer {
 	 * @param paydetail
 	 */
 	void insertPaydetail(Paydetail paydetail);
-	
+	/**
+	 * 根据总账单id查询明细
+	 */
+	List<Paydetail> selectPaydetailsByTid(Integer tid);
 }
