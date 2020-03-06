@@ -23,23 +23,32 @@ import com.woniuxy.springboot.HIS.utils.Layui;
 @Controller
 public class PersonsController {
 
-@Autowired
-PersonsService personsService;
-	
-/**
- * 查询患者是否有已经存在
- */
-@RequestMapping("/persons/getpersonshistory")
-public String getPersonsHistory(Model model,Persons persons) {
-	System.out.println(persons);
-	List<Persons> foundPersonss = personsService.selectPersons(persons);
-	if(foundPersonss==null||foundPersonss.size()==0) {
-		model.addAttribute("personsinfo", persons);
-		return "addpersons";
-	}else {
-		Persons foundPersons = foundPersonss.get(0);
-		model.addAttribute("foundPersons", foundPersons);
-		return "personsrigister";
+	@Autowired
+	PersonsService personsService;
+
+	/**
+	 * 查询患者是否有已经存在
+	 */
+	@RequestMapping("/persons/getpersonshistory")
+	public String getPersonsHistory(Model model, Persons persons) {
+		System.out.println(persons);
+		List<Persons> foundPersons = personsService.selectPersons(persons);
+		if (foundPersons == null || foundPersons.size() == 0) {
+			model.addAttribute("personsinfo", persons);
+			return "addpersons";
+		} else {
+			model.addAttribute("foundPersons", foundPersons);
+			return "personsrigister";
+		}
+
+	}
+
+	@ResponseBody
+	@RequestMapping("/persons/selectAllPersonsBytid")
+	public List<Persons> selectAllPersonsBytid(Model model, HttpServletRequest request) {
+		Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
+		return personsService.selectAllPersonsBytid(doctor.getTid());
+
 	}
 }
 @ResponseBody

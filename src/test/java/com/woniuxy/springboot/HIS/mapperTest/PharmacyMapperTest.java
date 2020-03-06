@@ -44,10 +44,10 @@ public class PharmacyMapperTest {
 		for (int i = 0; i < 5; i++) {
 			String id = CommonUtil.uuid();
 			pharmacyMapper.insertPharmacy(new Pharmacy(id,1000.0,
-					new SimpleDateFormat("yyyy-MM-dd").parse("2019-0"+(6+i)+"-0"+(i+18)), 1, false));
-			for (int j = 0; j < 12; j++) {
+					new SimpleDateFormat("yyyy-MM-dd").parse("2019-07-0"+(i+18)), 1, false));
+			for (int j = 0; j < 5; j++) {
 				pharmacymxMapper.insertPharmacymx
-				(new Pharmacymx(CommonUtil.uuid(),id,890+j,11,111.0));
+				(new Pharmacymx(CommonUtil.uuid(),id,100+j,10,100.0));
 			}
 		}
 	}
@@ -56,11 +56,12 @@ public class PharmacyMapperTest {
 	 */
 	@Test
 	public void contextLoads01(){
-		List<Pharmacy> selectOneDayPharmacyByYfdate =
-				pharmacyMapper.selectOneYearPharmacyByYfdate(new Date(),false);
-		for (Pharmacy pharmacy : selectOneDayPharmacyByYfdate) {
-			System.out.println(pharmacy);
-		}
+//		System.out.println("骨康胶囊".equals("骨康胶囊"));
+//		List<Pharmacy> selectOneDayPharmacyByYfdate =
+//				pharmacyMapper.selectOneYearPharmacyByYfdate(new Date(),false);
+//		for (Pharmacy pharmacy : selectOneDayPharmacyByYfdate) {
+//			System.out.println(pharmacy);
+//		}
 	}
 	/*
 	 * service测试
