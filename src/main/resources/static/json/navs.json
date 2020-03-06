@@ -26,6 +26,12 @@
 					"href": "/page/doctor/keshiduty.html",
 					"spread": false
 				},
+				{
+					"title": "我的挂号名单",
+					"icon": "&#xe61c;",
+					"href": "/personss.html",
+					"spread": false
+				},
 					{
 					"title": "a页面",
 					"icon": "&#xe61c;",

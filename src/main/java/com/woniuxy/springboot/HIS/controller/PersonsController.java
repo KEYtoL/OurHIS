@@ -43,14 +43,7 @@ public class PersonsController {
 
 	}
 
-	@ResponseBody
-	@RequestMapping("/persons/selectAllPersonsBytid")
-	public List<Persons> selectAllPersonsBytid(Model model, HttpServletRequest request) {
-		Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
-		return personsService.selectAllPersonsBytid(doctor.getTid());
-
-	}
-}
+	
 @ResponseBody
 @RequestMapping("/selectAllPersonsBytid")
 public  Map<String, Object> selectAllPersonsBytid(Model model,HttpServletRequest request,int page,int limit) {
