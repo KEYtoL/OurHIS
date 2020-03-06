@@ -22,12 +22,12 @@ public interface TotalpayMapper {
 	 * 根据患者id查询患者所有账单
 	 * @param Pid
 	 */
-	List<TotalpayMapper> selectTotalpayByPid(Integer Pid);
+	List<TotalpayMapper> selectTotalpayByPid(Integer pid);
 	/**
 	 * 根据患者id查询患者所有未结账账单
 	 * @param Pid
 	 */
-	List<TotalpayMapper> selectTotalpayByPidNoPay(@Param("pid")Integer Pid,@Param("ispay") Integer isPay);
+	Totalpay selectTotalpayByPidNoPay(Integer pid);
 	/**
 	 * 患者支付账单后修改账单状态
 	 */

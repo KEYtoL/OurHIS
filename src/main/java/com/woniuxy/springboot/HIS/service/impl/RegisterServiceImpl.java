@@ -28,10 +28,7 @@ public class RegisterServiceImpl implements RegisterService {
 	/**
 	 * 患者没有就诊信息的时候挂号
 	 */
-	public void personsRegister(Register register, Persons persons, Totalpay totalpay, Paydetail paydetail) {
-		personsMapper.insertPersons(persons);//患者第一次来需要注册患者信息
-		totalpayMapper.insertTotalpay(totalpay);//生成此次总账单账单
-		paydetailMapeer.insertPaydetail(paydetail);//生成挂号费用
+	public void personsRegister(Register register) {
 		registerMapper.insertRegister(register);//添加挂号信息
 	}
 	

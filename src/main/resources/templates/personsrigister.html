@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>查询患者</title>
+<link rel="stylesheet" href="/layui/css/layui.css" media="all">
+</head>
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/jquery-2.1.4.js}"></script>
+<script type="text/javascript">
+table.render({
+    elem: '#persons'
+    ,height: 312
+    ,url: '/persons/selectAllPersonsBytid' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'pname', title: '患者姓名', width:80, sort: true, fixed: 'left'}
+      ,{field: 'page', title: '患者年龄', width:80}
+      ,{field: 'psex', title: '患者性别', width:80, sort: true}
+      ,{field: 'pcod', title: '患者身份证号', width:80} 
+    ]]
+  });
+  
+});
+</script>
+<body>
+	<table id="persons"></table>
+</body>
+</html>

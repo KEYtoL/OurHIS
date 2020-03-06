@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Pharmacykc;
 import com.woniuxy.springboot.HIS.exception.PharmacykcException;
 import com.woniuxy.springboot.HIS.mapper.MedicineMapper;
@@ -32,7 +31,6 @@ public class PharmacykcServiceImpl implements PharmacykcService{
 	
 	@Override
 	public void insertPharmacykc(Pharmacykc pharmacykc) {
-	
 			try {
 				pharmacykcMapper.insertPharmacykc(pharmacykc);
 			} catch (Exception e) {

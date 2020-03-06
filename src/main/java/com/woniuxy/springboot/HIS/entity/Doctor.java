@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.entity;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +20,6 @@ public class Doctor {
 	private Title title;//员工职称，1-5代表医生的职称，6-10代表护士的职称
 	private Hospitals hospitals;//院部
 	private Keshi keshi;//科室
-	 
+	private List<Persons> Persons;//医生所负责的患者
 	
 }

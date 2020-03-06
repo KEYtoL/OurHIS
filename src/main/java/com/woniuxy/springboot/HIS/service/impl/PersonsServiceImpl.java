@@ -1,5 +1,7 @@
 package com.woniuxy.springboot.HIS.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,9 @@ public class PersonsServiceImpl implements PersonsService{
 		try {
 			return personsMapper.selectPersons(persons);
 		} catch (Exception e) {
-			throw new PersonsException("系统错误");
+			e.printStackTrace();
+			return null;
+//			throw new PersonsException("系统错误");
 		}
 	}
 
@@ -52,5 +56,12 @@ public class PersonsServiceImpl implements PersonsService{
 		}
 		
 	}
+
+	@Override
+	public List<Persons> selectAllPersonsBytid(Integer tid) {
+		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString();
+		return personsMapper.selectPersonsBytid(tid,date);
+	}
+
 
 }

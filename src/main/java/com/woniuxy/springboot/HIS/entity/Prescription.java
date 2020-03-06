@@ -3,12 +3,20 @@ package com.woniuxy.springboot.HIS.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * 	处方明细表
+ * @author LG
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Prescription {
-    private Integer cfmxid;
+    private String cfmxid;
+    
+    private String cfid;
+    
+    private Allprescriptions allprescriptions;//外键
 
     private Integer mid;
 

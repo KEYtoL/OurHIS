@@ -5,7 +5,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.woniuxy.springboot.HIS.entity.Pharmacykc;
-
+/**
+ * 库存操作mapper
+ * @author LG
+ *
+ */
 public interface PharmacykcMapper {
 		
 	

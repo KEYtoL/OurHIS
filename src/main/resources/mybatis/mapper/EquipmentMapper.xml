@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.EquipmentMapper">
+
+	<!-- 新增设备 -->
+	<insert id="insertEquipment">
+		insert into equipment values (#{eid}, #{ename},
+		#{ecategory},#{machineid},#{productiondate},#{keeper},
+		#{specificationid},#{usedate},#{guaranteeperiod},#{ebrand},
+		#{depreciationperiod},#{estatus},#{originalprice},#{monthdepression},
+		#{storagelocation},#{ps})
+	</insert>
+
+
+	<!-- 查询所有设备 -->
+	<select id="selectAllEquipmen" resultType="Equipment">
+		select * from
+		equipment
+	</select>
+
+
+
+	<!-- 名字查询设备 -->
+	<select id="selectEquipmentByEname" resultType="Equipment">
+		select * from
+		equipment where ename like '%' #{ename} '%'
+	</select>
+
+	<!-- eid删除设备 -->
+	<delete id="deleteEquipment">
+		delete from equipment where eid=#{eid}
+	</delete>
+
+	<!-- id查看详情 -->
+	<select id="selectEquipmentDetial" resultType="Equipment">
+		select * from
+		equipment where eid= #{eid}
+	</select>
+	
+	<!-- 修改设备信息 -->
+	<update id="updateEquipment">
+		UPDATE equipment
+		<trim prefix="set" suffixOverrides=",">
+			<if test="ename!=null">ename=#{ename},</if>
+			<if test="ecategory!=null">ecategory=#{ecategory},</if>
+			<if test="machineid!=null">machineid=#{machineid},</if>
+			<if test="productiondate!=null">productiondate=#{productiondate},</if>
+			<if test="keeper!=null">keeper=#{keeper},</if>
+			<if test="specificationid!=null">specificationid=#{specificationid},</if>
+			<if test="usedate!=null">usedate=#{usedate},</if>
+			<if test="guaranteeperiod!=null">guaranteeperiod=#{guaranteeperiod},</if>
+			<if test="ebrand!=null">ebrand=#{ebrand},</if>
+			<if test="depreciationperiod!=null">depreciationperiod=#{depreciationperiod},</if>
+			<if test="estatus!=null">estatus=#{estatus},</if>
+			<if test="originalprice!=null">originalprice=#{originalprice},</if>
+			<if test="monthdepression!=null">monthdepression=#{monthdepression},</if>
+			<if test="storagelocation!=null">storagelocation=#{storagelocation},</if>
+			<if test="ps!=null">ps=#{ps},</if>
+		</trim>
+		WHERE eid=#{eid}
+	</update>
+	<!-- **************************************************************** -->
+	<!-- 供应商信息部分 -->
+
+	<!-- 新增供应商 -->
+	<insert id="insertSupplier">
+		insert into supplier values (#{spid},
+		#{spname},#{spprinciplename},#{spprincipletel},#{spprincipleemail},#{spprincipleaddress},
+		#{zzjgdmzid},#{zzjgdmzimg})
+	</insert>
+
+
+	<!-- 查询所有供应商 -->
+	<select id="selectAllSupplier" resultType="Supplier">
+		select * from
+		supplier
+	</select>
+
+	<!-- 名字查询供应商 -->
+	<select id="selectSupplierBySpname" resultType="Supplier">
+		select * from
+		supplier where spname like '%' #{spname} '%'
+	</select>
+
+	<!-- eid删除供应商 -->
+	<delete id="deleteSupplier">
+		delete from supplier where spid=#{spid}
+	</delete>
+	<!-- 修改供应商信息 -->
+	<update id="updateSupplier">
+		UPDATE supplier
+		<trim prefix="set" suffixOverrides=",">
+			<if test="spname!=null">spname=#{spname},</if>
+			<if test="spprinciplename!=null">spprinciplename=#{spprinciplename},</if>
+			<if test="spprincipletel!=null">spprincipletel=#{spprincipletel},</if>
+			<if test="spprincipleemail!=null">spprincipleemail=#{spprincipleemail},</if>
+			<if test="spprincipleaddress!=null">spprincipleaddress=#{spprincipleaddress},</if>
+			<if test="zzjgdmzid!=null">zzjgdmzid=#{zzjgdmzid},</if>
+			<if test="zzjgdmzimg!=null">zzjgdmzimg=#{zzjgdmzimg},</if>
+		</trim>
+		WHERE spid=#{spid}
+	</update>
+	<!-- id查询 -->
+	<select id="selectSupplierBySpid" resultType="Supplier">
+		select * from
+		supplier where spid= #{spid}
+	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.DoctorloginMapper">
+	<!-- 添加医生 -->
+	<insert id="insertDoctorlogin">
+		insert into doctorlogin values (#{lid},#{tid},#{account},#{password})
+	</insert>
+
+	<!-- 根据tid查询医生 -->
+	<select id="selectDoctorloginByAccount" resultType="Doctorlogin">
+		select * from doctorlogin where Account = #{Account}
+	</select>
+	
+	
+</mapper>

@@ -86,7 +86,12 @@ layui.use(['form','layer','table','laytpl'],function(){
 						$("input[name=mname]").focus();
 						$("#lns").hide();
 					});
-
+					
+					$("body").click(function(){
+						$("#lns").hide();
+						
+					});
+				
 				}
 			});
 		}else{
@@ -128,10 +133,7 @@ layui.use(['form','layer','table','laytpl'],function(){
         })
     }
     
-    
-    $(".addNews_btn").click(function(){
-        addUser();
-    });
+   
 
   
 

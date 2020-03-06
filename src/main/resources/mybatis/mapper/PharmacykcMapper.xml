@@ -41,7 +41,7 @@
 	</select>
 	
 	<update id="updatePharmacykcByMid" >
-		update pharmacykc set yfkcnum = #{yfkcnum} where mid = #{mid}
+		update pharmacykc set yfkcnum = yfkcnum + #{yfkcnum} where mid = #{mid}
 	</update>
 	
 	<delete id="deletePharmacykcByMid">

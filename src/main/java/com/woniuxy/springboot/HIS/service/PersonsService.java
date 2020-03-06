@@ -29,5 +29,11 @@ public interface PersonsService {
 	 * 	 * @param persons
 	 */
 	void updatePersonsByPid(Persons persons);
-	
+	/**
+	 * 用医生的id查询他负责的患者
+	 * @param tid
+	 * @param date
+	 * @return
+	 */
+	List<Persons> selectAllPersonsBytid(Integer tid);
 }
