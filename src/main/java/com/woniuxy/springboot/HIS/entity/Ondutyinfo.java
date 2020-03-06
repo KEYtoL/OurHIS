@@ -12,13 +12,13 @@ import lombok.NoArgsConstructor;
 public class Ondutyinfo {
     private Integer odid;
 
-    private Doctor tid;
+    private Doctor doctor;
 
-    private Date odstart;
+    private String odstart;
 
-    private Date odend;
+    private String odend;
 
-    private Integer odroom;
+    private String odroom;
 
     private Keshi keshi;
 

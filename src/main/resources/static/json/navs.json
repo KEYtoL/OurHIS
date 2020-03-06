@@ -1,3 +1,184 @@
+<<<<<<< HEAD
+{
+	"contentManagement": [
+		{
+			"title": "门诊挂号",
+			"icon": "icon-text",
+			"href": "/selectpersons.html",
+
+			"spread": false
+		},
+		{
+			"title": "门诊医生站",
+			"icon": "&#xe634;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "我的值班",
+					"icon": "&#xe609;",
+					"href": "/page/doctor/myduty.html",
+					"spread": false
+				},
+				{
+					"title": "科室值班",
+					"icon": "&#xe61c;",
+					"href": "/page/doctor/keshiduty.html",
+					"spread": false
+				},
+					{
+					"title": "a页面",
+					"icon": "&#xe61c;",
+					"href": "page/some/a.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "门诊收费",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "404页面",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "登录",
+					"icon": "&#xe609;",
+					"href": "page/login/login.html",
+					"spread": false,
+					"target": "_blank"
+				},
+					{
+					"title": "a页面",
+					"icon": "&#xe61c;",
+					"href": "page/some/a.html",
+					"spread": false
+				}
+			]
+		}
+	],
+	"memberCenter": [
+		{
+			"title": "出入院管理",
+			"icon": "&#xe612;",
+			"href": "page/user/userList.html",
+			"spread": false
+		},
+		{
+			"title": "护士站",
+			"icon": "icon-vip",
+			"href": "page/user/userGrade.html",
+			"spread": false
+		},
+		{
+			"title": "住院医生站",
+			"icon": "icon-vip",
+			"href": "page/user/userGrade.html",
+			"spread": false
+		}
+	],
+	"systemeSttings": [
+		{
+			"title": "药库管理",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "入库管理",
+					"icon": "&#xe61c;",
+					"href": "/page/pharmacy/Pharmacy.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "入库历史记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "药库",
+			"icon": "icon-log",
+			"href": "page/user/medicine2.html",
+			"spread": true
+		},
+		{
+			"title": "药房管理",
+			"icon": "&#xe630;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "发药管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "退药管理",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "查询历史记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title":"设备管理",
+			"icon": "&#xe64c;",
+			"href": "page/systemSetting/linkList.html",
+			"spread": false,
+			"children": [
+				{
+					"title": "出库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "入库管理",
+					"icon": "&#xe61c;",
+					"href": "page/404.html",
+					"spread": false
+				},
+				{
+					"title": "查询库存",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				},
+				{
+					"title": "出入库记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/Pharmacykcs.html",
+					"spread": false
+				}
+			]
+		}
+	]
+	
+}
+
+
+=======
 {
 	"contentManagement": [
 		{
@@ -230,3 +411,4 @@
 }
 
 
+>>>>>>> branch 'master' of https://github.com/keylg/OurHIS.git
