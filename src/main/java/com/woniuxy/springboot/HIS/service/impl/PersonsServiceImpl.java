@@ -7,6 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Persons;
 import com.woniuxy.springboot.HIS.exception.PersonsException;
 import com.woniuxy.springboot.HIS.mapper.PersonsMapper;
@@ -58,9 +60,12 @@ public class PersonsServiceImpl implements PersonsService{
 	}
 
 	@Override
-	public List<Persons> selectAllPersonsBytid(Integer tid) {
+	public PageInfo<Persons> selectAllPersonsBytid(Integer tid,Integer pageNum,Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
 		String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString();
-		return personsMapper.selectPersonsBytid(tid,date);
+		 List<Persons> ps = personsMapper.selectPersonsBytid(tid,date);
+		 PageInfo<Persons> pi = new PageInfo<Persons>(ps);
+		 return pi;
 	}
 
 

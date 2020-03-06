@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Persons;
 
 public interface PersonsService {
@@ -35,5 +36,5 @@ public interface PersonsService {
 	 * @param date
 	 * @return
 	 */
-	List<Persons> selectAllPersonsBytid(Integer tid);
+	PageInfo<Persons> selectAllPersonsBytid(Integer tid,Integer pageno,Integer pagesize);
 }
