@@ -91,9 +91,9 @@ public class PharmacyController {
 					//不存在则查询后新增
 					List<Medicine> listM = medicineService.selectMedicineByMname(mname);
 					Pharmacymx pharmacymx = new Pharmacymx();
-					pharmacymx.setMedicine(listM.get(1));
+					pharmacymx.setMedicine(listM.get(0));
 					pharmacymx.setYfmxnum(parseInt);
-					BigDecimal b1 = new BigDecimal(listM.get(1).getMprice() + "");
+					BigDecimal b1 = new BigDecimal(listM.get(0).getMprice() + "");
 					BigDecimal b2 = new BigDecimal(parseInt + "");
 					pharmacymx.setYfmxcount(b1.multiply(b2).doubleValue());
 					pharmacyOrder.getPharmacymxs().add(pharmacymx);

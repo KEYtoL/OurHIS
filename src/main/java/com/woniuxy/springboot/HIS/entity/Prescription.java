@@ -12,19 +12,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Prescription {
-    private String cfmxid;
+    private String cfmxid;//处方明细id
     
-    private String cfid;
+    private String cfid;//处方id
     
     private Allprescriptions allprescriptions;//外键
 
-    private Integer mid;
+    private Integer mid;//药品id
 
-    private Integer mnum;
+    private Integer mnum;//数量
 
-    private Integer mcount;
+    private Integer mcount;//小计
 
-    private String mway;
+    private String mway;//使用方式
 
     
 }

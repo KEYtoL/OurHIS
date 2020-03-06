@@ -40,8 +40,8 @@ HttpServletRequest req,HttpServletResponse resp) {
 				Doctorlogin doctorlogin = doctorloginService.login(account, password);
 				Cookie c1 = new Cookie("account", CommonUtil.uuid()+account);
 				Cookie c2 = new Cookie("password", CommonUtil.uuid()+password);
-				c1.setMaxAge(360000);
-				c2.setMaxAge(360000);
+				c1.setMaxAge(3600);
+				c2.setMaxAge(3600);
 				c1.setPath("/");
 				c2.setPath("/");
 				resp.addCookie(c1);
@@ -51,7 +51,6 @@ HttpServletRequest req,HttpServletResponse resp) {
 			return "redirect:/index.html";
 
 		} catch (DoctorloginException e) {
-			// TODO Auto-generated catch block
 			// 将异常信息存储到域中，转发到页面
 			req.setAttribute("msg", e.getMessage());
 			return "login";
