@@ -19,7 +19,6 @@ import com.woniuxy.springboot.HIS.service.PersonsService;
 @Controller
 public class PersonsController {
 
-<<<<<<< HEAD
 	@Autowired
 	PersonsService personsService;
 
@@ -37,35 +36,14 @@ public class PersonsController {
 			model.addAttribute("foundPersons", foundPersons);
 			return "personsrigister";
 		}
-=======
-@Autowired
-PersonsService personsService;
-	
-/**
- * 查询患者是否有已经存在
- */
-@RequestMapping("/persons/getpersonshistory")
-public String getPersonsHistory(Model model,Persons persons) {
-	System.out.println(persons);
-	List<Persons> foundPersonss = personsService.selectPersons(persons);
-	if(foundPersonss==null||foundPersonss.size()==0) {
-		model.addAttribute("personsinfo", persons);
-		return "addpersons";
-	}else {
-		Persons foundPersons = foundPersonss.get(0);
-		model.addAttribute("foundPersons", foundPersons);
-		return "personsrigister";
->>>>>>> branch 'master' of https://github.com/keylg/OurHIS.git
+
+	}
+
+	@ResponseBody
+	@RequestMapping("/persons/selectAllPersonsBytid")
+	public List<Persons> selectAllPersonsBytid(Model model, HttpServletRequest request) {
+		Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
+		return personsService.selectAllPersonsBytid(doctor.getTid());
+
 	}
 }
-<<<<<<< HEAD
-=======
-@ResponseBody
-@RequestMapping("/persons/selectAllPersonsBytid")
-public List<Persons> selectAllPersonsBytid(Model model,HttpServletRequest request) {
-	Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
-	return  personsService.selectAllPersonsBytid(doctor.getTid());
-	
-}
-}
->>>>>>> branch 'master' of https://github.com/keylg/OurHIS.git
