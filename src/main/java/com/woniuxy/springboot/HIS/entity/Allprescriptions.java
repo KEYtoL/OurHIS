@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Allprescriptions {
-    private String cfid;//处方总表id
+    private Integer cfid;//处方总表id
     
     private List<Prescription> prescriptions;//明细集合
     
-    private Double cfcount;//处方总价
+    private Double cfcount = 0.0 ;//处方总价
 
     private Integer pid;//患者id
     
@@ -32,7 +32,7 @@ public class Allprescriptions {
     
     private Doctor doctor;//医生信息
 
-    private Byte issure;//是否确认
+    private Boolean issure;//是否确认
 
   
 }

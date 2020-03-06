@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+<link rel="stylesheet" th:href="@{/css/index.css}" media="all" />
+</head>
+<body>
+
+<form th:action="@{/addPrescription}">
+     <div class="layui-input-inline">
+        <input type="tel" name="pid" lay-verify="required|phone" placeholder="请输入病人编号" autocomplete="off" class="layui-input">
+      </div>
+	<input type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" name="立即提交"/>
+	<br>
+	[[${msg}]]
+</form>
+
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+</body>
+
+</html>
