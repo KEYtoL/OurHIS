@@ -58,13 +58,8 @@
 	
 
 	<!-- 根据kid查询医生 -->
-<<<<<<< HEAD
-	<select id="selectDoctorByKid" resultMap="doctorMapper">
-		select * from doctor where kid = #{Kid} and titleid between 1 and 5;
-=======
 	<select id="selectDoctorByKid" resultType="Doctor">
 		select * from doctor where kid = #{Kid}
->>>>>>> branch 'master' of https://github.com/keylg/OurHIS.git
 	</select>
 
 	<!-- 查询所有医生 -->

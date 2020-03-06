@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woniuxy.springboot.HIS.mapper.PrescriptionMapper" >
+  
+<insert id="insertPrescription"  >
+    insert into prescription
+    values (#{cfmxid},#{cfid},#{mid},#{mnum},#{mcount},#{mway})
+ </insert>
+ 
+ <select id="selectPrescriptionByPid" resultType="Prescription">
+	select * from prescription where pid = #{pid}
+ </select>
+
+<delete id="deletePrescriptionByCfmxid">
+	delete from prescription where cfmxid = #{cfmxid}
+</delete>
+</mapper>

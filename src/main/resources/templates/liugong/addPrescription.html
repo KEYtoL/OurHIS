@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+<link rel="stylesheet" th:href="@{/css/index.css}" media="all" />
+</head>
+<body>
+<table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>姓名</th>
+      <th>性别</th>
+      <th>年龄</th>
+      <th>血型</th>
+      <th>住址</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr>
+      <td>[[${session.prescription.persons.pid}]]</td>
+      <td>[[${session.prescription.persons.pname}]]</td>
+      <td>[[${session.prescription.persons.psex}]]</td>
+      <td>[[${session.prescription.persons.page}]]</td>
+      <td>[[${session.prescription.persons.pblood}]]</td>
+      <td>[[${session.prescription.persons.paddr}]]</td>
+    </tr>
+    
+</table>
+<form th:action="@{/prescriptionList}">
+<div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">药品名称:</label>
+      <div class="layui-input-inline">
+        <input type="text" name="mname" id="mname"  lay-verify="required|number" autocomplete="off" class="layui-input">
+        [[${mnameerror}]]
+        <div id="lns" ></div>
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">数量:</label>
+      <div class="layui-input-inline">
+       <input type="text" name="mnum" lay-verify="required|number" autocomplete="off" class="layui-input">
+       [[${mnumerror}]]
+      </div>
+    </div>
+    <div class="layui-inline">
+      <label class="layui-form-label">使用方式:</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="mway" lay-verify="url" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-inline">
+     <input type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" value="立即添加"/>
+    </div>
+  </div>
+</form>
+<table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th>药品名称</th>
+      <th>药品单位</th>
+      <th>价格</th>
+      <th>数量</th>
+      <th>小计</th>
+      <th>使用方法</th>
+    </tr> 
+  </thead>
+  <tbody>
+    <tr th:if="${session.prescription.cfcount!=null}" th:each="pre:${session.prescription.prescriptions}" >
+      <td>[[${pre.medicine.mname}]]</td>
+      <td>[[${pre.medicine.munit}]]</td>
+      <td>[[${pre.medicine.mprice}]]</td>
+      <td>[[${pre.mnum}]]</td>
+      <td>[[${pre.mcount}]]</td>
+      <td>[[${pre.mway}]]</td>
+    </tr>
+    
+</table>
+<form th:action ="@{/submitPrescription}">
+<input type="submit" id="submitP" value="提交处方"  class="layui-btn" lay-submit="" lay-filter="demo1" th:if="${session.prescription.cfcount!=null}" >
+</form>
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/page/pharmacy/prescription.js}"></script>
+</body>
+
+</html>

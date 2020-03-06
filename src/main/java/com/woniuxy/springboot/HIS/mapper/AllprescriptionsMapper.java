@@ -5,13 +5,15 @@ import java.util.List;
 import com.woniuxy.springboot.HIS.entity.Allprescriptions;
 
 public interface AllprescriptionsMapper {
+	
 	//添加处方总表
 	int insertAllprescriptions(Allprescriptions allprescriptions);
 	//确认处方完成通过pid
-	void updateAllprescriptionsByPid(Integer pid);
+	void updateAllprescriptionsByPid(Integer cfid);
 	//查询处方总表通过pid
 	List<Allprescriptions> selectAllprescriptionsByPid(Integer pid);
-	
+	//删除处方总表
+	void deleteAllprescriptionsByCfid(Integer cfid);
 	
 
 }

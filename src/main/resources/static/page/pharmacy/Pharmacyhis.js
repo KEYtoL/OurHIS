@@ -17,6 +17,7 @@ layui.use(['form','layer','table','laydate'],function(){
     var tableIns = table.render({
         elem: '#pharmacyhis',//表id
         url : '/pharmacy/selectHisPharmacy',//请求地址
+        toolbar: '#toolbarDemo',
         cellMinWidth : 95,
         page : true,//确认启动分页
         height : 400,

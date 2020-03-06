@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
 	"contentManagement": [
 		{
@@ -104,7 +103,7 @@
 				{
 					"title": "入库历史记录",
 					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
+					"href": "/page/pharmacy/Pharmacyhis.html",
 					"spread": false
 				}
 			]
@@ -121,6 +120,12 @@
 			"href": "",
 			"spread": false,
 			"children": [
+				{
+					"title": "处方管理",
+					"icon": "icon-vip",
+					"href": "prescription.html",
+					"spread": false
+				},
 				{
 					"title": "发药管理",
 					"icon": "&#xe61c;",
@@ -177,238 +182,3 @@
 	
 }
 
-
-=======
-{
-	"contentManagement": [
-		{
-			"title": "门诊挂号",
-			"icon": "icon-text",
-			"href": "/selectpersons.html",
-
-			"spread": false
-		},
-		{
-			"title": "门诊医生站",
-			"icon": "&#xe634;",
-			"href": "page/img/images.html",
-			"spread": false
-		},
-		{
-			"title": "门诊收费",
-			"icon": "&#xe630;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "404页面",
-					"icon": "&#xe61c;",
-					"href": "page/404.html",
-					"spread": false
-				},
-				{
-					"title": "登录",
-					"icon": "&#xe609;",
-					"href": "page/login/login.html",
-					"spread": false,
-					"target": "_blank"
-				},
-					{
-					"title": "a页面",
-					"icon": "&#xe61c;",
-					"href": "page/some/a.html",
-					"spread": false
-				}
-			]
-		}
-	],
-	"memberCenter": [
-		{
-			"title": "出入院管理",
-			"icon": "&#xe612;",
-			"href": "page/user/userList.html",
-			"spread": false
-		},
-		{
-			"title": "护士站",
-			"icon": "&#xe630;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "住院记录",
-					"icon": "&#xe61c;",
-					"href": "inhistory.html",
-					"spread": false
-				},
-				{
-					"title": "床位管理",
-					"icon": "&#xe609;",
-					"href": "page/login/login.html",
-					"spread": false,
-					"target": "_blank"
-				},
-					{
-					"title": "医嘱管理",
-					"icon": "&#xe61c;",
-					"href": "page/some/a.html",
-					"spread": false
-				}
-			]
-		},
-		{
-			"title": "住院医生站",
-			"icon": "icon-vip",
-			"href": "page/user/userGrade.html",
-			"spread": false
-		}
-	],
-	"systemeSttings": [
-		{
-			"title": "药库管理",
-			"icon": "&#xe630;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "入库管理",
-					"icon": "&#xe61c;",
-					"href": "/page/pharmacy/Pharmacy.html",
-					"spread": false
-				},
-				{
-					"title": "查询库存",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
-					"spread": false
-				},
-				{
-					"title": "入库历史记录",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacyhis.html",
-					"spread": false
-				}
-			]
-		},
-		{
-			"title": "药库",
-			"icon": "icon-log",
-			"href": "page/user/medicine2.html",
-			"spread": true
-		},
-		{
-			"title": "药房管理",
-			"icon": "&#xe630;",
-			"href": "",
-			"spread": false,
-			"children": [
-				{
-					"title": "发药管理",
-					"icon": "&#xe61c;",
-					"href": "page/404.html",
-					"spread": false
-				},
-				{
-					"title": "退药管理",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
-					"spread": false
-				},
-				{
-					"title": "查询历史记录",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
-					"spread": false
-				}
-			]
-		},
-		{
-			"title":"设备管理",
-			"icon": "&#xe64c;",
-			"href": "page/systemSetting/linkList.html",
-			"spread": false,
-			"children": [
-				{
-					"title": "供应商库",
-					"icon": "&#xe61c;",
-					"href": "page/supplier/supplierlist.html",
-					"spread": false
-				},
-				{
-					"title": "资产管理",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备管理字典",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备入库",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备调拨",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备维修",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备保养",
-					"icon": "&#xe609;",
-					"href": "page/equipment/equipmentlist.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备报废",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "维保记录",
-					"icon": "&#xe609;",
-					"href": "page/user/userList.html",
-					"spread": false
-					
-				},
-				{
-					"title": "设备管理",
-					"icon": "&#xe609;",
-					"href": "page/equipment/equipmentlist.html",
-					"spread": false
-					
-				},
-					{
-					"title": "基础设置",
-					"icon": "&#xe61c;",
-					"href": "page/some/a.html",
-					"spread": false,
-					"target": "_blank"
-				}
-			]
-		}
-	]
-	
-}
-
-
->>>>>>> branch 'master' of https://github.com/keylg/OurHIS.git

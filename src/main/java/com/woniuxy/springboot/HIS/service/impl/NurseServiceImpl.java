@@ -10,9 +10,10 @@ import com.woniuxy.springboot.HIS.exception.DoctorServiceExcption;
 import com.woniuxy.springboot.HIS.mapper.DoctorMapper;
 import com.woniuxy.springboot.HIS.mapper.NurseMapper;
 import com.woniuxy.springboot.HIS.service.DoctorService;
+import com.woniuxy.springboot.HIS.service.NurseService;
 
 @Service
-public class NurseServiceImpl implements DoctorService{
+public class NurseServiceImpl implements NurseService{
 
 	@Autowired
 	NurseMapper nurseMapper;
