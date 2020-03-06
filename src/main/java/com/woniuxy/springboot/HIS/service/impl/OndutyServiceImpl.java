@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +13,7 @@ import com.woniuxy.springboot.HIS.exception.OndutyinfoServiceExcption;
 import com.woniuxy.springboot.HIS.mapper.OndutyinfoMapper;
 import com.woniuxy.springboot.HIS.service.OndutyinfoService;
 
+@Service
 public class OndutyServiceImpl implements OndutyinfoService {
 
 	@Autowired

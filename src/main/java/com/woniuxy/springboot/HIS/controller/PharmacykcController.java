@@ -32,7 +32,7 @@ public class PharmacykcController {
 		return pageJson;
 	}
 
-//搜索条件查询
+	//搜索条件查询
 	@PostMapping("/selectAllPharmacykc")
 	@ResponseBody
 	public PageJson<Pharmacykc> selectPharmacykcByMname(Integer page, Integer limit, Integer key, String mname) {
@@ -42,7 +42,7 @@ public class PharmacykcController {
 		return pageJson;
 	}
 
-//智能提示controller
+	//智能提示controller
 	@RequestMapping("/selectMname")
 	public String selectMname(Model model, String mname) {
 		PageInfo<Pharmacykc> list =

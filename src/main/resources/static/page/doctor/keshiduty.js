@@ -37,13 +37,12 @@ layui.use(['form','layer','table','laytpl'],function(){
         	// '<div>{{d.medicine.mname}}</div>'
         	{field: 'odid', title: '值班ID', width:100, align:"center"},// 属性为对象需要加templet:
             {field: 'doctor', title: '门诊医生', width:150,templet: '<div>{{d.doctor.tname}}</div>', align:"center" },
-            {field: 'odstart', title: '开始时间', width:200, align:"center"},
-            {field: 'odend', title: '结束时间', width:200, align:"center"},
+            {field: 'odstart', title: '开始时间', width:302, align:"center"},
+            {field: 'odend', title: '结束时间', width:302, align:"center"},
             {field: 'odroom', title: '门诊室', width:100, align:"center"},
             {field: 'keshi', title: '科室', width:100,templet: '<div>{{d.keshi.kname}}</div>', align:"center"},
             {field: 'ischangeshifts', title: '是否替班', width:100,templet: function(d){ return d.ischangeshifts==true ? "是":"否"},align:"center"},
             {field: 'changeinfo', title: '原值班医生', width:150, templet: '<div>{{d.changeinfo ? d.changeinfo.tname : "无" }}</div>', align:"center" },
-            {fixed: 'right', title:'操作', toolbar: '#barDemo', width:150,align:"center"},
             ]]
     });
     
@@ -66,8 +65,6 @@ layui.use(['form','layer','table','laytpl'],function(){
     });
     
     
-    
-    
     $("input[name=mname]").css({
 		"position":"relative"
 	});
@@ -86,5 +83,49 @@ layui.use(['form','layer','table','laytpl'],function(){
 	 function trim(str){ // 删除左右两端的空格
 	　　     return str.replace(/(^\s*)|(\s*$)/g, "");
 	　　 }
+	
+	
+	
+    
+    // 添加用户
+    function addUser(edit){
+        var index = layui.layer.open({
+            title : "添加用户",
+            type : 2,
+            content : "userAdd.html",
+            success : function(layero, index){
+                var body = layui.layer.getChildFrame('body', index);
+                if(edit){
+                    body.find(".userName").val(edit.userName);  // 登录名
+                    body.find(".userEmail").val(edit.userEmail);  // 邮箱
+                    body.find(".userSex input[value="+edit.userSex+"]").prop("checked","checked");  // 性别
+                    body.find(".userGrade").val(edit.userGrade);  // 会员等级
+                    body.find(".userStatus").val(edit.userStatus);    // 用户状态
+                    body.find(".userDesc").text(edit.userDesc);    // 用户简介
+                    form.render();
+                }
+                setTimeout(function(){
+                    layui.layer.tips('点击此处返回用户列表', '.layui-layer-setwin .layui-layer-close', {
+                        tips: 3
+                    });
+                },500)
+            }
+        })
+        layui.layer.full(index);
+        window.sessionStorage.setItem("index",index);
+        // 改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
+        $(window).on("resize",function(){
+            layui.layer.full(window.sessionStorage.getItem("index"));
+        })
+    }
+    
+    
+    $(".addNews_btn").click(function(){
+        addUser();
+    });
+
+  
+
+   
 
 })

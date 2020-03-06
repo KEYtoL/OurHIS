@@ -24,35 +24,23 @@ public class OndutyController {
 	@Autowired
 	OndutyinfoService ondutyinfoService;
 
-	//页面启动时查询全部值班信息
+	// 页面启动时查询全部值班信息
 	@GetMapping("/selectAllOndutyinfo")
 	@ResponseBody
-	public PageJson<Ondutyinfo> selectAllPharmacykc(Integer page, Integer limit) {
-		PageInfo<Ondutyinfo> pageInfo = ondutyinfoService.selectAllOndutyinfo(page,limit);
+	public PageJson<Ondutyinfo> selectAllOndutyinfo(Integer page, Integer limit) {
+		PageInfo<Ondutyinfo> pageInfo = ondutyinfoService.selectAllOndutyinfo(page, limit);
 		List<Ondutyinfo> allOndutyinfo = pageInfo.getList();
 		PageJson<Ondutyinfo> pageJson = new PageJson<>("0", "", (int) pageInfo.getTotal(), allOndutyinfo);
 		return pageJson;
 	}
 
-//搜索条件查询
-//	@PostMapping("/selectAllPharmacykc")
-//	@ResponseBody
-//	public PageJson<Pharmacykc> selectPharmacykcByMname(Integer page, Integer limit, Integer key, String mname) {
-//		PageInfo<Pharmacykc> pageInfo = pharmacykcService.selectPharmacykcByMname(key, mname, page, limit);
-//		List<Pharmacykc> allPharmacykc = pageInfo.getList();
-//		PageJson<Pharmacykc> pageJson = new PageJson<>("0", "", (int) pageInfo.getTotal(), allPharmacykc);
-//		return pageJson;
-//	}
-//
-////智能提示controller
-//	@RequestMapping("/selectMname")
-//	public String selectMname(Model model, String mname) {
-//		PageInfo<Pharmacykc> list =
-//				// （0，mname，1，10） 调用原有的方法，0为查询所有，mname为名称，1为第一页，10为条数
-//				pharmacykcService.selectPharmacykcByMname(0, mname, 1, 10);
-//		// 返回数据供selectMname页面使用
-//		model.addAttribute("mnames", list.getList());
-//		return "selectMname";
-//	}
-
+	//搜索按时间查询
+	@PostMapping("/selectAllOndutyinfo")
+	@ResponseBody
+	public PageJson<Ondutyinfo> selectOndutyinfoByTime(Integer page, Integer limit, String start, String end) {
+		PageInfo<Ondutyinfo> pageInfo = ondutyinfoService.selectOndutyinfoByTime(page, limit, start, end);
+		List<Ondutyinfo> allOndutyinfo = pageInfo.getList();
+		PageJson<Ondutyinfo> pageJson = new PageJson<>("0", "", (int) pageInfo.getTotal(), allOndutyinfo);
+		return pageJson;
+	}
 }

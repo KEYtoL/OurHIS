@@ -14,17 +14,16 @@
 			"spread": false,
 			"children": [
 				{
-					"title": "排班安排",
-					"icon": "&#xe61c;",
+					"title": "我的值班",
+					"icon": "&#xe609;",
 					"href": "/page/doctor/myduty.html",
 					"spread": false
 				},
 				{
-					"title": "登录",
-					"icon": "&#xe609;",
-					"href": "page/login/login.html",
-					"spread": false,
-					"target": "_blank"
+					"title": "科室值班",
+					"icon": "&#xe61c;",
+					"href": "/page/doctor/keshiduty.html",
+					"spread": false
 				},
 					{
 					"title": "a页面",
