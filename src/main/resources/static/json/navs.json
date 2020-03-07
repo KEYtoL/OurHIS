@@ -4,6 +4,7 @@
 			"title": "门诊挂号",
 			"icon": "icon-text",
 			"href": "/selectpersons.html",
+
 			"spread": false
 		},
 		{
@@ -27,7 +28,7 @@
 				{
 					"title": "我的挂号名单",
 					"icon": "&#xe61c;",
-					"href": "/personss.html",
+					"href": "personss.html",
 					"spread": false
 				},
 					{

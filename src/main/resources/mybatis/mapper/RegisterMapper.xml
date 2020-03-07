@@ -6,5 +6,16 @@
 	<insert id="insertRegister">
 		insert into register(pid,rtime,rtype,ofhid,tid,isok) values(#{persons.pid},#{rtime},#{rtype},#{ofhid},#{doctor.tid},#{isok})
 	</insert>
- 
+ 	<select id="selectRegisterBytid" resultMap="registerMapper">
+ 		select * from  register  where tid=#{tid} and rtime = #{date}  order by rid
+ 	</select>
+ 	<resultMap type="Register" id="registerMapper">
+ 		<id column="rid" property="rid"/>
+ 		<result column="rtime" property="rtime"/>
+ 		<result column="rtype" property="rtype"/>
+ 		<result property="ofhid" column="ofhid"/>
+ 		<result property="isok" column="isok"/>
+ 		 <association property="persons" column="pid" javaType="Persons" select="com.woniuxy.springboot.HIS.mapper.PersonsMapper.selectPersonsByPid" /> 
+ 		<association property="doctor" column="tid" javaType="Doctor" select="com.woniuxy.springboot.HIS.mapper.DoctorMapper.selectDoctorByTid" />
+ 	</resultMap>
 </mapper>

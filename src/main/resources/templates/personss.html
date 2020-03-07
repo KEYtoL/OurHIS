@@ -15,15 +15,23 @@
 	  table.render({
 	    elem: '#persons'
 	    ,height: 312
-	    ,url: 'selectAllPersonsBytid' //数据接口
+	    ,url: 'getRegisterByTid' //数据接口
 	    ,page: true //开启分页
+	    ,limits : [10,15,25]
+	    ,limit:10
 	    ,cols: [
 	    	[ //表头
-	      {field: 'pname', title: '患者姓名', width:300, sort: true, fixed: 'left'}
-	      ,{field: 'psex', title: '患者性别', width:300}
-	      ,{field: 'page', title: '患者年龄', width:300, sort: true}
-	      ,{field: 'pcode', title: '患者身份证号', width:300} 
-	      
+	      {field: 'persons', title: '患者姓名', width:300, templet:'<div>{{d.persons.pname}}</div>',align:'center'}
+	      ,{field: 'persons', title: '患者性别', width:300 , templet:'<div>{{d.persons.psex}}</div>',align:'center'}
+	      ,{field: 'persons', title: '患者年龄', width:300,  templet:'<div>{{d.persons.page}}</div>',sort: true,align:'center'}
+	      ,{field: 'persons', title: '患者身份证号', width:300,templet:'<div>{{d.persons.pcode}}</div>',align:'center'} 
+	      ,{field: 'isok', title: '是否已诊断', width:300,templet:function(d){ if(d.isok==0){
+	    	  return '否';
+	      }else if(d.isok==1){
+	    	  return "已诊断";
+	      }else{
+	    	  return "已超时";
+	      }},align: 'center'}       
 	    ]
 	    ]
 	  });

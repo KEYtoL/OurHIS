@@ -1,5 +1,8 @@
 package com.woniuxy.springboot.HIS.service;
 
+import java.util.List;
+
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Paydetail;
 import com.woniuxy.springboot.HIS.entity.Persons;
 import com.woniuxy.springboot.HIS.entity.Register;
@@ -16,4 +19,8 @@ public interface RegisterService {
 	 * @param register
 	 */
 	void personsRegister(Register register);
+	/**
+	 *	根据医生id获取所有挂号信息
+	 */
+	PageInfo<Register> getRegisterByTid(Integer tid,int pageNum,int pageSize);
 }
