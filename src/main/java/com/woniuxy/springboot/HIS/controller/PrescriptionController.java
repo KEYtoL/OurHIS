@@ -131,6 +131,67 @@ public class PrescriptionController {
 			req.setAttribute("msg", "添加失败，联系管理员");
 			return "liugong/prescription";
 		}
+	}	
+	//查询处方
+	@RequestMapping("/selectPrescription")
+	public String selectPrescription(HttpServletRequest req,String pid,Date cfdate) {
+		try {
+			Integer npid = null; 
+			if(!(pid==null||"".equals(pid))) {
+				npid = Integer.parseInt(pid);
+			}
+			
+			List<Allprescriptions> listP = 
+					prescriptionService.selectPrescriptionByPidAndCfdate(npid, cfdate);
+			if(listP.isEmpty()) {
+				req.setAttribute("msg", "未查到信息");
+			}
+			req.setAttribute("Allprescriptions", listP);
+			return "liugong/selectPrescription";
+		} catch (NumberFormatException e1) {
+			// TODO Auto-generated catch block
+			req.setAttribute("msg", "请输入正确的病人编号");
+			return "liugong/selectPrescription";
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("msg", "系统错误，联系管理员");
+			return "liugong/selectPrescription";
+		}
+		
+	}
+	//查询处方详情
+	@RequestMapping("/selectOnePresciption")
+	public String selectOnePresciption(HttpServletRequest req,Integer cfid) {
+		List<Prescription> listP = prescriptionService.selectPrescriptionsByCfid(cfid);
+		Allprescriptions allP = prescriptionService.selectAllprescriptionByCfid(cfid);
+		req.setAttribute("OnePrescription", listP);
+		req.setAttribute("cfid", cfid);
+		req.setAttribute("issure", allP.getIssure());
+		return "liugong/OnePrescription";
+	}
+	//删除处方详情
+	@RequestMapping("/delectPrescription")
+	public String delectPresciption(HttpServletRequest req,Integer cfmxid) {
+		
+		Prescription prescription = prescriptionService.selectPrescriptionsByCfmxid(cfmxid);
+		prescriptionService.deletePrescriptionByCfmxid(cfmxid);
+		List<Prescription> listP = prescriptionService.selectPrescriptionsByCfid(prescription.getCfid());
+		if(listP.isEmpty()) {
+			req.setAttribute("msg", "已全部删除");
+			return "liugong/selectPrescription";
+		}else {
+			req.setAttribute("OnePrescription", listP);
+			req.setAttribute("cfid", prescription.getCfid());
+			return "liugong/OnePrescription";
+		}
+	}
+	//确认处方
+	@RequestMapping("/surePrescription")
+	public String surePrescription(HttpServletRequest req,Integer cfid) {
+			req.setAttribute("msg", "成功提交");
+			prescriptionService.surePrescription(cfid);
+			return "liugong/selectPrescription";
+		
 		
 	}
 	

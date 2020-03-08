@@ -89,9 +89,8 @@
     </tr>
     
 </table>
-<form th:action ="@{/submitPrescription}">
-<input type="submit" id="submitP" value="提交处方"  class="layui-btn" lay-submit="" lay-filter="demo1" th:if="${session.prescription.cfcount!=null}" >
-</form>
+<a th:href="@{/submitPrescription}"><button type="button" class="layui-btn"
+th:if="${session.prescription.cfcount!=null}">提交处方</button></a>
 
 <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/page/pharmacy/prescription.js}"></script>

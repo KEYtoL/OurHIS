@@ -14,11 +14,28 @@
  <update id="updateAllprescriptionsByCfid">
  	update Allprescriptions set issure = 1 where cfid = #{cfid}
  </update>
-<select id="selectAllprescriptionsByPid" >
+ 
+ <select id="selectAllprescriptionsByPidAndCfdate" resultType="Allprescriptions">
+		select * from Allprescriptions
+		<where>
+			<if test="pid != null and pid !=''">
+				 pid = #{pid} 
+			</if>
+			<if test="cfdate != null">
+				 and DATE_FORMAT(cfdate,'%Y-%m-%d') = DATE_FORMAT(#{cfdate},'%Y-%m-%d')
+			</if> 
+		</where>
+	</select>
 
-	select * from Allprescriptions where pid = #{pid}
-</select>
 <delete id="deleteAllprescriptionsByCfid">
 	delete from Allprescriptions where cfid = #{cfid}
 </delete>
+ <update id="updateCfcountByPid">
+ 	update Allprescriptions set cfcount = #{cfcount} where cfid = #{cfid}
+ </update>
+ 
+ <select id="selectAllprescriptionsByCfid" resultType="Allprescriptions">
+ select * from Allprescriptions where cfid = #{cfid}
+ </select>
+
 </mapper>

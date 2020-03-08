@@ -101,18 +101,18 @@
 					"spread": false
 				},
 				{
+					"title": "药品信息",
+					"icon": "icon-log",
+					"href": "page/user/medicine2.html",
+					"spread": true
+				},
+				{
 					"title": "入库历史记录",
 					"icon": "&#xe609;",
 					"href": "/page/pharmacy/Pharmacyhis.html",
 					"spread": false
 				}
 			]
-		},
-		{
-			"title": "药库",
-			"icon": "icon-log",
-			"href": "page/user/medicine2.html",
-			"spread": true
 		},
 		{
 			"title": "药房管理",
@@ -129,17 +129,11 @@
 				{
 					"title": "发药管理",
 					"icon": "&#xe61c;",
-					"href": "page/404.html",
+					"href": "/selectPrescription",
 					"spread": false
 				},
 				{
 					"title": "退药管理",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
-					"spread": false
-				},
-				{
-					"title": "查询历史记录",
 					"icon": "&#xe609;",
 					"href": "/page/pharmacy/Pharmacykcs.html",
 					"spread": false

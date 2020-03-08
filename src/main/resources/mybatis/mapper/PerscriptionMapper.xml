@@ -7,11 +7,16 @@
     values (#{cfmxid},#{cfid},#{mid},#{mnum},#{mcount},#{mway})
  </insert>
  
- <select id="selectPrescriptionByPid" resultType="Prescription">
-	select * from prescription where pid = #{pid}
+ <select id="selectPrescriptionByCfid" resultType="Prescription">
+	select * from prescription where cfid = #{cfid}
  </select>
 
 <delete id="deletePrescriptionByCfmxid">
 	delete from prescription where cfmxid = #{cfmxid}
 </delete>
+
+<select id="selectPrescriptionByCfmxid" resultType="Prescription">
+	select * from prescription where cfmxid = #{cfmxid}
+ </select>
+
 </mapper>
