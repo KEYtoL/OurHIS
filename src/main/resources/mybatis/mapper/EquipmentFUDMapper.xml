@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.woniuxy.springboot.HIS.mapper.EquipmentFUDMapper">
+
+	<!-- *******************************设备维修部分******************************** -->
+	<!-- 新增 -->
+	<insert id="insertEquipmentfixitem">
+		insert into equipmentfixitem values
+		(#{efixitemid},#{eid}, #{efixtime},
+		#{efixapplicanter},#{efixer},#{eproblems},#{ps})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteEquipmentfixitemByEfixitemid">
+		delete from equipmentfixitem where
+		efixitemid=#{efixitemid}
+	</delete>
+
+	<!-- 修改 -->
+	<update id="updateEquipmentfixitem">
+		UPDATE equipmentfixitem
+		<trim prefix="set" suffixOverrides=",">
+			<if test="eid!=null">eid=#{eid},</if>
+			<if test="efixtime!=null">efixtime=#{efixtime},</if>
+			<if test="efixapplicanter!=null">efixapplicanter=#{efixapplicanter},</if>
+			<if test="efixer!=null">efixer=#{efixer},</if>
+			<if test="eproblems!=null">eproblems=#{eproblems},</if>
+			<if test="ps!=null">ps=#{ps},</if>
+		</trim>
+		WHERE efixitemid=#{efixitemid}
+	</update>
+
+
+	<!-- 查询所有的记录 -->
+	<select id="selectAllEquipmentfixitem"
+		resultType="Equipmentfixitem">
+		select * from
+		equipmentfixitem
+	</select>
+
+	<!-- 按照设备eid 查询记录 -->
+	<select id="selectEquipmentfixitemByByEid"
+		resultType="Equipmentfixitem">
+		select * from
+		equipmentfixitem where eid= #{eid}
+	</select>
+	<!-- 设备名字模糊查询 -->
+	<select id="selectEquipmentfixitemByEname"
+		resultType="Equipmentfixitem">
+		select * from
+		equipmentfixitem where ename like '%' #{ename}
+		'%'
+	</select>
+
+	<!-- 主键查询 -->
+	<select id="selectEquipmentfixitemByByEfixitemid"
+		resultType="Equipmentfixitem">
+		select * from
+		equipmentfixitem where
+		efixitemid=#{efixitemid}
+	</select>
+	<!-- *******************************设备维保总表部分******************************** -->
+	<!-- 新增 -->
+	<insert id="insertEquipmentfixaupkeeptotal">
+		insert into
+		equipmentfixaupkeeptotal (fandukid,eid,recordid,submitdate,estatus,recordtype)
+		values
+		(#{fandukid},#{eid}, #{recordid},
+		#{submitdate},#{estatus},#{recordtype})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteEquipmentfixaupkeeptotalByFandukid">
+		delete from equipmentfixaupkeeptotal where
+		fandukid=#{fandukid}
+	</delete>
+
+	<!-- 修改 -->
+	<update id="updateEquipmentfixaupkeeptotal">
+		UPDATE equipmentfixaupkeeptotal
+		<trim prefix="set" suffixOverrides=",">
+			<if test="eid!=null">eid=#{eid},</if>
+			<if test="submitdate!=null">submitdate=#{submitdate},</if>
+			<if test="estatus!=null">estatus=#{estatus},</if>
+			<if test="recordtype!=null">recordtype=#{recordtype},</if>
+		</trim>
+		WHERE recordid=#{recordid}
+	</update>
+
+
+	<!-- 查询所有的记录 -->
+	<select id="selectAllEquipmentfixaupkeeptotal"
+		resultType="Equipmentfixaupkeeptotal">
+		select * from
+		equipmentfixaupkeeptotal
+	</select>
+
+	<!-- 按照设备eid 查询记录 -->
+	<select id="selectEquipmentfixaupkeeptotalByByEid"
+		resultType="Equipmentfixaupkeeptotal">
+		select * from
+		equipmentfixaupkeeptotal where eid= #{eid}
+	</select>
+	
+
+	<!-- 主键查询 -->
+	<select id="selectEquipmentfixaupkeeptotalByByFandukid"
+		resultType="Equipmentfixaupkeeptotal">
+		select * from
+		equipmentfixaupkeeptotal where
+		fandukid=#{fandukid}
+	</select>
+	
+	<!-- 多条件组合查询 -->
+	<select id="selectEquipmentfixaupkeeptotalByByConditon" resultType="Equipmentfixaupkeeptotal">
+		select * from equipmentfixaupkeeptotal
+		<where>
+			<if test="eid!=null and eid!=''">
+				eid=#{eid}
+			</if>
+			<if test="estatus!=null and estatus!=''">
+				and estatus=#{estatus}
+			</if>
+			<if test="recordtype!=null and recordtype!=''">
+				and recordtype=#{recordtype}
+			</if>
+		</where>
+		
+	</select>
+	
+	<!-- *******************************设备保养部分******************************** -->
+	<!-- 新增 -->
+	<insert id="insertEquipmentupkeepitem">
+		insert into equipmentupkeepitem values
+		(#{eupkeepitemid},#{eid}, #{eupkeeptime},
+		#{eupkeepapplicanter},#{eupkeeper},#{eproblems},#{ps})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteEquipmentupkeepitemByEupkeepitemid">
+		delete from equipmentupkeepitem where
+		eupkeepitemid=#{eupkeepitemid}
+	</delete>
+
+
+	<!-- 查询所有的记录 -->
+	<select id="selectAllEquipmentupkeepitem"
+		resultType="Equipmentupkeepitem">
+		select * from
+		equipmentupkeepitem
+	</select>
+
+	<!-- 按照设备eid 查询记录 -->
+	<select id="selectEquipmentupkeepitemByByEid"
+		resultType="Equipmentupkeepitem">
+		select * from
+		equipmentupkeepitem where eid= #{eid}
+	</select>
+
+	<!-- 主键查询 -->
+	<select id="selectEquipmentupkeepitemByByEupkeepitemid"
+		resultType="Equipmentupkeepitem">
+		select * from
+		equipmentupkeepitem where
+		eupkeepitemid=#{eupkeepitemid}
+	</select>
+	<!-- *******************************设备报废部分******************************** -->
+	<!-- 新增 -->
+	<insert id="insertEquipmentdestroyitem">
+		insert into equipmentdestroyitem values
+		(#{edestroyitemid},#{eid}, #{edestroytime},
+		#{edestroyapplicanter},#{edestroyer},#{eproblems},#{ps})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteEquipmentdestroyitemByEdestroyitemid">
+		delete from equipmentdestroyitem where
+		edestroyitemid=#{edestroyitemid}
+	</delete>
+
+
+	<!-- 查询所有的记录 -->
+	<select id="selectAllEquipmentdestroyitem"
+		resultType="Equipmentdestroyitem">
+		select * from
+		equipmentdestroyitem
+	</select>
+
+	<!-- 按照设备eid 查询记录 -->
+	<select id="selectEquipmentdestroyitemByByEid"
+		resultType="Equipmentdestroyitem">
+		select * from
+		equipmentdestroyitem where eid= #{eid}
+	</select>
+
+	<!-- 主键查询 -->
+	<select id="selectEquipmentdestroyitemByByEdestroyitemid"
+		resultType="Equipmentdestroyitem">
+		select * from
+		equipmentdestroyitem where
+		edestroyitemid=#{edestroyitemid}
+	</select>
+
+</mapper>

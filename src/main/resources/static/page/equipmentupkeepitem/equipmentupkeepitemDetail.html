@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+<link rel="stylesheet" href="../../css/public.css" media="all" />
+
+</head>
+<body class="childrenBody">
+	<form class="layui-form" style="width: 80%;">
+		
+
+		<div class="layui-form-item ">
+			<label class="layui-form-label" style="width: 300px">设备档案号</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input eid" lay-verify="" placeholder="请按照规定填写">
+			</div>
+		</div>
+
+		<div class="layui-form-item ">
+			<label class="layui-form-label" style="width: 300px">申请人</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input eupkeepapplicanter" lay-verify="" placeholder="请输入报申请人或申请单位">
+			</div>
+		</div>
+
+		<div class="layui-form-item ">
+			<label class="layui-form-label" style="width: 300px">保养时间</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true" id="eupkeeptime"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input eupkeeptime" lay-verify="" />
+			</div>
+		</div>
+
+		<div class="layui-form-item ">
+			<label class="layui-form-label" style="width: 300px">保养人员</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input eupkeeper" lay-verify="" placeholder="请输入保养人员">
+			</div>
+		</div>
+
+		<div class="layui-form-item layui-row layui-col-xs12">
+			<label class="layui-form-label" style="width: 300px">问题描述</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input eproblems"  lay-verify="" placeholder="请输入问题描述">
+			</div>
+		</div>
+
+		<div class="layui-form-item layui-row layui-col-xs12">
+			<label class="layui-form-label" style="width: 300px">备注信息</label>
+			<div class="layui-input-block">
+				<input type="text" readonly="true"
+					style="margin-left: 10px; min-height: 36px; width: 500px;border-style:none"
+					class="layui-input ps" lay-verify="" placeholder="请输入备注信息">
+			</div>
+		</div>
+
+	
+	</form>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript" src="equipmentupkeepitemAdd.js"></script>
+	<script>
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			laydate.render({
+				elem : '#' //指定元素
+			});
+			
+
+		}); 
+	</script>
+</body>
+</html>

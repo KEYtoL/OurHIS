@@ -7,16 +7,27 @@
 
 	<!-- 新增设备 -->
 	<insert id="insertEquipment">
-		insert into equipment values (#{eid}, #{ename},
-		#{ecategory},#{machineid},#{productiondate},#{keeper},
-		#{specificationid},#{usedate},#{guaranteeperiod},#{ebrand},
-		#{depreciationperiod},#{estatus},#{originalprice},#{monthdepression},
-		#{storagelocation},#{ps})
+		insert into
+		equipment (
+		erkid,eid,ename,
+		ecategory,machineid,productiondate,
+		keeper,specificationid,buydate,
+		guaranteeperiod,ebrand,depreciationperiod,
+		estatus,originalprice,monthdepression,
+		submiter,storagelocation,ps)
+		values (
+		#{equipmentrkb.erkid},#{equipmentrkb.eid},
+		#{equipmentrkb.ename},
+		#{equipmentrkb.ecategory},#{equipmentrkb.machineid},#{equipmentrkb.productiondate},
+		#{equipmentrkb.keeper},#{equipmentrkb.specificationid},#{equipmentrkb.buydate},
+		#{equipmentrkb.guaranteeperiod},#{equipmentrkb.ebrand},#{equipmentrkb.depreciationperiod},
+		#{equipmentrkb.estatus},#{equipmentrkb.originalprice},#{equipmentrkb.monthdepression},
+		#{equipmentrkb.submiter},#{equipmentrkb.storagelocation},#{equipmentrkb.ps})
 	</insert>
 
 
 	<!-- 查询所有设备 -->
-	<select id="selectAllEquipmen" resultType="Equipment">
+	<select id="selectAllEquipment" resultType="Equipment">
 		select * from
 		equipment
 	</select>
@@ -39,7 +50,7 @@
 		select * from
 		equipment where eid= #{eid}
 	</select>
-	
+
 	<!-- 修改设备信息 -->
 	<update id="updateEquipment">
 		UPDATE equipment
@@ -62,6 +73,73 @@
 		</trim>
 		WHERE eid=#{eid}
 	</update>
+	
+	
+	<!-- 修改设备维修信息 -->
+	<update id="updateEquipmentFixrecord">
+		UPDATE equipment set efixcount=efixcount+1,estatus="维修中",efixrecordps=CONCAT(efixrecordps,';',#{eproblems}) 
+		WHERE eid=#{eid}
+	</update>
+	
+		<!-- 修改设备保养信息 -->
+	<update id="updateEquipmentUpkeeprecord">
+		UPDATE equipment set eupkeepcount=eupkeepcount+1,estatus="保养中",eupkeeprecordps=CONCAT(eupkeeprecordps,';',#{eproblems}) 
+		WHERE eid=#{eid}
+	</update>
+	
+		<!-- 修改设备状态信息 -->
+	<update id="updateEquipmentDestroyStatus">
+		UPDATE equipment set estatus="已报废" 
+		WHERE eid=#{eid}
+	</update>
+	
+	<!-- 多条件组合查询 -->
+	<select id="selectEquipmentByCondition" resultType="Equipment">
+		select * from equipment
+		<where>
+			<if test="eid!=null and eid!=''">
+				eid=#{eid}
+			</if>
+			<if test="erkid!=null and erkid!=''">
+				and erkid=#{erkid}
+			</if>
+			<if test="submiter!=null and submiter!=''">
+				 and submiter like '%' #{submiter} '%'
+			</if>
+			<if test="ename!=null and ename!=''">
+				and ename like '%' #{ename} '%'
+			</if>
+			<if test="ecategory!=null and ecategory!=''">
+				and ecategory=#{ecategory}
+			</if>
+			<if test="machineid!=null and machineid!=''">
+				and machineid=#{machineid}
+			</if>
+			<if test="productiondate!=null and productiondate!=''">
+				and productiondate=#{productiondate}
+			</if>
+			<if test="specificationid!=null and specificationid!=''">
+				and specificationid=#{specificationid}
+			</if>
+			<if test="ebrand!=null and ebrand!=''">
+				and ebrand=#{ebrand}
+			</if>
+			<if test="storagelocation!=null and storagelocation!=''">
+				and storagelocationlike '%' #{storagelocationlike} '%'
+			</if>
+			<if test="efixcount!=null and efixcount!=''">
+				and efixcount>=#{efixcount}
+			</if>
+			<if test="eupkeepcount!=null and eupkeepcount!=''">
+				and eupkeepcount>=#{eupkeepcount}
+			</if>
+			<if test="estatus!=null and estatus!=''">
+				and estatus=#{estatus}
+			</if>
+		</where>
+
+	</select>
+	
 	<!-- **************************************************************** -->
 	<!-- 供应商信息部分 -->
 
@@ -108,4 +186,180 @@
 		select * from
 		supplier where spid= #{spid}
 	</select>
+
+
+	
+
+	<!-- **********************设备管理字典部分***************************** -->
+
+
+	<!-- 新增 -->
+	<insert id="insertEquipmentmanagerdictionary">
+		insert into equipmentmanagerdictionary values
+		(#{emdid},
+		#{keshi},#{emanager},#{efix},#{eupkeeper},#{keshileader},
+		#{submiter})
+	</insert>
+
+
+	<!-- 查询所有 -->
+	<select id="selectAllEquipmentmanagerdictionaryr"
+		resultType="Equipmentmanagerdictionary">
+		select * from
+		equipmentmanagerdictionary
+	</select>
+
+	<!-- 设备管理员的名字名字查询 -->
+	<select id="selectEquipmentmanagerdictionaryByEmdname"
+		resultType="Equipmentmanagerdictionary">
+		select * from
+		equipmentmanagerdictionary where emanager like
+		'%' #{emanager} '%'
+	</select>
+
+	<!-- id删除 -->
+	<delete id="deleteEquipmentmanagerdictionary">
+		delete from equipmentmanagerdictionary where
+		emdid=#{emdid}
+	</delete>
+	<!-- 修改供信息 -->
+	<update id="updateEquipmentmanagerdictionary">
+		UPDATE equipmentmanagerdictionary
+		<trim prefix="set" suffixOverrides=",">
+			<if test="keshi!=null">keshi=#{keshi},</if>
+			<if test="emanager!=null">emanager=#{emanager},</if>
+			<if test="efix!=null">efix=#{efix},</if>
+			<if test="eupkeeper!=null">eupkeeper=#{eupkeeper},</if>
+			<if test="keshileader!=null">keshileader=#{keshileader},</if>
+			<if test="submiter!=null">submiter=#{submiter},</if>
+		</trim>
+		WHERE emdid=#{emdid}
+	</update>
+	<!-- id查询 -->
+	<select id="selectEquipmentmanagerdictionaryByEmdid"
+		resultType="Equipmentmanagerdictionary">
+		select * from
+		equipmentmanagerdictionary where emdid=
+		#{emdid}
+	</select>
+
+	<!-- **********************设备入库部分***************************** -->
+
+	<!-- 新增设备入库 -->
+	<insert id="insertEquipmentrkb">
+		insert into equipmentrkb values (#{erkid},#{eid},
+		#{ename},
+		#{ecategory},#{machineid},#{productiondate},#{keeper},
+		#{specificationid},#{buydate},#{guaranteeperiod},#{ebrand},
+		#{depreciationperiod},#{estatus},#{originalprice},#{monthdepression},
+		#{submiter},#{storagelocation},#{ps})
+	</insert>
+
+
+	<!-- 查询所有设备 -->
+	<select id="selectAllEquipmentrkb" resultType="Equipmentrkb">
+		select * from
+		equipmentrkb
+	</select>
+
+	<!-- 名字查询设备 -->
+	<select id="selectEquipmentrkbByEname" resultType="Equipmentrkb">
+		select * from
+		equipmentrkb where ename like '%' #{ename} '%'
+	</select>
+
+	<!-- eid删除设备 -->
+	<delete id="deleteEquipmentrkb">
+		delete from equipmentrkb where erkid=#{erkid}
+	</delete>
+
+	<!-- id查看详情 -->
+	<select id="selectEquipmentrkbDetial" resultType="Equipmentrkb">
+		select * from
+		equipmentrkb where erkid= #{erkid}
+	</select>
+
+	<!-- 修改设备信息 -->
+	<update id="updateEquipmentrkb">
+		UPDATE equipmentrkb
+		<trim prefix="set" suffixOverrides=",">
+			<if test="eid!=null">eid=#{eid},</if>
+			<if test="ename!=null">ename=#{ename},</if>
+			<if test="ecategory!=null">ecategory=#{ecategory},</if>
+			<if test="machineid!=null">machineid=#{machineid},</if>
+			<if test="productiondate!=null">productiondate=#{productiondate},</if>
+			<if test="keeper!=null">keeper=#{keeper},</if>
+			<if test="specificationid!=null">specificationid=#{specificationid},</if>
+			<if test="buydate!=null">buydate=#{buydate},</if>
+			<if test="guaranteeperiod!=null">guaranteeperiod=#{guaranteeperiod},</if>
+			<if test="ebrand!=null">ebrand=#{ebrand},</if>
+			<if test="depreciationperiod!=null">depreciationperiod=#{depreciationperiod},</if>
+			<if test="estatus!=null">estatus=#{estatus},</if>
+			<if test="originalprice!=null">originalprice=#{originalprice},</if>
+			<if test="monthdepression!=null">monthdepression=#{monthdepression},</if>
+			<if test="submiter!=null">submiter=#{submiter},</if>
+			<if test="storagelocation!=null">storagelocation=#{storagelocation},</if>
+			<if test="ps!=null">ps=#{ps},</if>
+		</trim>
+		WHERE erkid=#{erkid}
+	</update>
+	<!-- *******************************设备调拨部分******************************** -->
+	<!-- 新增 -->
+	<insert id="insertEquipmentallot">
+		insert into equipmentallot values
+		(#{eallotid},#{eallottime}, #{eid},
+		#{ename},#{keeper},#{storagelocation},#{ps},
+		#{eapplicater},#{eaccepter},#{newstoragelocation})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteEquipmentallotByEallotid">
+		delete from equipmentallot where eallotid=#{eallotid}
+	</delete>
+
+	<!-- 修改 -->
+	<update id="updateEquipmentallot">
+		UPDATE equipmentallot
+		<trim prefix="set" suffixOverrides=",">
+			<if test="eallottime!=null">eallottime=#{eallottime},</if>
+			<if test="eid!=null">eid=#{eid},</if>
+			<if test="ename!=null">ename=#{ename},</if>
+			<if test="keeper!=null">keeper=#{keeper},</if>
+			<if test="storagelocation!=null">storagelocation=#{storagelocation},</if>
+			<if test="ps!=null">ps=#{ps},</if>
+			<if test="eapplicater!=null">eapplicater=#{eapplicater},</if>
+			<if test="eaccepter!=null">eaccepter=#{eaccepter},</if>
+			<if test="newstoragelocation!=null">newstoragelocation=#{newstoragelocation},</if>
+		</trim>
+		WHERE eallotid=#{eallotid}
+	</update>
+
+
+	<!-- 查询所有的调拨记录 -->
+	<select id="selectAllEquipmentallot" resultType="Equipmentallot">
+		select * from
+		equipmentallot
+	</select>
+
+	<!-- 按照设备eid 查询记录 -->
+	<select id="selectEquipmentallotByByEid"
+		resultType="Equipmentallot">
+		select * from
+		equipmentallot where eid= #{eid}
+	</select>
+	<!-- 设备名字模糊查询 -->
+	<select id="selectEquipmentallotByEname"
+		resultType="Equipmentallot">
+		select * from
+		equipmentallot where ename like '%' #{ename}
+		'%'
+	</select>
+
+	<!-- eallotid查询详情 -->
+	<select id="selectEquipmentallotByByEallotid"
+		resultType="Equipmentallot">
+		select * from
+		equipmentallot where eallotid=#{eallotid}
+	</select>
+
 </mapper>
