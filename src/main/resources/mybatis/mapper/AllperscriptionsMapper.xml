@@ -38,4 +38,16 @@
  select * from Allprescriptions where cfid = #{cfid}
  </select>
 
+ <select id="selectAllprescriptionsByPidAndCfdate2" resultType="Allprescriptions">
+		select * from Allprescriptions
+		<where>
+			<if test="pid != null and pid !=''">
+				 pid = #{pid} 
+			</if>
+			<if test="cfdate != null">
+				 and DATE_FORMAT(cfdate,'%Y-%m-%d') = DATE_FORMAT(#{cfdate},'%Y-%m-%d')
+			</if> 
+			and issure = 1
+		</where>
+	</select>
 </mapper>

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.woniuxy.springboot.HIS.entity.Allprescriptions;
+import com.woniuxy.springboot.HIS.entity.Doctor;
 import com.woniuxy.springboot.HIS.entity.Doctorlogin;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Persons;
@@ -194,5 +195,62 @@ public class PrescriptionController {
 		
 		
 	}
+	
+	
+	//查询处方(退药)
+		@RequestMapping("/retrunPrescription")
+		public String retrunPrescription(HttpServletRequest req,String pid,Date cfdate) {
+			try {
+				Integer npid = null; 
+				if(!(pid==null||"".equals(pid))) {
+					npid = Integer.parseInt(pid);
+				}
+				
+				List<Allprescriptions> listP = 
+						prescriptionService.selectPrescriptionByPidAndCfdate2(npid, cfdate);
+				if(listP.isEmpty()) {
+					req.setAttribute("msg", "未查到信息");
+				}
+				req.setAttribute("Allprescriptions", listP);
+				return "liugong/selectPrescription2";
+			} catch (NumberFormatException e1) {
+				// TODO Auto-generated catch block
+				req.setAttribute("msg", "请输入正确的病人编号");
+				return "liugong/selectPrescription2";
+			} catch (Exception e) {
+				e.printStackTrace();
+				req.setAttribute("msg", "系统错误，联系管理员");
+				return "liugong/selectPrescription2";
+			}
+			
+		}
+		//查询处方详情
+		@RequestMapping("/selectOnePresciption2")
+		public String selectOnePresciption2(HttpServletRequest req,Integer cfid) {
+			List<Prescription> listP = prescriptionService.selectPrescriptionsByCfid(cfid);
+			Allprescriptions allP = prescriptionService.selectAllprescriptionByCfid(cfid);
+			req.setAttribute("OnePrescription", listP);
+			req.setAttribute("cfid", cfid);
+			req.setAttribute("issure", allP.getIssure());
+			return "liugong/OnePrescription2";
+		}
+		
+		//删除处方详情
+		@RequestMapping("/delectPrescription2")
+		public String delectPresciption2(HttpServletRequest req,Integer cfmxid) {
+			
+			Prescription prescription = prescriptionService.selectPrescriptionsByCfmxid(cfmxid);
+			Doctorlogin doctorlogin = (Doctorlogin) req.getSession().getAttribute("Doctorlogin");
+			prescriptionService.deletePrescriptionByCfmxid2(cfmxid,doctorlogin.getTid());
+			List<Prescription> listP = prescriptionService.selectPrescriptionsByCfid(prescription.getCfid());
+			if(listP.isEmpty()) {
+				req.setAttribute("msg", "已全部删除");
+				return "liugong/selectPrescription2";
+			}else {
+				req.setAttribute("OnePrescription", listP);
+				req.setAttribute("cfid", prescription.getCfid());
+				return "liugong/OnePrescription2";
+			}
+		}
 	
 }

@@ -63,8 +63,6 @@ public class PharmacyServiceImpl implements PharmacyService{
 			//设置yfid
 			String yfid = CommonUtil.uuid();
 			pharmacy.setYfid(yfid);
-			//设置经手人，应从session中读取，或着作为参数传入
-			pharmacy.setYfuser(1);
 			pharmacyMapper.insertPharmacy(pharmacy);
 			//添加入库明细表
 			for (Pharmacymx pharmacymx : pharmacy.getPharmacymxs()) {

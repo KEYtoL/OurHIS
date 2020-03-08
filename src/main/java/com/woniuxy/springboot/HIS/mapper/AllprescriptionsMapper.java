@@ -19,6 +19,7 @@ public interface AllprescriptionsMapper {
 	void updateCfcountByPid(Double cfcount,Integer cfid);
 	//查询总表通过cfid
 	Allprescriptions selectAllprescriptionsByCfid(Integer cfid);
-	
+	//查询处方总表通过pid
+	List<Allprescriptions> selectAllprescriptionsByPidAndCfdate2(Integer pid,Date cfdate);
 
 }

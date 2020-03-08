@@ -170,15 +170,7 @@ public class PharmacyController {
 		return pageJson;
 	}
 	
-	/*
-	 * 	初始化查询历史入库记录(按时间)
-	 */
-	@GetMapping("/selectPharmacymxByYfid")
-	public String selectPharmacymxByYfid(
-			Integer page, Integer limit,String yfid) {
-		System.out.println(yfid);
-		return "test";
-	}
+
 	/*
 	 * 	初始化查询历史入库详情记录通过yfid(药房id)
 	 */
@@ -189,7 +181,31 @@ public class PharmacyController {
 		List<Pharmacymx> listP = pharmacyService.selectPharmacymx(yfid);
 		return listP;
 	}
-	
-	
+	/*
+	 * 	初始化查询历史出库记录（All）
+	 */
+	@GetMapping("/selectHisPharmacyRe")
+	@ResponseBody
+	public PageJson<Pharmacy> selectHisPharmacyRe(
+			Integer page, Integer limit) {
+		PageInfo<Pharmacy> listP = 
+				pharmacyService.selectAllPharmacy(true, page, limit);
+		PageJson<Pharmacy> pageJson = 
+				new PageJson<Pharmacy>("0", "", (int)listP.getTotal(), listP.getList());
+		return pageJson;
+	}
+	/*
+	 * 	初始化查询历史入库记录(按时间)
+	 */
+	@PostMapping("/selectHisPharmacyRe")
+	@ResponseBody
+	public PageJson<Pharmacy> selectPharmacyByYfdateRe(
+			Integer page, Integer limit,String selectWay,Date yfdate) {
+		PageInfo<Pharmacy> listP = 
+				pharmacyService.selectPharmacyByYfdate(selectWay, yfdate, true, page, limit);
+		PageJson<Pharmacy> pageJson = 
+				new PageJson<Pharmacy>("0", "", (int)listP.getTotal(), listP.getList());
+		return pageJson;
+	}
 	
 }

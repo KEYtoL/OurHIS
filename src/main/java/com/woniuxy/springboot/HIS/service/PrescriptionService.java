@@ -27,7 +27,10 @@ public interface PrescriptionService {
 	Prescription selectPrescriptionsByCfmxid(Integer cfmxid);
 	//查询总表处方
 	Allprescriptions selectAllprescriptionByCfid(Integer cfid);
-	
+	//查询已确认总表处方
+	List<Allprescriptions> selectPrescriptionByPidAndCfdate2(Integer pid,Date cfDate);
+	//删除记录
+	void deletePrescriptionByCfmxid2(Integer Cfmxid,Integer tid);
 	
 	
 

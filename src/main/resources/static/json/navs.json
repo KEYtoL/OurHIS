@@ -117,6 +117,12 @@
 					"icon": "&#xe609;",
 					"href": "/page/pharmacy/Pharmacyhis.html",
 					"spread": false
+				},
+				{
+					"title": "出库历史记录",
+					"icon": "&#xe609;",
+					"href": "/page/pharmacy/PharmacyhisRe.html",
+					"spread": false
 				}
 			]
 		},
@@ -141,7 +147,7 @@
 				{
 					"title": "退药管理",
 					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
+					"href": "/retrunPrescription",
 					"spread": false
 				}
 			]
