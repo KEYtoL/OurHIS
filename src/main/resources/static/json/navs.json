@@ -25,6 +25,12 @@
 					"href": "/page/doctor/keshiduty.html",
 					"spread": false
 				},
+				{
+					"title": "我的挂号名单",
+					"icon": "&#xe61c;",
+					"href": "personss.html",
+					"spread": false
+				},
 					{
 					"title": "a页面",
 					"icon": "&#xe61c;",
@@ -147,28 +153,73 @@
 			"spread": false,
 			"children": [
 				{
-					"title": "出库管理",
+					"title": "供应商库",
 					"icon": "&#xe61c;",
-					"href": "page/404.html",
+					"href": "supplier/supplierlist.html",
 					"spread": false
 				},
 				{
-					"title": "入库管理",
-					"icon": "&#xe61c;",
-					"href": "page/404.html",
+					"title": "设备管理字典",
+					"icon": "&#xe63c;",
+					"href": "page/equipmentmanagerdictionary/equipmentmanagerdictionary.html",
 					"spread": false
+					
 				},
 				{
-					"title": "查询库存",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
+					"title": "设备入库",
+					"icon": "&#xe62d;",
+					"href": "page/equipmentrkb/equipmentrkblist.html",
 					"spread": false
+					
 				},
 				{
-					"title": "出入库记录",
-					"icon": "&#xe609;",
-					"href": "/page/pharmacy/Pharmacykcs.html",
+					"title": "设备调拨",
+					"icon": "&#xe630;",
+					"href": "page/equipmentallot/equipmentallotlist.html",
 					"spread": false
+					
+				},
+				{
+					"title": "设备维修",
+					"icon": "&#xe630;",
+					"href": "page/equipmentfixitem/equipmentfixitemlist.html",
+					"spread": false
+					
+				},
+				{
+					"title": "设备保养",
+					"icon": "&#xe630;",
+					"href": "page/equipmentupkeepitem/equipmentupkeepitemlist.html",
+					"spread": false
+					
+				},
+				{
+					"title": "设备报废",
+					"icon": "&#xe630;",
+					"href": "page/equipmentdestroyitem/equipmentdestroyitemlist.html",
+					"spread": false
+					
+				},
+				{
+					"title": "维保记录",
+					"icon": "&#xe60a;",
+					"href": "page/equipmentfixaupkeeptotal/equipmentfixaupkeeptotallist.html",
+					"spread": false
+					
+				},
+				{
+					"title": "设备管理",
+					"icon": "&#xe62d;",
+					"href": "page/equipment/equipmentlist.html",
+					"spread": false
+					
+				},
+					{
+					"title": "基础设置",
+					"icon": "&#xe614;",
+					"href": "page/some/a.html",
+					"spread": false,
+					"target": "_blank"
 				}
 			]
 		}

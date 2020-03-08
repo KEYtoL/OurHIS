@@ -58,10 +58,9 @@
 	
 
 	<!-- 根据kid查询医生 -->
-	<select id="selectDoctorByKid" resultType="Doctor">
-		select * from doctor where kid = #{Kid}
+	<select id="selectDoctorByKid" resultMap="doctorMapper">
+		select * from doctor where kid = #{Kid} and titleid between 1 and 5;
 	</select>
-
 	<!-- 查询所有医生 -->
 	<select id="selectAllDoctors" resultMap="doctorMapper">
 		select * from doctor and titleid between 1 and 5;

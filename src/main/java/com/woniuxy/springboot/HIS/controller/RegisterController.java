@@ -2,14 +2,22 @@ package com.woniuxy.springboot.HIS.controller;
 
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Doctor;
+import com.woniuxy.springboot.HIS.entity.Doctorlogin;
 import com.woniuxy.springboot.HIS.entity.Historicalpatients;
 import com.woniuxy.springboot.HIS.entity.Keshi;
 import com.woniuxy.springboot.HIS.entity.Paydetail;
@@ -104,5 +112,25 @@ public class RegisterController {
 		String msg = "患者:"+persons.getPname()+"挂号成功，请输入下一位挂号患者信息";
 		model.addAttribute("msg", msg);
 		return "selectpersons";
+	}
+	/**
+	 * 显示该医生当天的所有挂号信息
+	 */
+	@ResponseBody
+	@RequestMapping("/getRegisterByTid")
+	public  Map<String, Object> getRegisterByTid(Model model,HttpServletRequest request,int page,int limit) {
+		Doctorlogin doctor = (Doctorlogin) request.getSession().getAttribute("Doctorlogin");
+		 	PageInfo<Register> pi = registerService.getRegisterByTid(doctor.getTid(), page, limit);
+		   HashMap<String, Object> map = new HashMap<String, Object>();
+		   long count = pi.getTotal();
+		   List<Register> registerList = pi.getList();
+		map .put("msg","");
+	       map.put("code",0);
+	       map.put("count",count);
+	       
+			map.put("data",registerList);
+	       return map;
+//		  model.addAttribute("ps",ps );
+//		  return "personss";
 	}
 }

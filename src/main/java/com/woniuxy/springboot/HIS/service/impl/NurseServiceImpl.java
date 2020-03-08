@@ -17,78 +17,54 @@ public class NurseServiceImpl implements NurseService{
 
 	@Autowired
 	NurseMapper nurseMapper;
-	
+
 	@Override
 	public void insertDoctor(Doctor doctor) {
-		try {
-			nurseMapper.insertDoctor(doctor);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public Doctor selectDoctorByTid(int tid) {
-		try {
-			return nurseMapper.selectDoctorByTid(tid);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Doctor> selectDoctorByTname(String tname) {
-		try {
-			return nurseMapper.selectDoctorByTname(tname);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Doctor> selectDoctorByHid(int hid) {
-		try {
-			return nurseMapper.selectDoctorByHid(hid);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public List<Doctor> selectDoctorByKid(int kid) {
-		try {
-			return nurseMapper.selectDoctorByKid(kid);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+	public List<Doctor> selectDoctorByKid(int hid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Doctor> selectAllDoctors() {
-		try {
-			return nurseMapper.selectAllDoctors();
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void updateDoctorByTid(int tid, Doctor doctor) {
-		try {
-			 nurseMapper.updateDoctorByTid(tid, doctor);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteDoctorByTid(int tid) {
-		try {
-			 nurseMapper.deleteDoctorByTid(tid);
-		} catch (Exception e) {
-			throw new DoctorServiceExcption("系统异常，请稍后再试");
-		}
+		// TODO Auto-generated method stub
+		
 	}
-
-
+	
+	
 }
