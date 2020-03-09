@@ -13,6 +13,10 @@
 
 	<!-- 新增药品 -->
 	<insert id="insertMedicine">
+	<selectKey keyColumn="mid" keyProperty="mid" order="AFTER"
+	resultType="int">
+	select last_insert_id()
+	</selectKey>
 		insert into medicine values (#{mid}, #{mname},
 		#{mprice},#{msize},#{munit},#{manufacturer})
 	</insert>
@@ -59,23 +63,22 @@
 		select * from medicine
 		<where>
 			<if test="medicine.mname!=null and medicine.mname!=''">
-				mname like '%' #{medicine.mname} '%'
+				and mname like '%' #{medicine.mname} '%' 
 			</if>
 			<if test="medicine.mprice!=null and medicine.mprice!=''">
-				mprice=#{medicine.mprice}
+				 and mprice=#{medicine.mprice}
 			</if>
 			<if test="medicine.munit!=null and medicine.munit!=''">
-				munit=#{medicine.munit}
+				and munit=#{medicine.munit}
 			</if>
 			<if test="medicine.msize!=null and medicine.msize!=''">
-				msize=#{medicine.msize}
+				and msize=#{medicine.msize}
 			</if>
 			<if
 				test="medicine.manufacturer!=null and medicine.manufacturer!=''">
-				manufacturer like '%' #{medicine.manufacturer} '%'
+				and manufacturer like '%' #{medicine.manufacturer} '%'
 			</if>
 		</where>
-		limit #{pageIndex},#{pageSize}
 	</select>
 
 </mapper>

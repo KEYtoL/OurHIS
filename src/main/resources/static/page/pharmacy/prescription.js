@@ -43,6 +43,10 @@ layui.use(['form','layer'],function(){
 						$("#mname").focus();
 						$("#lns").hide();
 					});
+					$("body").click(function(){
+						$("#lns").hide();
+						
+					});
 				}
 			});
 		}else{

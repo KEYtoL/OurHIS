@@ -51,10 +51,13 @@ public class MedicineServiceImpl implements MedicineService{
 	 * 组合分页查询
 	 */
 	@Override
-	public List<Medicine> selectMedicineByCondition(Medicine medicine, Integer pageIndex, Integer pageSize) {
+	public PageInfo<Medicine> selectMedicineByCondition(Medicine medicine, Integer pageIndex, Integer pageSize) {
 		// TODO Auto-generated method stub
-		List<Medicine> selectMedicineByCondition = medicineMapper.selectMedicineByCondition(medicine, pageIndex, pageSize);
-		return selectMedicineByCondition;
+		PageHelper.startPage(pageIndex, pageSize);
+		List<Medicine> listM = 
+				medicineMapper.selectMedicineByCondition(medicine, pageIndex, pageSize);
+		PageInfo<Medicine> pageInfo = new PageInfo<Medicine>(listM);
+		return pageInfo;
 	}
 	/**
 	 * 批量删除药品

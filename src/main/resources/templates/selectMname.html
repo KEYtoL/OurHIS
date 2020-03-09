@@ -36,7 +36,8 @@
 <body>
 	<ul>
 			<li class="choose" style="background-color:#fff" th:each="mname:${mnames}"
-			th:a="${mname.medicine.msize}" th:b="${mname.medicine.manufacturer}" th:c="${mname.medicine.mprice}">
+			th:a="${mname.medicine.msize}" th:b="${mname.medicine.manufacturer}" th:c="${mname.medicine.mprice}"
+			th:d="${mname.medicine.munit}">
 			[[${mname.medicine.mname }]]
 			</li>
 	</ul>

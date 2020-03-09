@@ -60,24 +60,42 @@ public class PharmacyController {
 	//添加记录
 	@PostMapping("/addpharmacy")
 	@ResponseBody
-	public int addpharmacy(String mname, String yfmxnum, HttpSession session) {
+	public int addpharmacy(Medicine medicine, String yfmxnum,Integer hidnum, HttpSession session) {
 		int parseInt = 0;
 		try {
 			//格式错误直接返回
 			parseInt = Integer.parseInt(yfmxnum);
+			if(parseInt<0) {
+				yfmxnum=null;
+			}
 		} catch (NumberFormatException e) {
 			yfmxnum=null;
 		}
 			if (yfmxnum!=null) {
 				//已存在同名则加数量
+				if(hidnum!=null) {
+					parseInt-=hidnum;
+				}
 				Pharmacy pharmacyOrder = (Pharmacy) session.getAttribute("PharmacyOrder");
 				boolean state = false;
 				for (int i = 0; i < pharmacyOrder.getPharmacymxs().size(); i++) {
 					Pharmacymx pha = pharmacyOrder.getPharmacymxs().get(i);
-					if (pha.getMedicine().getMname().equals(mname)) {
+					if (pha.getMedicine().equals(medicine)) {
 						if (pha.getYfmxnum() + parseInt <= 0) {
 							pharmacyOrder.getPharmacymxs().remove(i);
 						} else {
+							pha.setYfmxnum(pha.getYfmxnum() + parseInt);
+							BigDecimal b1 = new BigDecimal(pha.getYfmxnum() + "");
+							BigDecimal b2 = new BigDecimal(pha.getMedicine().getMprice() + "");
+							pha.setYfmxcount(b1.multiply(b2).doubleValue());
+						}
+						state = true;
+						break;
+					}else if(pha.getMedicine().getMname().equals(medicine.getMname())) {
+						if (pha.getYfmxnum() + parseInt <= 0) {
+							pharmacyOrder.getPharmacymxs().remove(i);
+						} else {
+							pha.setMedicine(medicine);
 							pha.setYfmxnum(pha.getYfmxnum() + parseInt);
 							BigDecimal b1 = new BigDecimal(pha.getYfmxnum() + "");
 							BigDecimal b2 = new BigDecimal(pha.getMedicine().getMprice() + "");
@@ -89,11 +107,10 @@ public class PharmacyController {
 				}
 				if (!state) {
 					//不存在则查询后新增
-					List<Medicine> listM = medicineService.selectMedicineByMname(mname);
 					Pharmacymx pharmacymx = new Pharmacymx();
-					pharmacymx.setMedicine(listM.get(0));
+					pharmacymx.setMedicine(medicine);
 					pharmacymx.setYfmxnum(parseInt);
-					BigDecimal b1 = new BigDecimal(listM.get(0).getMprice() + "");
+					BigDecimal b1 = new BigDecimal(medicine.getMprice() + "");
 					BigDecimal b2 = new BigDecimal(parseInt + "");
 					pharmacymx.setYfmxcount(b1.multiply(b2).doubleValue());
 					pharmacyOrder.getPharmacymxs().add(pharmacymx);
@@ -131,17 +148,23 @@ public class PharmacyController {
 	@PostMapping("/insertPharmacy")
 	@ResponseBody
 	public int insertPharmacy(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		Pharmacy pharmacy = (Pharmacy) session.getAttribute("PharmacyOrder");
-		
-		if(pharmacy==null||pharmacy.getPharmacymxs().isEmpty()) {
+		try {
+			HttpSession session = req.getSession();
+			Pharmacy pharmacy = (Pharmacy) session.getAttribute("PharmacyOrder");
+			
+			if(pharmacy==null||pharmacy.getPharmacymxs().isEmpty()) {
+				return 1;
+			}
+			Doctorlogin logininfo = (Doctorlogin) session.getAttribute("Doctorlogin");
+			pharmacy.setYfuser(logininfo.getTid());
+			pharmacyService.insertPharmacy(pharmacy);
+			session.setAttribute("PharmacyOrder", null);
+			return 2;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return 1;
 		}
-		Doctorlogin logininfo = (Doctorlogin) session.getAttribute("Doctorlogin");
-		pharmacy.setYfuser(logininfo.getTid());
-		pharmacyService.insertPharmacy(pharmacy);
-		session.setAttribute("PharmacyOrder", null);
-		return 2;
 		}
 	/*
 	 * 	初始化查询历史入库记录（all）

@@ -100,6 +100,7 @@ layui.use(['form','layer','table','laytpl'],function(){
 		}
 	});
 	
+	
     
     //添加用户
     function addUser(edit){

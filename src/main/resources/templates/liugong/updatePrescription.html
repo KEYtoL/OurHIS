@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all" />
+<link rel="stylesheet" th:href="@{/css/index.css}" media="all" />
+</head>
+<body>
+<div>
+<form class="layui-form" style="width:30%;" th:action="@{/updatePrescription}" method="post">
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">药品名</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input mname" name="mname" th:value="${onePrescription.medicine.mname}" 
+			readonly ="readonly" lay-verify="required" placeholder="请输入药品名">
+			<div id="lns"></div>
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">数量</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input mnum"  name="mnum" th:value="${onePrescription.mnum}" lay-verify="required" placeholder="请输入更改后数量">
+			 [[${mnumerror}]]
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">使用方式</label>
+		<div class="layui-input-block">
+			<input type="text" class="layui-input mway" name="mway" th:value="${onePrescription.mway}" lay-verify="required" placeholder="请输入使用方法">
+			
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
+		<div class="layui-input-block">
+			<input type="submit" class="layui-btn layui-btn-sm" value = "立即更改" id="addpharmacy" lay-submit="" lay-filter="addpharmacy">
+		</div>
+
+	</div>
+<div><a th:href="@{/addPrescription?pid=}+${session.prescription.persons.pid}"><button type="button" class="layui-btn"
+>返回</button></a></div>
+</form>
+</div>
+
+
+<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/page/pharmacy/prescription.js}"></script>
+</body>
+
+</html>

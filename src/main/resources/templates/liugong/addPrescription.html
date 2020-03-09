@@ -62,7 +62,7 @@
     </div>
   </div>
 </form>
-<table class="layui-table">
+<table class="layui-table" style="text-align: center;">
   <colgroup>
     <col width="150">
     <col width="200">
@@ -71,26 +71,32 @@
   <thead>
     <tr>
       <th>药品名称</th>
+      <th>数量</th>
       <th>药品单位</th>
       <th>价格</th>
-      <th>数量</th>
       <th>小计</th>
       <th>使用方法</th>
+      <th>操作</th>
     </tr> 
   </thead>
   <tbody>
     <tr th:if="${session.prescription.cfcount!=null}" th:each="pre:${session.prescription.prescriptions}" >
       <td>[[${pre.medicine.mname}]]</td>
+      <td>[[${pre.mnum}]]</td>
       <td>[[${pre.medicine.munit}]]</td>
       <td>[[${pre.medicine.mprice}]]</td>
-      <td>[[${pre.mnum}]]</td>
       <td>[[${pre.mcount}]]</td>
       <td>[[${pre.mway}]]</td>
+      <td><a th:href="@{/delectOnePresciption?mname=}+${pre.medicine.mname}">
+      <button type="button" class="layui-btn">删除</button></a>
+      <a th:href="@{/updatePrescription?mname=}+${pre.medicine.mname}">
+      <button type="button" class="layui-btn">修改</button></a>
+      </td>
     </tr>
-    
-</table>
+	</table>
 <a th:href="@{/submitPrescription}"><button type="button" class="layui-btn"
 th:if="${session.prescription.cfcount!=null}">提交处方</button></a>
+<a th:href="@{/addPrescription?pid=}+${session.prescription.pid}"><button type="button" class="layui-btn">刷新</button></a>
 
 <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
 <script type="text/javascript" th:src="@{/page/pharmacy/prescription.js}"></script>

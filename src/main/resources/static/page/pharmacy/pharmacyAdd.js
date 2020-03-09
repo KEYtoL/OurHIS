@@ -41,10 +41,15 @@ layui.use(['form','layer'],function(){
 					$(".choose").click(function(){
 						$("input[name=mname]").val(trim($(this).text()));
 						$(".msize").val($(this).attr("a"));
-						$(".mfacturer").val($(this).attr("b"));
+						$(".manufacturer").val($(this).attr("b"));
 						$(".mprice").val($(this).attr("c"));
+						$(".munit").val($(this).attr("d"));
 						$("input[name=mname]").focus();
 						$("#lns").hide();
+					});
+					$("body").click(function(){
+						$("#lns").hide();
+						
 					});
 				}
 			});
@@ -61,7 +66,12 @@ layui.use(['form','layer'],function(){
         	"/pharmacy/addpharmacy",
         		 {
              mname : $(".mname").val(),  //药品名
+             msize : $(".msize").val(),
+             manufacturer : $(".manufacturer").val(),
+             mprice : $(".mprice").val(),
+             munit : $(".munit").val(),
              yfmxnum : $(".yfmxnum").val(),  //数量
+             hidnum : $(".hidnum").val(),
         		 },
          function(res){
         	if(res==1){

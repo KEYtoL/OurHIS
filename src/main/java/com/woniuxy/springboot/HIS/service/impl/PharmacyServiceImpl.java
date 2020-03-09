@@ -14,6 +14,7 @@ import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Doctor;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 import com.woniuxy.springboot.HIS.entity.Pharmacy;
+import com.woniuxy.springboot.HIS.entity.Pharmacykc;
 import com.woniuxy.springboot.HIS.entity.Pharmacymx;
 import com.woniuxy.springboot.HIS.exception.PharmacyException;
 import com.woniuxy.springboot.HIS.mapper.DoctorMapper;
@@ -71,10 +72,30 @@ public class PharmacyServiceImpl implements PharmacyService{
 				//匹配本次入库id
 				pharmacymx.setYfid(yfid);
 				//设置药品id
-				pharmacymx.setMid(pharmacymx.getMedicine().getMid());
+				Medicine medicine = pharmacymx.getMedicine();
+				List<Medicine> listM = medicineMapper.selectMedicineByMname(medicine.getMname());
+				for (int i = 0; i < listM.size(); i++) {
+					if(medicine.getMname().equals(listM.get(i).getMname())) {
+						medicine.setMid(listM.get(i).getMid());
+						break;
+					}
+				}
+				//为空为未查到为新增药品，新增药品记录，与库存记录
+				if (listM.isEmpty()) {
+					medicineMapper.insertMedicine(medicine);
+				
+					Pharmacykc pharmacykc = new Pharmacykc();
+					pharmacykc.setMedicine(medicine);
+					pharmacykc.setYfkcnum(pharmacymx.getYfmxnum());
+					
+					pharmacykcMapper.insertPharmacykc(pharmacykc);
+					//已查到则更新两个表
+				}else {
+					medicineMapper.updateMedicine(medicine);
+					pharmacykcMapper.updatePharmacykcByMid
+					(pharmacymx.getYfmxnum(), medicine.getMid());
+				}
 				pharmacymxMapper.insertPharmacymx(pharmacymx);
-				pharmacykcMapper.updatePharmacykcByMid
-				(pharmacymx.getYfmxnum(), pharmacymx.getMedicine().getMid());
 				
 			}
 		} catch (Exception e) {

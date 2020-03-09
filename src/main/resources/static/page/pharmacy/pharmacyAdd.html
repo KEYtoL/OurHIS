@@ -22,21 +22,27 @@
 		</div>
 	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">
+		<label class="layui-form-label">单位</label>
+		<div class="layui-input-block">
+			<input type="text"  value="" class="layui-input munit"  lay-verify="required" placeholder="请输入规格">
+		</div>
+	</div>
+	<div class="layui-form-item layui-row layui-col-xs12">
 		<label class="layui-form-label">规格</label>
 		<div class="layui-input-block">
-			<input type="text" disabled="disabled" value="" class="layui-input msize"  lay-verify="required" >
+			<input type="text"  value="" class="layui-input msize"  lay-verify="required" placeholder="请输入单位">
 		</div>
 	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">
 		<label class="layui-form-label">厂家</label>
 		<div class="layui-input-block">
-			<input type="text" disabled="disabled" value="" class="layui-input mfacturer"  lay-verify="required" >
+			<input type="text"  value="" class="layui-input manufacturer"  lay-verify="required" placeholder="请输入厂家">
 		</div>
 	</div>
 	<div class="layui-form-item layui-row layui-col-xs12">
 		<label class="layui-form-label">价格</label>
 		<div class="layui-input-block">
-			<input type="text" disabled="disabled"  value="" class="layui-input mprice"  lay-verify="required" >
+			<input type="text"   value="" class="layui-input mprice"  lay-verify="required" placeholder="请输入价格">
 			<div id="lns"></div>
 		</div>
 	</div>
@@ -45,12 +51,15 @@
 		<div class="layui-input-block">
 			<input type="text" class="layui-input yfmxnum"  lay-verify="required" placeholder="请输入数量">
 		</div>
+		<input type="hidden" class="hidnum" value=""/>
+		
 	</div>
 	
 	<div class="layui-form-item layui-row layui-col-xs12">
 		<div class="layui-input-block">
-			<button class="layui-btn layui-btn-sm" id="addpharmacy" lay-submit="" lay-filter="addpharmacy">立即添加</button>
+			<button class="layui-btn layui-btn-sm" id="addpharmacy" lay-submit="" lay-filter="addpharmacy">立即提交</button>
 		</div>
+		
 	</div>
 </form>
 <script type="text/javascript" src="../../layui/layui.js"></script>

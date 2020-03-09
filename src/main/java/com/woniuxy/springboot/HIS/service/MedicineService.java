@@ -2,6 +2,7 @@ package com.woniuxy.springboot.HIS.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.woniuxy.springboot.HIS.entity.Medicine;
 
 public interface MedicineService {
@@ -27,7 +28,7 @@ public interface MedicineService {
 	void deleteMedicines(Integer[] ids);
 
 	// 组合查询 名字 价格 munit msize manufacturer 分页
-	List<Medicine> selectMedicineByCondition(Medicine medicine,
+	PageInfo<Medicine> selectMedicineByCondition(Medicine medicine,
 		Integer pageIndex,  Integer pageSize);
 
 }

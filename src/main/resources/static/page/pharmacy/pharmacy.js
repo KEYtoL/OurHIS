@@ -60,9 +60,11 @@ layui.use(['form','layer','table','laytpl'],function(){
                 if(edit){
                     body.find(".mname").val(edit.medicine.mname);  //药品名
                     body.find(".msize").val(edit.medicine.msize);  //规格
-                    body.find(".mfacturer").val(edit.medicine.manufacturer);  //厂家
+                    body.find(".munit").val(edit.medicine.munit);  //规格
+                    body.find(".manufacturer").val(edit.medicine.manufacturer);  //厂家
                     body.find(".mprice").val(edit.medicine.mprice);  //价格
                     body.find(".yfmxnum").val(edit.yfmxnum);  //价格
+                    body.find(".hidnum").val(edit.yfmxnum);  //价格
                     form.render();
                 }
                 setTimeout(function(){
